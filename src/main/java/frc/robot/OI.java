@@ -246,7 +246,7 @@ public class OI {
 		joyRightBtn3 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN3);
 
 		joyRightBtn2 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN2);
-		joyRightBtn2.whenPressed(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.SHOOTER_CAMERA));
+		joyRightBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.SHOOTER_CAMERA));
 
 		joyRightBtn1 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN1);
 		//joyRightBtn1.whenPressed(new GearboxSetGearHigh());
@@ -285,7 +285,7 @@ public class OI {
 		//joyLeftBtn3.whenPressed(new DrivetrainMoveDistance(50));
 
 		joyLeftBtn2 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN2);
-		joyLeftBtn2.whenPressed(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.GRASPER_CAMERA));
+		joyLeftBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.GRASPER_CAMERA));
 
 		joyLeftBtn1 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN1);
 		//joyLeftBtn1.whenPressed(new GearboxSetGearLow());
@@ -302,6 +302,12 @@ public class OI {
 
 		dpadRight = new DPadButton(gamepad,DPadButton.Direction.RIGHT);
 		//dpadRight.whenPressed(new ShooterIncreasePresetRpm());
+
+
+		// DEFAULT COMMANDS
+
+		Robot.drivetrain.setDefaultCommand(new DrivetrainJoystickControl());
+		
 
 		// SmartDashboard Buttons
 
