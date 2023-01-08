@@ -329,7 +329,8 @@ public class LimelightCamera implements /*PIDSource,*/ ICamera {
 		FORCE_ON
 	}*/
 
-	public synchronized void setLedMode(LedMode ledMode) {
+	public synchronized static void setLedMode(LedMode ledMode) {
+		NetworkTable nt = NetworkTableInstance.getDefault().getTable("limelight");
 		nt.getEntry("ledMode").setNumber(ledMode.ordinal());
 	}
 	

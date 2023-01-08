@@ -50,7 +50,7 @@ public interface ICamera /*extends PIDSource, PIDSource2*/ {
 		FORCE_ON
 	}
 
-	public void setLedMode(LedMode ledMode);
+	//public void setLedMode(LedMode ledMode);
 	
 	public void setPipeline(byte pipeline);
 
