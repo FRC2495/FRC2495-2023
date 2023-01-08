@@ -18,7 +18,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 //import com.revrobotics.CANSparkMax;
 //import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-//import frc.robot.auton.CustomAuton;
+import frc.robot.auton.CustomAuton;
 import frc.robot.interfaces.*;
 import frc.robot.sensors.*;
 import frc.robot.subsystems.*;
@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
 
 	public static OI oi;
 	
-	//Command m_autonomousCommand;
+	Command m_autonomousCommand;
 	//Command gamepadRumbleUsingCameraCommand;
 	//Command indicatorTimedScrollRainbow;
 	
@@ -384,11 +384,11 @@ public class Robot extends TimedRobot {
 
 		switch (autonSelected) {
 			case Robot.AUTON_CUSTOM:
-				//m_autonomousCommand = new CustomAuton(startPosition, mainTarget, cameraOption, sonarOption, autonOption);
+				m_autonomousCommand = new CustomAuton(startPosition, mainTarget, cameraOption, sonarOption, autonOption);
 				break;
 
 			case Robot.AUTON_DO_NOTHING:
-				//m_autonomousCommand = null;
+				m_autonomousCommand = null;
 			
 				break;
 				
@@ -402,9 +402,9 @@ public class Robot extends TimedRobot {
 		SwitchedCamera.setUsbCamera(Ports.UsbCamera.GRASPER_CAMERA);
 	
 		// schedule the autonomous command (example)
-		//if (m_autonomousCommand != null) {
-		//	m_autonomousCommand.start();
-		//}
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.schedule();
+		}
 	}
 
 	/**
@@ -424,9 +424,9 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		//if (m_autonomousCommand != null) {
-		//	m_autonomousCommand.cancel();
-		//}
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.cancel();
+		}
 
 		LimelightCamera.setLedMode(ICamera.LedMode.PIPELINE);
 
