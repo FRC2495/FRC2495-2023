@@ -24,7 +24,7 @@ import frc.robot.commands.drivetrain.*;
 //import frc.robot.commands.arms.*;
 //import frc.robot.commands.elbows.*;
 //import frc.robot.commands.conditional.*;
-//import frc.robot.commands.groups.*;
+import frc.robot.commands.groups.*;
 import frc.robot.commands.camera.*;
 import frc.robot.Ports;
 import frc.robot.util.DPadButton;
@@ -180,7 +180,7 @@ public class OI {
 		//gamePadStart.whenPressed(new AlmostEverythingStop());
 
 		gamepadBack = new JoystickButton(gamepad, ControllerBase.GamepadButtons.BACK);
-		//gamepadBack.whileHeld(new FullCalibrateAndReset());
+		gamepadBack.onTrue(new FullCalibrateAndReset());
 
 		gamepadRB = new JoystickButton(gamepad, ControllerBase.GamepadButtons.RB);
 		//gamepadRB.whenPressed(new HingeMoveMidway());
@@ -227,10 +227,10 @@ public class OI {
 		//joyRightBtn8.whileHeld(new FrontElbowsJoystickControl());
 		
 		joyRightBtn7 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN7);
-		//joyRightBtn7.whenPressed(new DrivetrainStop());
+		joyRightBtn7.onTrue(new DrivetrainStop());
 
 		joyRightBtn6 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN6);
-		//joyRightBtn6.whenPressed(new DrivetrainResetEncoders());
+		joyRightBtn6.onTrue(new DrivetrainResetEncoders());
 
 		joyRightBtn5 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN5);
 		//joyRightBtn5.whenPressed(new DrivetrainMoveUsingCameraPidController(LimelightCamera.OFFSET_CAMERA_TARGET_INCHES));
@@ -240,7 +240,7 @@ public class OI {
 		//joyRightBtn5.whileHeld(new ShooterShootUsingCamera());
 
 		joyRightBtn4 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN4);
-		//joyRightBtn4.whenPressed(new DrivetrainTurnUsingCameraPidController());
+		joyRightBtn4.onTrue(new DrivetrainTurnUsingCameraPidController());
 		//joyRightBtn4.whenPressed(new DrivetrainTurnAngleFromCameraUsingPidController());
 
 		joyRightBtn3 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN3);
@@ -270,19 +270,19 @@ public class OI {
 		//joyLeftBtn8.whileHeld(new GrasperJoystickControl());
 
 		joyLeftBtn7 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN7);
-		//joyLeftBtn7.whenPressed(new DrivetrainStop());
+		joyLeftBtn7.onTrue(new DrivetrainStop());
 
 		joyLeftBtn6 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN6);
-		//joyLeftBtn6.whenPressed(new DrivetrainAndGyroReset());
+		joyLeftBtn6.onTrue(new DrivetrainAndGyroReset());
 
 		joyLeftBtn5 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN5);
-		//joyLeftBtn5.whenPressed(new DrivetrainTurnAngleUsingPidController(90));
+		joyLeftBtn5.onTrue(new DrivetrainTurnAngleUsingPidController(90));
 
 		joyLeftBtn4 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN4);
-		//joyLeftBtn4.whenPressed(new DrivetrainTurnAngleUsingPidController(-90));
+		joyLeftBtn4.onTrue(new DrivetrainTurnAngleUsingPidController(-90));
 
 		joyLeftBtn3 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN3);
-		//joyLeftBtn3.whenPressed(new DrivetrainMoveDistance(50));
+		joyLeftBtn3.onTrue(new DrivetrainMoveDistance(50));
 
 		joyLeftBtn2 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN2);
 		joyLeftBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.GRASPER_CAMERA));
@@ -307,7 +307,7 @@ public class OI {
 		// DEFAULT COMMANDS
 
 		Robot.drivetrain.setDefaultCommand(new DrivetrainJoystickControl());
-		
+
 
 		// SmartDashboard Buttons
 
