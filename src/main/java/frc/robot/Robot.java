@@ -100,7 +100,7 @@ public class Robot extends TimedRobot {
 	
 	public static HMAccelerometer accelerometer;
 
-	//public static PressureSensor pressureSensor;
+	public static PressureSensor pressureSensor;
 
 	// public static ColorSensor colorSensor;
 	
@@ -241,7 +241,7 @@ public class Robot extends TimedRobot {
 
 		accelerometer = new HMAccelerometer();
 
-		//pressureSensor = new PressureSensor();
+		pressureSensor = new PressureSensor();
 
 		// colorSensor = new ColorSensor();
 
@@ -495,7 +495,7 @@ public class Robot extends TimedRobot {
 	{
 		// Send Gyro val to Dashboard
 		SmartDashboard.putNumber("Gyro Value", gyro.getAngle());
-		//SmartDashboard.putNumber("Pressure", pressureSensor.getPressurePSI());
+		SmartDashboard.putNumber("Pressure", pressureSensor.getPressurePSI());
 			
 		SmartDashboard.putNumber("Right Value", drivetrain.getRightPosition());
 		SmartDashboard.putNumber("Left Value", drivetrain.getLeftPosition());
