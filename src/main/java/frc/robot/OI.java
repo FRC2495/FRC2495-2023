@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.*;
 import frc.robot.commands.drivetrain.*;
-//import frc.robot.commands.hinge.*;
+import frc.robot.commands.hinge.*;
 //import frc.robot.commands.grasper.*;
 //import frc.robot.commands.feeder.*;
 //import frc.robot.commands.shooter.*;
@@ -144,7 +144,7 @@ public class OI {
 
 		gamepadRT = new GamepadAxis(gamepad, ControllerBase.GamepadAxes.RT);
 		//gamepadRT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));
-		//gamepadRT.whenPressed(new HingeMoveDown());
+		gamepadRT.onTrue(new HingeMoveDown());
 
 		gamepadLT = new GamepadAxis(gamepad, ControllerBase.GamepadAxes.LT);
 		//gamepadLT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_OFF));
@@ -177,14 +177,14 @@ public class OI {
 		//gamePadStart.whenPressed(new HingeAndGrasperAndSpinnerStop());
 		//gamePadStart.whenPressed(new HingeAndGrasperStop());
 		//gamePadStart.whenPressed(new HingeAndGrasperAndFeederAndShooterStop());
-		//gamePadStart.whenPressed(new AlmostEverythingStop());
+		gamePadStart.onTrue(new AlmostEverythingStop());
 
 		gamepadBack = new JoystickButton(gamepad, ControllerBase.GamepadButtons.BACK);
 		gamepadBack.onTrue(new FullCalibrateAndReset());
 
 		gamepadRB = new JoystickButton(gamepad, ControllerBase.GamepadButtons.RB);
 		//gamepadRB.whenPressed(new HingeMoveMidway());
-		//gamepadRB.whenPressed(new HingeMoveUp());
+		gamepadRB.onTrue(new HingeMoveUp());
 
 		gamepadLB = new JoystickButton(gamepad, ControllerBase.GamepadButtons.LB);
 		//gamepadLB.whileHeld(new SpinnerSpin());
@@ -264,7 +264,7 @@ public class OI {
 		//joyLeftBtn10.whileHeld(new FeederJoystickControl());
 
 		joyLeftBtn9 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN9);
-		//joyLeftBtn9.whileHeld(new HingeJoystickControl());
+		joyLeftBtn9.whileTrue(new HingeJoystickControl());
 
 		joyLeftBtn8 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN8);
 		//joyLeftBtn8.whileHeld(new GrasperJoystickControl());
