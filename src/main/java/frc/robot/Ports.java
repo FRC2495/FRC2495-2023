@@ -90,7 +90,7 @@ public class Ports {
 			public static final int WINCH_FOLLOWER = 11;*/
 
 			//2022 Robot
-			public static final int RIGHT_FRONT = 1;
+			/*public static final int RIGHT_FRONT = 1;
 			public static final int RIGHT_REAR = 2;
 			public static final int LEFT_FRONT = 3;
 			public static final int LEFT_REAR = 4;
@@ -109,7 +109,19 @@ public class Ports {
 			public static final int REAR_ELBOW_MASTER = 30;
 			public static final int REAR_ELBOW_FOLLOWER = 31;
 			public static final int SHOOTER = 18;
-			public static final int FEEDER = 19;
+			public static final int FEEDER = 19;*/
+
+			//2023 Robot
+			public static final int RIGHT_FRONT = 1;
+			public static final int RIGHT_REAR = 2;
+			public static final int LEFT_FRONT = 3;
+			public static final int LEFT_REAR = 4;
+			//public static final int GRASPER = 5;
+			public static final int HINGE_MASTER = 6;
+			public static final int HINGE_FOLLOWER = 7;
+			//public static final int SPINNER = 8;
+			public static final int PCM = 9;
+			public static final int PDP = 0;			
 		}
 		
 		/**
@@ -158,13 +170,16 @@ public class Ports {
 			public static final int SPINNER_RAISER_DOWN = 6;*/
 
 			// 2022 robot
-			public static final int GEAR_HIGH = 0;
+			/*public static final int GEAR_HIGH = 0;
 			public static final int GEAR_LOW = 1;
 			public static final int FRONT_ELBOWS_OPEN = 2;
 			public static final int FRONT_ELBOWS_CLOSED = 3;
 			public static final int REAR_ELBOWS_OPEN = 4;
-			public static final int REAR_ELBOWS_CLOSED = 5;
-		}
+			public static final int REAR_ELBOWS_CLOSED = 5;*/
+
+			// 2023 robot
+			public static final int CLAW_CLOSED = 0;
+			public static final int CLAW_OPEN = 1; 		}
 
 		/**
 		 * PWM ports
