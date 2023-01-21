@@ -9,22 +9,23 @@ package frc.robot.commands.claw;
 
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 
-//import frc.robot.Robot;
-//import frc.robot.subsystems.Gearbox.Gear;
+import frc.robot.Robot;
+import frc.robot.subsystems.Claw.Position;
 
-// To set high gear
+// To set claw open
 public class ClawSetOpen extends InstantCommand {
 	public ClawSetOpen() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		//requires(Robot.claw); //
+		addRequirements(Robot.claw);
 	}
 
 	// Called once when the command executes
 	@Override
 	public void initialize() {
 		System.out.println("ClawSetOpen: initialize");
-		//Robot.claw.setPosition(Position.OPEN);
+		Robot.claw.setPosition(Position.OPEN);
 	}
 
 }

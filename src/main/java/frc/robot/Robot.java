@@ -165,6 +165,8 @@ public class Robot extends TimedRobot {
 
 	//public static Gearbox gearbox;
 
+	public static Claw claw;
+
 	//public static WinchStopper winchStopperControl; 
 	//public static WinchLock winchLockControl;
 
@@ -308,6 +310,8 @@ public class Robot extends TimedRobot {
 		//shooterPusher = new ShooterPusher();
 
 		//gearbox = new Gearbox();
+
+		claw = new Claw();
 
 		//winchStopperControl = new WinchStopper();
 		//winchLockControl = new WinchLock();
@@ -573,6 +577,8 @@ public class Robot extends TimedRobot {
 		//SmartDashboard.putBoolean("Winch Forward Limit Switch", winchControl.getForwardLimitSwitchState());
 
 		//SmartDashboard.putString("Gearbox Position", gearbox.getGear().toString());
+
+		SmartDashboard.putString("Claw Position", claw.getPosition().toString());
 
 		//SmartDashboard.putBoolean("Front Arms Limit Switch", frontArms.getLimitSwitchState());
 		//SmartDashboard.putBoolean("Front Arms Reverse Limit Switch", frontArms.getReverseLimitSwitchState());
