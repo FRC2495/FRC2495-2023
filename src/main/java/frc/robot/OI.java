@@ -21,6 +21,7 @@ import frc.robot.commands.hinge.*;
 import frc.robot.commands.gearbox.*;
 import frc.robot.commands.claw.*;
 import frc.robot.commands.rotator.*;
+import frc.robot.commands.arm.*;
 //import frc.robot.commands.grasper.*;
 //import frc.robot.commands.feeder.*;
 //import frc.robot.commands.shooter.*;
@@ -217,9 +218,11 @@ public class OI {
 
 		joyRightBtn11 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN11); 
 		//joyRightBtn11.whileHeld(new RearArmsJoystickControl());
+		joyRightBtn11.whileTrue(new ArmJoystickControl());
 	
 		joyRightBtn10 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN10);
 		//joyRightBtn10.whileHeld(new FrontArmsJoystickControl());
+		joyRightBtn10.whileTrue(new ArmJoystickControl());
 
 		joyRightBtn9 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN9);
 		//joyRightBtn9.whenPressed(new WinchStopperSetStop());
