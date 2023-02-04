@@ -19,6 +19,8 @@ import frc.robot.commands.*;
 import frc.robot.commands.drivetrain.*;
 import frc.robot.commands.hinge.*;
 import frc.robot.commands.gearbox.*;
+import frc.robot.commands.claw.*;
+import frc.robot.commands.rotator.*;
 //import frc.robot.commands.grasper.*;
 //import frc.robot.commands.feeder.*;
 //import frc.robot.commands.shooter.*;
@@ -204,9 +206,11 @@ public class OI {
 
 		gamepadB = new JoystickButton(gamepad, ControllerBase.GamepadButtons.B);
 		//gamepadB.whileHeld(new GrasperRelease());
+		gamepadB.onTrue(new ClawSetOpen());
 
 		gamepadA = new JoystickButton(gamepad, ControllerBase.GamepadButtons.A);
 		//gamepadA.whileHeld(new GrasperGrasp());
+		gamepadA.onTrue(new ClawSetClosed());
 
 
 		joyRight = new Joystick(Ports.USB.RIGHT);
@@ -221,11 +225,13 @@ public class OI {
 		//joyRightBtn9.whenPressed(new WinchStopperSetStop());
 		//joyRightBtn9.whenPressed(new WinchLockWinchStopperSetLockedAndStop());
 		//joyRightBtn9.whileHeld(new RearElbowsJoystickControl());
+		joyRightBtn9.whileTrue(new RotatorJoystickControl());
 
 		joyRightBtn8 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN8);
 		//joyRightBtn8.whenPressed(new WinchStopperSetFree());
 		//joyRightBtn8.whenPressed(new WinchLockWinchStopperSetUnlockedAndFree());
 		//joyRightBtn8.whileHeld(new FrontElbowsJoystickControl());
+		joyRightBtn8.whileTrue(new RotatorJoystickControl());
 		
 		joyRightBtn7 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN7);
 		joyRightBtn7.onTrue(new DrivetrainStop());
