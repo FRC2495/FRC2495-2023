@@ -59,7 +59,7 @@ public class DrivetrainMoveDistance extends CommandBase {
 
 	// Called once after isFinished returns true
 	@Override
-	public void end(boolean interupted) {
+	public void end(boolean interrupted) {
 		System.out.println("DrivetrainMoveDistance: end");
 		Robot.drivetrain.stop();
 	}

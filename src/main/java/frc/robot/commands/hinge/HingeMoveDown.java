@@ -58,7 +58,7 @@ public class HingeMoveDown extends CommandBase {
 
 	// Called once after isFinished returns true
 	@Override
-	public void end(boolean interupted) {
+	public void end(boolean interrupted) {
 		System.out.println("HingeMoveDown: end");
 		Robot.hingeControl.stop();
 		//Robot.hingeControl.stay();
