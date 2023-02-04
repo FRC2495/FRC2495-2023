@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.commands.drivetrain.*;
 import frc.robot.commands.hinge.*;
+import frc.robot.commands.gearbox.*;
 //import frc.robot.commands.grasper.*;
 //import frc.robot.commands.feeder.*;
 //import frc.robot.commands.shooter.*;
@@ -249,7 +250,7 @@ public class OI {
 		joyRightBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.SHOOTER_CAMERA));
 
 		joyRightBtn1 = new JoystickButton(joyRight, ControllerBase.JoystickButtons.BTN1);
-		//joyRightBtn1.whenPressed(new GearboxSetGearHigh());
+		joyRightBtn1.onTrue(new GearboxSetGearHigh());
 
 
 		joyLeft = new Joystick(Ports.USB.LEFT);
@@ -288,7 +289,7 @@ public class OI {
 		joyLeftBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.GRASPER_CAMERA));
 
 		joyLeftBtn1 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN1);
-		//joyLeftBtn1.whenPressed(new GearboxSetGearLow());
+		joyLeftBtn1.onTrue(new GearboxSetGearLow());
 
 
 		dpadUp = new DPadButton(gamepad,DPadButton.Direction.UP);

@@ -163,7 +163,7 @@ public class Robot extends TimedRobot {
 	
 	//Compressor compressor; // the compressor's lifecycle needs to be the same as the robot
 
-	//public static Gearbox gearbox;
+	public static Gearbox gearbox;
 
 	public static Claw claw;
 
@@ -309,7 +309,7 @@ public class Robot extends TimedRobot {
    
 		//shooterPusher = new ShooterPusher();
 
-		//gearbox = new Gearbox();
+		gearbox = new Gearbox();
 
 		claw = new Claw();
 
@@ -439,7 +439,7 @@ public class Robot extends TimedRobot {
 		//gamepadRumbleUsingCameraCommand.start();
 
 		
-		//gearbox.setGear(Gearbox.Gear.LOW);
+		gearbox.setGear(Gearbox.Gear.LOW);
 	}
 
 	/**
@@ -576,7 +576,7 @@ public class Robot extends TimedRobot {
 		//SmartDashboard.putNumber("Winch Encoder Value", winchControl.getEncoderPosition());
 		//SmartDashboard.putBoolean("Winch Forward Limit Switch", winchControl.getForwardLimitSwitchState());
 
-		//SmartDashboard.putString("Gearbox Position", gearbox.getGear().toString());
+		SmartDashboard.putString("Gearbox Position", gearbox.getGear().toString());
 
 		SmartDashboard.putString("Claw Position", claw.getPosition().toString());
 
