@@ -30,8 +30,7 @@ public class Arm extends SubsystemBase implements IArm {
 
 	
 	// general settings
-	public static final int LENGTH_OF_TRAVEL_TICKS_FRONT = -450000; // TODO adjust as needed (halve for Talon FX)
-	public static final int LENGTH_OF_TRAVEL_TICKS_REAR = 600000; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_TRAVEL_TICKS = -450000; // TODO adjust as needed (halve for Talon FX)
 
 	static final double MAX_PCT_OUTPUT = 1.0;
 	static final int WAIT_MS = 1000;
@@ -112,6 +111,12 @@ public class Arm extends SubsystemBase implements IArm {
 		// The method follow() allows users to create a motor controller follower of not only the same model, but also other models
 		// , talon to talon, victor to victor, talon to victor, and victor to talon.
 		//arm_follower.follow(arm);
+
+		// Motor controllers that are followers can set Status 1 and Status 2 to 255ms(max) using setStatusFramePeriod.
+		// The Follower relies on the master status frame allowing its status frame to be slowed without affecting performance.
+		// This is a useful optimization to manage CAN bus utilization.
+		//armfollower.setStatusFramePeriod(StatusFrame.Status_1_General, 255, TALON_TIMEOUT_MS);
+		//armFollower.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 255, TALON_TIMEOUT_MS);
 
 		setPIDParameters();
 		
@@ -231,7 +236,7 @@ public class Arm extends SubsystemBase implements IArm {
 		System.out.println("Extending");
 		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
 
-		tac = +LENGTH_OF_TRAVEL_TICKS_FRONT;
+		tac = +LENGTH_OF_TRAVEL_TICKS;
 		
 		arm.set(ControlMode.Position,tac);
 		
