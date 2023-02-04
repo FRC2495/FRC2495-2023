@@ -138,15 +138,10 @@ public class Robot extends TimedRobot {
 	//public BaseMotorController spinnerMotor;
 	//public static Spinner spinnerWheel;
 
-	//WPI_TalonSRX front_arm_master;
-	//BaseMotorController front_arm_follower;
+	WPI_TalonSRX arm_master;
+	//BaseMotorController arm_follower;
 
-	//public static /*I*/SetOfArms frontArms;
-
-	//WPI_TalonSRX rear_arm_master;
-	//BaseMotorController rear_arm_follower;
-
-	//public static /*I*/SetOfArms rearArms;
+	public static /*I*/Arm arm;
 
 	WPI_TalonSRX rotator_master;
 	//BaseMotorController rotator_follower;
@@ -275,16 +270,10 @@ public class Robot extends TimedRobot {
 		//spinnerMotor = new WPI_TalonSRX(Ports.CAN.SPINNER);
 		//spinnerWheel = new Spinner(spinnerMotor,this); 
 
-		//front_arm_master = new WPI_TalonSRX(Ports.CAN.FRONT_ARM_REAL_MASTER);
-		//front_arm_follower = new WPI_TalonSRX(Ports.CAN.FRONT_ARM_FOLLOWER);
+		arm_master = new WPI_TalonSRX(Ports.CAN.ARM_MASTER);
+		//arm_follower = new WPI_TalonSRX(Ports.CAN.ARM_FOLLOWER);
 
-		//frontArms = new SetOfArms(front_arm_master, /*front_arm_follower,*/ this, false, ISetOfArms.Side.FRONT);
-
-		//rear_arm_master = new WPI_TalonSRX(Ports.CAN.REAR_ARM_REAL_MASTER);
-		//rear_arm_follower = new WPI_TalonSRX(Ports.CAN.REAR_ARM_FOLLOWER);
-
-		//rearArms = new SetOfArms(rear_arm_master, /*rear_arm_follower,*/ this, false, ISetOfArms.Side.REAR);
-
+		arm = new Arm(arm_master, /*arm_follower,*/ this, false);
 
 		rotator_master = new WPI_TalonSRX(Ports.CAN.ROTATOR_MASTER);
 		//rotator_follower = new WPI_TalonSRX(Ports.CAN.ROTATOR_FOLLOWER);
@@ -570,19 +559,12 @@ public class Robot extends TimedRobot {
 
 		SmartDashboard.putString("Claw Position", claw.getPosition().toString());
 
-		//SmartDashboard.putBoolean("Front Arms Limit Switch", frontArms.getLimitSwitchState());
-		//SmartDashboard.putBoolean("Front Arms Reverse Limit Switch", frontArms.getReverseLimitSwitchState());
-		//SmartDashboard.putNumber("Front Arms Enc Position", frontArms.getEncoderPosition());
-		//SmartDashboard.putBoolean("Front Arms IsMoving?", frontArms.isMoving());
-		//SmartDashboard.putNumber("Front Arms Target", frontArms.getTarget());
-		//SmartDashboard.putBoolean("Front Arms isStalled?", frontArms.isStalled());
-
-		//SmartDashboard.putBoolean("Rear Arms Limit Switch", rearArms.getLimitSwitchState());
-		//SmartDashboard.putBoolean("Rear Arms Reverse Limit Switch", rearArms.getReverseLimitSwitchState());
-		//SmartDashboard.putNumber("Rear Arms Enc Position", rearArms.getEncoderPosition());
-		//SmartDashboard.putBoolean("Rear Arms IsMoving?", rearArms.isMoving());
-		//SmartDashboard.putNumber("Rear Arms Target", rearArms.getTarget());
-		//SmartDashboard.putBoolean("Rear Arms isStalled?", rearArms.isStalled());
+		SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitchState());
+		SmartDashboard.putBoolean("Arm Reverse Limit Switch", arm.getReverseLimitSwitchState());
+		SmartDashboard.putNumber("Arm Enc Position", arm.getEncoderPosition());
+		SmartDashboard.putBoolean("Arm IsMoving?", arm.isMoving());
+		SmartDashboard.putNumber("Arm Target", arm.getTarget());
+		SmartDashboard.putBoolean("Arm isStalled?", arm.isStalled());
 
 		SmartDashboard.putBoolean("Rotator Limit Switch", rotator.getLimitSwitchState());
 		SmartDashboard.putBoolean("Rotator Reverse Limit Switch", rotator.getReverseLimitSwitchState());
