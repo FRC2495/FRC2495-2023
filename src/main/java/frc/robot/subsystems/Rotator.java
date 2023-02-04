@@ -27,7 +27,7 @@ import frc.robot.Robot;
 /**
  * The {@code Rotator} class contains fields and methods pertaining to the function of the rotator.
  */
-public class Rotatator extends SubsystemBase implements IRotator {
+public class Rotator extends SubsystemBase implements IRotator {
 
 	
 	// general settings
@@ -75,7 +75,7 @@ public class Rotatator extends SubsystemBase implements IRotator {
 	Robot robot;
 
 	
-	public Rotatator(WPI_TalonSRX rotator_in, /*BaseMotorController rotator_follower_in,*/ Robot robot_in) {
+	public Rotator(WPI_TalonSRX rotator_in, /*BaseMotorController rotator_follower_in,*/ Robot robot_in) {
 		
 		rotator = rotator_in;
 		//rotator_follower = rotator_follower_in;

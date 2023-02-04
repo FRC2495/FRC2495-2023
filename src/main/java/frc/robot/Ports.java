@@ -121,7 +121,8 @@ public class Ports {
 			public static final int HINGE_FOLLOWER = 7;
 			//public static final int SPINNER = 8;
 			public static final int PCM = 9;
-			public static final int PDP = 0;			
+			public static final int PDP = 0;	
+			public static final int ROTATOR_MASTER = 13;
 		}
 		
 		/**
