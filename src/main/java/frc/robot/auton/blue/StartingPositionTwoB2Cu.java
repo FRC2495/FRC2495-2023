@@ -1,5 +1,7 @@
 package frc.robot.auton.blue;
 
+import frc.robot.commands.arm.ArmExtendWithStallDetection;
+import frc.robot.commands.arm.ArmRetractWithStallDetection;
 import frc.robot.commands.claw.*;
 import frc.robot.commands.hinge.*;
 import frc.robot.commands.drivetrain.*;
@@ -14,14 +16,15 @@ public class StartingPositionTwoB2Cu extends SequentialCommandGroup {
             new HingeMoveUp());
             // lifts hinge up out of frame perimeter        
 
-            // extends hinge up
+            new ArmExtendWithStallDetection();
+            // extends arm up
 
             // uses limelight to adjust claw onto cube node
 
             new ClawSetOpen();
             // opens claw to put cube on cube node
 
-            new DrivetrainMoveDistance(-AutonConstants.DISTANCE_FROM_CUBE_NODE_TO__LEFT_TURNING_BEFORE_CUBE_PICKUP);
+            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CUBE_NODE_TO__LEFT_TURNING_BEFORE_CUBE_PICKUP);
             // moves from starting position two to turning point before cube pickup
 
             new DrivetrainTurnAngleUsingPidController(-170);
