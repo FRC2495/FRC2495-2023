@@ -1,6 +1,7 @@
 package frc.robot.auton.blue;
 
 // GP = game piece
+// Can be used to place one cube or one cone and either starting position one or two
 
 import frc.robot.commands.claw.*;
 import frc.robot.commands.hinge.*;
@@ -10,9 +11,9 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 import frc.robot.auton.AutonConstants;
 
-public class StartingPositionOneAndTwo1GP extends SequentialCommandGroup {
+public class StartingPositionOneOrTwoB1GP extends SequentialCommandGroup {
 
-    public StartingPositionOneAndTwo1GP(){
+    public StartingPositionOneOrTwoB1GP(){
 
         addCommands(
             new HingeMoveUp());
