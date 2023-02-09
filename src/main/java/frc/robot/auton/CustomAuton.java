@@ -7,14 +7,21 @@
 
 package frc.robot.auton;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 import frc.robot.Robot;
 //import frc.robot.commands.*;
 //import frc.robot.commands.gearbox.*;
 //import frc.robot.commands.hinge.*;
+import frc.robot.auton.blue.StartingPositionFiveB2Cu;
+import frc.robot.auton.blue.StartingPositionOneB1Cu1Co;
+import frc.robot.auton.blue.StartingPositionOneOrTwoB1GP;
+import frc.robot.auton.blue.StartingPositionSixB1Cu1Co;
+import frc.robot.auton.blue.StartingPositionThreeBDock;
+import frc.robot.auton.blue.StartingPositionThreeOrFourB1GpAndDock;
+import frc.robot.auton.blue.StartingPositionTwoB2Cu;
 
-public class CustomAuton extends CommandBase {
+public class CustomAuton extends SequentialCommandGroup {
 
 	String gamePiece;
 	String startPosition;
@@ -71,10 +78,16 @@ public class CustomAuton extends CommandBase {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						//TODO
+						addCommands(new StartingPositionOneOrTwoB1GP());
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
 						//TODO
+						break;
+					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_BOTH_NODE:
+						addCommands(new StartingPositionOneB1Cu1Co());
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
 						//TODO
@@ -94,6 +107,12 @@ public class CustomAuton extends CommandBase {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
+						addCommands(new StartingPositionOneOrTwoB1GP());
+						break;
+					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
+						addCommands(new StartingPositionTwoB2Cu());
+						break;
+					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -108,12 +127,18 @@ public class CustomAuton extends CommandBase {
 			case Robot.START_POSITION_3:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
-						//TODO
+						addCommands(new StartingPositionThreeBDock());
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						//TODO
+						addCommands(new StartingPositionThreeOrFourB1GpAndDock());
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -134,6 +159,12 @@ public class CustomAuton extends CommandBase {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
+						addCommands(new StartingPositionThreeOrFourB1GpAndDock());
+						break;
+					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -154,6 +185,12 @@ public class CustomAuton extends CommandBase {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
+						addCommands(new StartingPositionOneOrTwoB1GP());
+						break;
+					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
+						addCommands(new StartingPositionFiveB2Cu());
+						break;
+					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -171,10 +208,16 @@ public class CustomAuton extends CommandBase {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						//TODO
+						addCommands(new StartingPositionOneOrTwoB1GP());
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
 						//TODO
+						break;
+					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_BOTH_NODE:
+						addCommands(new StartingPositionSixB1Cu1Co());
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
 						//TODO

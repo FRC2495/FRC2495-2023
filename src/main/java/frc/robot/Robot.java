@@ -74,6 +74,8 @@ public class Robot extends TimedRobot {
 	//public static final String MAIN_TARGET_HUB = "Hub";
 	public static final String MAIN_TARGET_CONE_NODE = "Cone Node";
 	public static final String MAIN_TARGET_CUBE_NODE = "Cube Node";
+	public static final String MAIN_TARGET_TWO_CUBE_NODE = "Two Cube Node";
+	public static final String MAIN_TARGET_BOTH_NODE = "Both Node";
 	public static final String MAIN_TARGET_CHARGING_STATION = "Charging Station";
 	public static final String MAIN_TARGET_NOWHERE = "Nowhere";
 	private String mainTarget;
@@ -221,6 +223,8 @@ public class Robot extends TimedRobot {
 		mainTargetChooser.setDefaultOption("To Nowhere", MAIN_TARGET_NOWHERE);
 		mainTargetChooser.setDefaultOption("Cone Node", MAIN_TARGET_CONE_NODE);
 		mainTargetChooser.setDefaultOption("Cube Node", MAIN_TARGET_CUBE_NODE);
+		mainTargetChooser.setDefaultOption("Two Cube Node", MAIN_TARGET_TWO_CUBE_NODE);
+		mainTargetChooser.setDefaultOption("Both Node", MAIN_TARGET_BOTH_NODE);
 		mainTargetChooser.setDefaultOption("Charging Station", MAIN_TARGET_CHARGING_STATION);
 		//mainTargetChooser.addOption("Hub", MAIN_TARGET_HUB);
 		SmartDashboard.putData("Main targets", mainTargetChooser);
