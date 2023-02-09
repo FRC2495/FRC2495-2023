@@ -16,6 +16,7 @@ import frc.robot.Robot;
 
 public class CustomAuton extends CommandBase {
 
+	String gamePiece;
 	String startPosition;
 	String mainTarget;
 	String cameraOption;
@@ -25,15 +26,17 @@ public class CustomAuton extends CommandBase {
 	/**
      * Add your docs here.
      * 
-     * @param startPosition_in starting position
+     * @param gamePiece_in game piece
+	 * @param startPosition_in starting position
      * @param mainTarget_in    main target
      * @param cameraOption_in  camera option
      * @param sonarOption_in   sonar option
     * @param autonOption_in   auton option
     */
-    public CustomAuton(String startPosition_in, String mainTarget_in, String cameraOption_in,
+    public CustomAuton(String gamePiece_in, String startPosition_in, String mainTarget_in, String cameraOption_in,
             String sonarOption_in, String autonOption_in) {
 
+		gamePiece = gamePiece_in;
 		startPosition = startPosition_in;
 		mainTarget = mainTarget_in;
 		cameraOption = cameraOption_in;
@@ -64,7 +67,13 @@ public class CustomAuton extends CommandBase {
 		switch (startPosition) {
 			case Robot.START_POSITION_1:
 				switch (mainTarget) {
-					case Robot.MAIN_TARGET_HUB:
+					case Robot.MAIN_TARGET_CHARGING_STATION:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CONE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CUBE_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -78,7 +87,13 @@ public class CustomAuton extends CommandBase {
 
 			case Robot.START_POSITION_2:
 				switch (mainTarget) {
-					case Robot.MAIN_TARGET_HUB:
+					case Robot.MAIN_TARGET_CHARGING_STATION:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CONE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CUBE_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -92,7 +107,73 @@ public class CustomAuton extends CommandBase {
 
 			case Robot.START_POSITION_3:
 				switch (mainTarget) {
-					case Robot.MAIN_TARGET_HUB:
+					case Robot.MAIN_TARGET_CHARGING_STATION:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CONE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CUBE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_NOWHERE:
+						//TODO
+						break;
+					default:
+						// nothing
+						break;
+				}
+				break;
+
+				case Robot.START_POSITION_4:
+				switch (mainTarget) {
+					case Robot.MAIN_TARGET_CHARGING_STATION:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CONE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CUBE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_NOWHERE:
+						//TODO
+						break;
+					default:
+						// nothing
+						break;
+				}
+				break;
+
+				case Robot.START_POSITION_5:
+				switch (mainTarget) {
+					case Robot.MAIN_TARGET_CHARGING_STATION:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CONE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CUBE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_NOWHERE:
+						//TODO
+						break;
+					default:
+						// nothing
+						break;
+				}
+				break;
+
+				case Robot.START_POSITION_6:
+				switch (mainTarget) {
+					case Robot.MAIN_TARGET_CHARGING_STATION:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CONE_NODE:
+						//TODO
+						break;
+					case Robot.MAIN_TARGET_CUBE_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:

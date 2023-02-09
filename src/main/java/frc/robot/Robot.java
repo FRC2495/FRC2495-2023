@@ -53,14 +53,28 @@ public class Robot extends TimedRobot {
 	public static final String AUTON_CUSTOM = "My Auto";
 	private String autonSelected;
 	private SendableChooser<String> autonChooser = new SendableChooser<>();
+
+	public static final String GAME_PIECE_NONE = "None";
+	public static final String GAME_PIECE_1_CONE = "1 Cone";
+	public static final String GAME_PIECE_1_CUBE = "1 Cube";
+	public static final String GAME_PIECE_2_CUBES = "2 Cubes";
+	public static final String GAME_PIECE_1_CONE_1_CUBE = "1 Cone and 1 Cube";
+	private String gamePieceSelected;
+	private SendableChooser<String> gamePieceChooser = new SendableChooser<>();
 	
 	public static final String START_POSITION_1 = "Starting Position 1";
 	public static final String START_POSITION_2 = "Starting Position 2";
 	public static final String START_POSITION_3 = "Starting Position 3";
+	public static final String START_POSITION_4 = "Starting Position 4";
+	public static final String START_POSITION_5 = "Starting Position 5";
+	public static final String START_POSITION_6 = "Starting Position 6";
 	private String startPosition;
 	private SendableChooser<String> startPositionChooser = new SendableChooser<>();
 
-	public static final String MAIN_TARGET_HUB = "Hub";
+	//public static final String MAIN_TARGET_HUB = "Hub";
+	public static final String MAIN_TARGET_CONE_NODE = "Cone Node";
+	public static final String MAIN_TARGET_CUBE_NODE = "Cube Node";
+	public static final String MAIN_TARGET_CHARGING_STATION = "Charging Station";
 	public static final String MAIN_TARGET_NOWHERE = "Nowhere";
 	private String mainTarget;
 	private SendableChooser<String> mainTargetChooser = new SendableChooser<>();
@@ -189,13 +203,26 @@ public class Robot extends TimedRobot {
 		autonChooser.addOption("My Auto", AUTON_CUSTOM);
 		SmartDashboard.putData("Auto choices", autonChooser);
 
+		gamePieceChooser.setDefaultOption("None", GAME_PIECE_NONE);
+		gamePieceChooser.addOption("1 Cone", GAME_PIECE_1_CONE);
+		gamePieceChooser.addOption("1 Cube", GAME_PIECE_1_CUBE);
+		gamePieceChooser.addOption("2 Cubes", GAME_PIECE_2_CUBES);
+		gamePieceChooser.addOption("1 Cone and 1 Cube", GAME_PIECE_1_CONE_1_CUBE);
+		SmartDashboard.putData("Game piece choices", gamePieceChooser);
+
 		startPositionChooser.setDefaultOption("Starting Position 1", START_POSITION_1);
 		startPositionChooser.addOption("Starting Position 2", START_POSITION_2);
 		startPositionChooser.addOption("Starting Position 3", START_POSITION_3);
+		startPositionChooser.addOption("Starting Position 4", START_POSITION_4);
+		startPositionChooser.addOption("Starting Position 5", START_POSITION_5);
+		startPositionChooser.addOption("Starting Position 6", START_POSITION_6);
 		SmartDashboard.putData("Start positions", startPositionChooser);
 
 		mainTargetChooser.setDefaultOption("To Nowhere", MAIN_TARGET_NOWHERE);
-		mainTargetChooser.addOption("Hub", MAIN_TARGET_HUB);
+		mainTargetChooser.setDefaultOption("Cone Node", MAIN_TARGET_CONE_NODE);
+		mainTargetChooser.setDefaultOption("Cube Node", MAIN_TARGET_CUBE_NODE);
+		mainTargetChooser.setDefaultOption("Charging Station", MAIN_TARGET_CHARGING_STATION);
+		//mainTargetChooser.addOption("Hub", MAIN_TARGET_HUB);
 		SmartDashboard.putData("Main targets", mainTargetChooser);
 		
 		cameraOptionChooser.setDefaultOption("Always", CAMERA_OPTION_USE_ALWAYS);
@@ -343,6 +370,9 @@ public class Robot extends TimedRobot {
 		autonSelected = autonChooser.getSelected();
 		System.out.println("Auton selected: " + autonSelected);	
 
+		gamePieceSelected = gamePieceChooser.getSelected();
+		System.out.println("Game piece selected: " + gamePieceSelected);		
+
 		startPosition = startPositionChooser.getSelected();
 		System.out.println("Start position: " + startPosition);
 
@@ -367,7 +397,7 @@ public class Robot extends TimedRobot {
 
 		switch (autonSelected) {
 			case Robot.AUTON_CUSTOM:
-				m_autonomousCommand = new CustomAuton(startPosition, mainTarget, cameraOption, sonarOption, autonOption);
+				m_autonomousCommand = new CustomAuton(gamePieceSelected, startPosition, mainTarget, cameraOption, sonarOption, autonOption);
 				break;
 
 			case Robot.AUTON_DO_NOTHING:
