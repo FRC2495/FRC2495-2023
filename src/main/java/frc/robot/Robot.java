@@ -71,7 +71,6 @@ public class Robot extends TimedRobot {
 	private String startPosition;
 	private SendableChooser<String> startPositionChooser = new SendableChooser<>();
 
-	//public static final String MAIN_TARGET_HUB = "Hub";
 	public static final String MAIN_TARGET_CONE_NODE = "Cone Node";
 	public static final String MAIN_TARGET_CUBE_NODE = "Cube Node";
 	public static final String MAIN_TARGET_TWO_CUBE_NODE = "Two Cube Node";
@@ -221,12 +220,11 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Start positions", startPositionChooser);
 
 		mainTargetChooser.setDefaultOption("To Nowhere", MAIN_TARGET_NOWHERE);
-		mainTargetChooser.setDefaultOption("Cone Node", MAIN_TARGET_CONE_NODE);
-		mainTargetChooser.setDefaultOption("Cube Node", MAIN_TARGET_CUBE_NODE);
-		mainTargetChooser.setDefaultOption("Two Cube Node", MAIN_TARGET_TWO_CUBE_NODE);
-		mainTargetChooser.setDefaultOption("Both Node", MAIN_TARGET_BOTH_NODE);
-		mainTargetChooser.setDefaultOption("Charging Station", MAIN_TARGET_CHARGING_STATION);
-		//mainTargetChooser.addOption("Hub", MAIN_TARGET_HUB);
+		mainTargetChooser.addOption("Cone Node", MAIN_TARGET_CONE_NODE);
+		mainTargetChooser.addOption("Cube Node", MAIN_TARGET_CUBE_NODE);
+		mainTargetChooser.addOption("Two Cube Node", MAIN_TARGET_TWO_CUBE_NODE);
+		mainTargetChooser.addOption("Both Node", MAIN_TARGET_BOTH_NODE);
+		mainTargetChooser.addOption("Charging Station", MAIN_TARGET_CHARGING_STATION);
 		SmartDashboard.putData("Main targets", mainTargetChooser);
 		
 		cameraOptionChooser.setDefaultOption("Always", CAMERA_OPTION_USE_ALWAYS);
