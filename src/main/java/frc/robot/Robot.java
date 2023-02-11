@@ -302,7 +302,7 @@ public class Robot extends TimedRobot {
 		arm_master = new WPI_TalonSRX(Ports.CAN.ARM_MASTER);
 		//arm_follower = new WPI_TalonSRX(Ports.CAN.ARM_FOLLOWER);
 
-		arm = new Arm(arm_master, /*arm_follower,*/ this, false);
+		arm = new Arm(arm_master, /*arm_follower,*/ this);
 
 		rotator_master = new WPI_TalonSRX(Ports.CAN.ROTATOR_MASTER);
 		//rotator_follower = new WPI_TalonSRX(Ports.CAN.ROTATOR_FOLLOWER);

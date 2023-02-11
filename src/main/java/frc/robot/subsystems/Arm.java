@@ -72,7 +72,7 @@ public class Arm extends SubsystemBase implements IArm {
 	Robot robot;
 	
 	
-	public Arm(WPI_TalonSRX arm_in, /*BaseMotorController arm_follower_in,*/ Robot robot_in, boolean setInverted) {
+	public Arm(WPI_TalonSRX arm_in, /*BaseMotorController arm_follower_in,*/ Robot robot_in) {
 		
 		arm = arm_in;
 		//arm_follower = arm_follower_in;
@@ -92,7 +92,7 @@ public class Arm extends SubsystemBase implements IArm {
 		// In order for limit switches and closed-loop features to function properly the sensor and motor has to be in-phase.
 		// This means that the sensor position must move in a positive direction as the motor controller drives positive output.
 		
-		arm.setSensorPhase(true); // false for SRX // TODO switch to true if required if switching to Talon FX
+		arm.setSensorPhase(false); // false for SRX // TODO switch to true if required if switching to Talon FX
 		
 		//Enable limit switches
 		arm.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, TALON_TIMEOUT_MS);
@@ -103,8 +103,8 @@ public class Arm extends SubsystemBase implements IArm {
 		// Note: Regardless of invert value, the LEDs will blink green when positive output is requested (by robot code or firmware closed loop).
 		// Only the motor leads are inverted. This feature ensures that sensor phase and limit switches will properly match the LED pattern
 		// (when LEDs are green => forward limit switch and soft limits are being checked).
-		arm.setInverted(setInverted);  // TODO switch to false if required if switching to Talon FX
-		//arm_follower.setInverted(setInverted);  // TODO comment out if switching to Talon FX
+		arm.setInverted(false);  // TODO switch to false if required if switching to Talon FX
+		//arm_follower.setInverted(true);  // TODO comment out if switching to Talon FX
 		
 		// Both the Talon SRX and Victor SPX have a follower feature that allows the motor controllers to mimic another motor controller's output.
 		// Users will still need to set the motor controller's direction, and neutral mode.
@@ -129,7 +129,7 @@ public class Arm extends SubsystemBase implements IArm {
 		// Note: With Phoenix framework, position units are in the natural units of the sensor.
 		// This ensures the best resolution possible when performing closed-loops in firmware.
 		// CTRE Magnetic Encoder (relative/quadrature) =  4096 units per rotation		
-		arm.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS); // .CTRE_MagEncoder_Relative for SRX // TODO switch to FeedbackDevice.IntegratedSensor if switching to Talon FX
+		arm.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS); // .CTRE_MagEncoder_Relative for SRX // TODO switch to FeedbackDevice.IntegratedSensor if switching to Talon FX
 		
 		// this will reset the encoder automatically when at or past the forward limit sensor
 		arm.configSetParameter(ParamEnum.eClearPositionOnLimitF, 1, 0, 0, TALON_TIMEOUT_MS);

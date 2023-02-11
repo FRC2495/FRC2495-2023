@@ -94,7 +94,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		// Sensor phase is the term used to explain sensor direction.
 		// In order for limit switches and closed-loop features to function properly the sensor and motor has to be in-phase.
 		// This means that the sensor position must move in a positive direction as the motor controller drives positive output.
-		rotator.setSensorPhase(true);
+		rotator.setSensorPhase(false);
 
 		//Enable limit switches
 		rotator.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, TALON_TIMEOUT_MS);
@@ -105,7 +105,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		// Note: Regardless of invert value, the LEDs will blink green when positive output is requested (by robot code or firmware closed loop).
 		// Only the motor leads are inverted. This feature ensures that sensor phase and limit switches will properly match the LED pattern
 		// (when LEDs are green => forward limit switch and soft limits are being checked).
-		rotator.setInverted(false);
+		rotator.setInverted(true);
 		//rotator_follower.setInverted(false);
 		
 		// Both the Talon SRX and Victor SPX have a follower feature that allows the motor controllers to mimic another motor controller's output.
@@ -130,7 +130,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		// Note: With Phoenix framework, position units are in the natural units of the sensor.
 		// This ensures the best resolution possible when performing closed-loops in firmware.
 		// CTRE Magnetic Encoder (relative/quadrature) =  4096 units per rotation		
-		rotator.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor,	PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
+		rotator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,	PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
 		
 		// this will reset the encoder automatically when at or past the forward limit sensor
 		rotator.configSetParameter(ParamEnum.eClearPositionOnLimitF, 0/*1*/, 0, 0, TALON_TIMEOUT_MS);
