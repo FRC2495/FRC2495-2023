@@ -13,13 +13,13 @@ import frc.robot.Robot;
 //import frc.robot.commands.*;
 //import frc.robot.commands.gearbox.*;
 //import frc.robot.commands.hinge.*;
-import frc.robot.auton.blue.StartingPositionFiveB2Cu;
-import frc.robot.auton.blue.StartingPositionOneB1Cu1Co;
+//import frc.robot.auton.blue.StartingPositionFiveB2Cu;
+import frc.robot.auton.blue.StartingPositionTwoB1Cu1Co;
 import frc.robot.auton.blue.StartingPositionOneOrTwoB1GP;
 import frc.robot.auton.blue.StartingPositionSixB1Cu1Co;
 import frc.robot.auton.blue.StartingPositionThreeBDock;
 import frc.robot.auton.blue.StartingPositionThreeOrFourB1GpAndDock;
-import frc.robot.auton.blue.StartingPositionTwoB2Cu;
+//import frc.robot.auton.blue.StartingPositionTwoB2Cu;
 
 public class CustomAuton extends SequentialCommandGroup {
 
@@ -87,7 +87,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_BOTH_NODE:
-						addCommands(new StartingPositionOneB1Cu1Co());
+						addCommands(new StartingPositionTwoB1Cu1Co());
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
 						//TODO
@@ -110,7 +110,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						addCommands(new StartingPositionOneOrTwoB1GP());
 						break;
 					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
-						addCommands(new StartingPositionTwoB2Cu());
+						//TODO
 						break;
 					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
@@ -188,7 +188,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						addCommands(new StartingPositionOneOrTwoB1GP());
 						break;
 					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
-						addCommands(new StartingPositionFiveB2Cu());
+						//TODO
 						break;
 					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
