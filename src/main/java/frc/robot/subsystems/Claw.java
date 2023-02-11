@@ -22,7 +22,7 @@ public class Claw extends SubsystemBase {
 
 	public Claw() {
 		// the double solenoid valve will send compressed air from the tank wherever needed
-		lockedNot = new DoubleSolenoid(Ports.CAN.PCM, PneumaticsModuleType.CTREPCM, Ports.PCM.CLAW_CLOSED, Ports.PCM.CLAW_OPEN); // make sure ports are properly sets in Ports.java	
+		lockedNot = new DoubleSolenoid(Ports.CAN.PCM, PneumaticsModuleType.REVPH, Ports.PCM.CLAW_CLOSED, Ports.PCM.CLAW_OPEN); // make sure ports are properly sets in Ports.java	
 	}
 	
 	/*@Override

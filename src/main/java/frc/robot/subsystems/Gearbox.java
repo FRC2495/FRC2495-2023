@@ -25,7 +25,7 @@ public class Gearbox extends SubsystemBase {
 	public Gearbox() {
 		// the double solenoid valve will send compressed air from the tank wherever needed
 		//highLow = new DoubleSolenoid(Ports.CAN.PCM, Ports.PCM.GEAR_HIGH, Ports.PCM.GEAR_LOW); // make sure ports are properly sets in Ports.java	
-		highLow = new DoubleSolenoid(Ports.CAN.PCM, PneumaticsModuleType.CTREPCM, Ports.PCM.GEAR_HIGH, Ports.PCM.GEAR_LOW);
+		highLow = new DoubleSolenoid(Ports.CAN.PCM, PneumaticsModuleType.REVPH, Ports.PCM.GEAR_HIGH, Ports.PCM.GEAR_LOW);
 	}
 	
 	/*@Override
