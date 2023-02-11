@@ -166,7 +166,7 @@ public class Robot extends TimedRobot {
 	
 	// pneumatic devices
 	
-	//Compressor compressor; // the compressor's lifecycle needs to be the same as the robot
+	Compressor compressor; // the compressor's lifecycle needs to be the same as the robot
 
 	public static Gearbox gearbox;
 
@@ -312,8 +312,8 @@ public class Robot extends TimedRobot {
 
 		// pneumatic devices
 
-		//compressor = new Compressor();
-		//compressor.checkCompressor();
+		compressor = new Compressor();
+		compressor.checkCompressor();
    
 		//shooterPusher = new ShooterPusher();
 
