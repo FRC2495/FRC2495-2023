@@ -31,7 +31,7 @@ public class Compressor extends SubsystemBase {
 	 */
 	public Compressor() {
 		//checkPressure = new DigitalInput(Ports.Digital.CHECK_PRESSURE);
-		checkPressure = new edu.wpi.first.wpilibj.Compressor(1, PneumaticsModuleType.REVPH);
+		checkPressure = new edu.wpi.first.wpilibj.Compressor(Ports.CAN.PCM, PneumaticsModuleType.REVPH);
 		relay = new Relay(Ports.Relay.COMPRESSOR_RELAY);
 	}
 
