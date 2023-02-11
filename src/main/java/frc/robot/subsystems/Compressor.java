@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 
 import frc.robot.Ports;
 
@@ -15,7 +16,8 @@ import frc.robot.Ports;
  * The {@code Compressor} class contains fields and methods pertaining to the function of the compressor.
  */
 public class Compressor extends SubsystemBase {
-	private DigitalInput checkPressure;
+	//private DigitalInput checkPressure;
+	edu.wpi.first.wpilibj.Compressor checkPressure;
 	private Relay relay;
 	private static final long CHECK_TIME_MS = 20;
 	private Timer timer = new Timer();
@@ -28,7 +30,8 @@ public class Compressor extends SubsystemBase {
 	 * Constructs a new {@code Compressor} with a set {@code DigitalInput} and {@code Relay}.
 	 */
 	public Compressor() {
-		checkPressure = new DigitalInput(Ports.Digital.CHECK_PRESSURE);
+		//checkPressure = new DigitalInput(Ports.Digital.CHECK_PRESSURE);
+		edu.wpi.first.wpilibj.Compressor checkPressure = new edu.wpi.first.wpilibj.Compressor(1, PneumaticsModuleType.REVPH);
 		relay = new Relay(Ports.Relay.COMPRESSOR_RELAY);
 	}
 
@@ -62,7 +65,8 @@ public class Compressor extends SubsystemBase {
 	 * The {@code CheckCompressorTask} is a {@code TimerTask} used to check if the compressor can shoot, and act accordingly.
 	 */
 	private class CheckCompressorTask extends TimerTask {
-		private DigitalInput _checkPressure;
+		//private DigitalInput _checkPressure;
+		edu.wpi.first.wpilibj.Compressor _checkPressure;
 		//private AnalogInput inputSwitch;
 		private Relay _relay;
 
@@ -76,19 +80,21 @@ public class Compressor extends SubsystemBase {
 		 * @param dI the {@code DigitalInput} to use to check the compressor
 		 * @param r the {@code Relay} to use to manipulate the compressor
 		 */
-		public CheckCompressorTask(DigitalInput dI, Relay r) {
-			_checkPressure = dI;
+		//public CheckCompressorTask(DigitalInput dI, Relay r) {
+		public CheckCompressorTask(edu.wpi.first.wpilibj.Compressor compressor, Relay r) {	
+			//_checkPressure = dI;
+			_checkPressure = compressor;
 			_relay = r;
 		}
 
 		@Override
 		public void run() {
-			if (_checkPressure.get() == true) {
-				SmartDashboard.putBoolean("Check pressure ", _checkPressure.get());
+			if (_checkPressure/*.get()*/.getPressureSwitchValue() == /*true*/false) {
+				SmartDashboard.putBoolean("Check pressure ", _checkPressure/*.get()*/.getPressureSwitchValue());
 				_relay.set(Relay.Value.kOff);
 				SmartDashboard.putBoolean("Compressor relay ", false);
 			} else {
-				SmartDashboard.putBoolean("Check pressure ", _checkPressure.get());
+				SmartDashboard.putBoolean("Check pressure ", _checkPressure/*.get()*/.getPressureSwitchValue());
 				_relay.set(Relay.Value.kForward);
 				SmartDashboard.putBoolean("Compressor relay ", true);
 			}
