@@ -129,6 +129,7 @@ public class Arm extends SubsystemBase implements IArm {
 		// Note: With Phoenix framework, position units are in the natural units of the sensor.
 		// This ensures the best resolution possible when performing closed-loops in firmware.
 		// CTRE Magnetic Encoder (relative/quadrature) =  4096 units per rotation		
+		// FX Integrated Sensor = 2048 units per rotation
 		arm.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS); // .CTRE_MagEncoder_Relative for SRX // TODO switch to FeedbackDevice.IntegratedSensor if switching to Talon FX
 		
 		// this will reset the encoder automatically when at or past the forward limit sensor

@@ -40,7 +40,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 	static final double MAX_PCT_OUTPUT = 1.0; // ~full speed
 	
 	static final int TALON_TIMEOUT_MS = 20;
-	public static final int TICKS_PER_REVOLUTION = 4096;
+	public static final int TICKS_PER_REVOLUTION = 2048;
 	
 	
 	// move settings
@@ -121,6 +121,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 		// Note: With Phoenix framework, position units are in the natural units of the sensor.
 		// This ensures the best resolution possible when performing closed-loops in firmware.
 		// CTRE Magnetic Encoder (relative/quadrature) =  4096 units per rotation		
+		// FX Integrated Sensor = 2048 units per rotation
 		hinge.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor,	PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
 
 		// this will reset the encoder automatically when at or past the reverse limit sensor

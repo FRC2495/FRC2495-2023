@@ -130,7 +130,8 @@ public class Rotator extends SubsystemBase implements IRotator {
 		// Note: With Phoenix framework, position units are in the natural units of the sensor.
 		// This ensures the best resolution possible when performing closed-loops in firmware.
 		// CTRE Magnetic Encoder (relative/quadrature) =  4096 units per rotation		
-		rotator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,	PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
+		// FX Integrated Sensor = 2048 units per rotation
+		rotator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
 		
 		// this will reset the encoder automatically when at or past the forward limit sensor
 		rotator.configSetParameter(ParamEnum.eClearPositionOnLimitF, 0/*1*/, 0, 0, TALON_TIMEOUT_MS);
