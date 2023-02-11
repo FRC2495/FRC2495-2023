@@ -22,8 +22,6 @@ public class StartingPositionThreeOrFourB1GpAndDock extends SequentialCommandGro
             new ArmExtendWithStallDetection();
             // extends arm above cube node
 
-            // use limelight to adjust claw
-
             new ClawSetOpen();
             // opens claw to put cube onto cube node
 

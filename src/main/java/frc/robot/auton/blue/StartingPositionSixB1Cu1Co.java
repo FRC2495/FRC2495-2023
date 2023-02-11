@@ -19,31 +19,29 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
             new ArmExtendWithStallDetection();
             // extends arm up
 
-            // uses limelight to adjust claw onto cube node
-
             new ClawSetOpen();
             // opens claw to put cube on cube node
 
-            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CONE_NODE_TO_LEFT_TURNING_BEFORE_CUBE_PICKUP);
-            // moves from starting position one to turning point before cube pickup
+            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_LEFT_TURNING_BEFORE_CONE_PICKUP);
+            // moves from starting position one to turning point before cone pickup
 
-            new DrivetrainTurnAngleUsingPidController(+160);
-            // turns from facing cone node to cube pickup
+            new DrivetrainTurnAngleUsingPidController(+180);
+            // turns from facing cube node to cone pickup
 
             new HingeMoveDown();
             // lowers hinge from up to near the ground
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_LEFT_TURNING_TO_CUBE_PICKUP_SP2);
-            // moves from turning point to cube pickup 
+            // moves from turning point to cone pickup 
 
             new ClawSetClosed();
-            // closes claw to pick up cube (may be changed to sensor picking up cube automatically)
+            // closes claw to pick up cone (may be changed to sensor picking up cube automatically)
 
             new HingeMoveUp();
             // brings hinge up to avoid bumping into anything
         
-            new DrivetrainTurnAngleUsingPidController(-162);
-            // turns from cube pickup towards cube node/april tag
+            new DrivetrainTurnAngleUsingPidController(-180);
+            // turns from cube pickup towards cone node
 
             // uses limelight to adjust drivetrain to apriltag of cube node
 
