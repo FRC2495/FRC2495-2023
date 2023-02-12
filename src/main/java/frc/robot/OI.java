@@ -22,6 +22,7 @@ import frc.robot.commands.gearbox.*;
 import frc.robot.commands.claw.*;
 import frc.robot.commands.rotator.*;
 import frc.robot.commands.arm.*;
+import frc.robot.commands.indicator.*;
 //import frc.robot.commands.grasper.*;
 //import frc.robot.commands.feeder.*;
 //import frc.robot.commands.shooter.*;
@@ -317,6 +318,8 @@ public class OI {
 		// DEFAULT COMMANDS
 
 		Robot.drivetrain.setDefaultCommand(new DrivetrainJoystickControl());
+
+		Robot.indicator.setDefaultCommand(new IndicatorIndicateUsingCamera());
 
 
 		// SmartDashboard Buttons
