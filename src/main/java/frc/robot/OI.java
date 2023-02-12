@@ -15,7 +15,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
-import frc.robot.commands.*;
 import frc.robot.commands.drivetrain.*;
 import frc.robot.commands.hinge.*;
 import frc.robot.commands.gearbox.*;
