@@ -26,8 +26,6 @@ import frc.robot.commands.indicator.*;
 //import frc.robot.commands.grasper.*;
 //import frc.robot.commands.feeder.*;
 //import frc.robot.commands.shooter.*;
-//import frc.robot.commands.arms.*;
-//import frc.robot.commands.elbows.*;
 //import frc.robot.commands.conditional.*;
 import frc.robot.commands.groups.*;
 import frc.robot.commands.camera.*;
@@ -159,20 +157,23 @@ public class OI {
 		gamepadLYp = new GamepadAxis(gamepad, ControllerBase.GamepadAxes.LY);
 		//gamepadLYp.whenPressed(new FrontArmsExtend());
 		//gamepadLYp.whenPressed(new FrontArmsRetractWithStallDetection());
+		gamepadLYp.onTrue(new ArmRetractWithStallDetection());
 		//gamepadLYp.whenPressed(new SpinnerColorMatch()); // pulling back towards operator
 
 		gamepadLYn = new GamepadAxis(gamepad, ControllerBase.GamepadAxes.LY,false);
 		//gamepadLYn.whenPressed(new FrontArmsRetract());
 		//gamepadLYn.whenPressed(new FrontArmsExtendWithStallDetection());
+		gamepadLYn.onTrue(new ArmExtendWithStallDetection());
 		//gamepadLYn.whenPressed(new SpinnerSpinThrice()); // pushing forward
 
 		gamepadLXp = new GamepadAxis(gamepad, ControllerBase.GamepadAxes.LX);
 		//gamepadLXp.whenPressed(new FrontElbowsCloseWithStallDetection());
+		gamepadLXp.onTrue(new RotatorRestWithStallDetection());
 
 		gamepadLXn = new GamepadAxis(gamepad, ControllerBase.GamepadAxes.LX,false);
 		//gamepadLXn.whenPressed(new FrontElbowsOpen());
 		//gamepadLXn.whenPressed(new FrontElbowsMidwayWithStallDetection());
-
+		gamepadLXn.onTrue(new RotatorFlipWithStallDetection());
 		
 		gamepadRS = new JoystickButton(gamepad, ControllerBase.GamepadButtons.RS);
 
