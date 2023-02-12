@@ -24,7 +24,7 @@ import frc.robot.sensors.*;
 import frc.robot.subsystems.*;
 import frc.robot.util.*;
 //import frc.robot.commands.gamepad.*;
-//import frc.robot.commands.indicator.*;
+import frc.robot.commands.indicator.*;
 import frc.robot.Ports;
 //import frc.robot.util.Magic;
 
@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
 	
 	Command m_autonomousCommand;
 	//Command gamepadRumbleUsingCameraCommand;
-	//Command indicatorTimedScrollRainbow;
+	Command indicatorTimedScrollRainbow;
 	
 	// choosers (for auton)
 	
@@ -178,7 +178,7 @@ public class Robot extends TimedRobot {
 
 	// misc
 
-	//public static Indicator indicator;
+	public static Indicator indicator;
 
 	//public static GameData gameData;
 
@@ -327,7 +327,7 @@ public class Robot extends TimedRobot {
 
 		// misc
 
-		//indicator = new Indicator(camera);
+		indicator = new Indicator(camera);
 
 		//gameData = new GameData();
 		
@@ -340,8 +340,8 @@ public class Robot extends TimedRobot {
 		//gamepadRumbleUsingCameraCommand = new GamepadRumbleUsingCamera(); // must be created after OI
 		//gamepadRumbleUsingCameraCommand.start();
 
-		//indicatorTimedScrollRainbow = new IndicatorTimedScrollRainbow(1);
-		//indicatorTimedScrollRainbow.start();
+		indicatorTimedScrollRainbow = new IndicatorTimedScrollRainbow(1);
+		indicatorTimedScrollRainbow.schedule();
 	} 
 
 	/**
@@ -502,7 +502,7 @@ public class Robot extends TimedRobot {
 
 		updateToSmartDash();
 
-		//indicator.updateRainbow();
+		indicator.updateRainbow();
 		
 	}
 	

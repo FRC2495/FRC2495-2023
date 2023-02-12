@@ -111,7 +111,13 @@ public class Hinge extends SubsystemBase implements IHinge {
 		// The method follow() allows users to create a motor controller follower of not only the same model, but also other models
 		// , talon to talon, victor to victor, talon to victor, and victor to talon.
 		//hinge_follower.follow(hinge);
-		
+
+		// Motor controllers that are followers can set Status 1 and Status 2 to 255ms(max) using setStatusFramePeriod.
+		// The Follower relies on the master status frame allowing its status frame to be slowed without affecting performance.
+		// This is a useful optimization to manage CAN bus utilization.
+		//hingefollower.setStatusFramePeriod(StatusFrame.Status_1_General, 255, TALON_TIMEOUT_MS);
+		//hingeFollower.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 255, TALON_TIMEOUT_MS);
+
 		setPIDParameters();
 		
 		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
@@ -353,5 +359,11 @@ public class Hinge extends SubsystemBase implements IHinge {
 		return tac;
 	}
 
+	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
+	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 
+	public void resetEncoder() {
+		hinge.set(ControlMode.PercentOutput,0); // we stop AND MAKE SURE WE DO NOT MOVE WHEN SETTING POSITION
+		hinge.setSelectedSensorPosition(0, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS); // we mark the virtual zero
+	}
 
 }
