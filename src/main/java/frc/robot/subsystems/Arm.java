@@ -24,7 +24,7 @@ import frc.robot.Robot;
 
 
 /**
- * The {@code SetOfArms} class contains fields and methods pertaining to the function of the set of arms.
+ * The {@code Arm} class contains fields and methods pertaining to the function of the arm.
  */
 public class Arm extends SubsystemBase implements IArm {
 

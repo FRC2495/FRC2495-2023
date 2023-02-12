@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj.GenericHID;
 
 /**
- * A {@link Button} that gets its state from a {@link GenericHID}.
+ * A {@link Trigger} that gets its state from a {@link GenericHID}.
  */
 public class GamepadAxis extends Trigger {
 	private final GenericHID m_joystick;
