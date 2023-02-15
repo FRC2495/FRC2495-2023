@@ -117,8 +117,8 @@ public class Ports {
 			public static final int LEFT_FRONT = 3;
 			public static final int LEFT_REAR = 4;
 			//public static final int GRASPER = 5;
-			public static final int HINGE_MASTER = 6;
-			public static final int HINGE_FOLLOWER = 7;
+			public static final int SHOULDER_MASTER = 6;
+			public static final int SHOULDER_FOLLOWER = 7;
 			//public static final int SPINNER = 8;
 			public static final int PCM = 1;
 			public static final int PDP = 0;	

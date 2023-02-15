@@ -9,7 +9,7 @@
 // it from being updated in the future.
 
 
-package frc.robot.commands.hinge;
+package frc.robot.commands.shoulder;
 
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 
@@ -18,12 +18,12 @@ import frc.robot.Robot;
 /**
  *
  */
-public class HingeResetEncoder extends InstantCommand {
+public class ShoulderResetEncoder extends InstantCommand {
 
-	public HingeResetEncoder() {
+	public ShoulderResetEncoder() {
 		//setRunWhenDisabled(true); // allows running of command when robot is disabled
 
-		addRequirements(Robot.hingeControl);
+		addRequirements(Robot.shoulderControl);
 	}
 
 	// This instant command can run disabled
@@ -35,8 +35,8 @@ public class HingeResetEncoder extends InstantCommand {
 	// Called just before this Command runs the first time
 	@Override
 	public void initialize() {
-		System.out.println("HingeResetEncoder: initialize");
-		Robot.hingeControl.resetEncoder();
+		System.out.println("ShoulderResetEncoder: initialize");
+		Robot.shoulderControl.resetEncoder();
 	}
 
 }

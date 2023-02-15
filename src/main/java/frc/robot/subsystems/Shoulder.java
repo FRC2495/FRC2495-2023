@@ -18,9 +18,9 @@ import frc.robot.Robot;
 
 
 /**
- * The {@code Hinge} class contains fields and methods pertaining to the function of the hinge.
+ * The {@code Shoulder} class contains fields and methods pertaining to the function of the shoulder.
  */
-public class Hinge extends SubsystemBase implements IHinge {
+public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	// general settings
 	static final int TIMEOUT_MS = 15000;
@@ -64,8 +64,8 @@ public class Hinge extends SubsystemBase implements IHinge {
 	// variables
 	boolean isMoving, isMovingUp;
 	
-	WPI_TalonSRX hinge;
-	//BaseMotorController hinge_follower;
+	WPI_TalonSRX shoulder;
+	//BaseMotorController shoulder_follower;
 	
 	double tac;
 	boolean hasBeenHomed = false;
@@ -75,48 +75,48 @@ public class Hinge extends SubsystemBase implements IHinge {
 	Robot robot; 
 	
 	
-	public Hinge(WPI_TalonSRX hinge_in/*, BaseMotorController hinge_follower_in*/, Robot robot_in) {
-		hinge = hinge_in;
-		//hinge_follower = hinge_follower_in;
+	public Shoulder(WPI_TalonSRX shoulder_in/*, BaseMotorController shoulder_follower_in*/, Robot robot_in) {
+		shoulder = shoulder_in;
+		//shoulder_follower = shoulder_follower_in;
 		robot = robot_in;
 		
-		hinge.configFactoryDefault();
-		//hinge_follower.configFactoryDefault();
+		shoulder.configFactoryDefault();
+		//shoulder_follower.configFactoryDefault();
 
 		// Mode of operation during Neutral output may be set by using the setNeutralMode() function.
 		// As of right now, there are two options when setting the neutral mode of a motor controller,
 		// brake and coast.	
-		hinge.setNeutralMode(NeutralMode.Brake);
-		//hinge_follower.setNeutralMode(NeutralMode.Brake);
+		shoulder.setNeutralMode(NeutralMode.Brake);
+		//shoulder_follower.setNeutralMode(NeutralMode.Brake);
 		
 		// Sensor phase is the term used to explain sensor direction.
 		// In order for limit switches and closed-loop features to function properly the sensor and motor has to be in-phase.
 		// This means that the sensor position must move in a positive direction as the motor controller drives positive output.
-		hinge.setSensorPhase(true);
+		shoulder.setSensorPhase(true);
 
 		// Enables limit switches
-		hinge.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, TALON_TIMEOUT_MS);
-		hinge.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, TALON_TIMEOUT_MS);
-		hinge.overrideLimitSwitchesEnable(true);
+		shoulder.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, TALON_TIMEOUT_MS);
+		shoulder.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, TALON_TIMEOUT_MS);
+		shoulder.overrideLimitSwitchesEnable(true);
 
 		// Motor controller output direction can be set by calling the setInverted() function as seen below.
 		// Note: Regardless of invert value, the LEDs will blink green when positive output is requested (by robot code or firmware closed loop).
 		// Only the motor leads are inverted. This feature ensures that sensor phase and limit switches will properly match the LED pattern
 		// (when LEDs are green => forward limit switch and soft limits are being checked). 	
-		hinge.setInverted(true); // invert if required
-		//hinge_follower.setInverted(false);
+		shoulder.setInverted(true); // invert if required
+		//shoulder_follower.setInverted(false);
 
 		// Both the Talon SRX and Victor SPX have a follower feature that allows the motor controllers to mimic another motor controller's output.
 		// Users will still need to set the motor controller's direction, and neutral mode.
 		// The method follow() allows users to create a motor controller follower of not only the same model, but also other models
 		// , talon to talon, victor to victor, talon to victor, and victor to talon.
-		//hinge_follower.follow(hinge);
+		//shoulder_follower.follow(shoulder);
 
 		// Motor controllers that are followers can set Status 1 and Status 2 to 255ms(max) using setStatusFramePeriod.
 		// The Follower relies on the master status frame allowing its status frame to be slowed without affecting performance.
 		// This is a useful optimization to manage CAN bus utilization.
-		//hingefollower.setStatusFramePeriod(StatusFrame.Status_1_General, 255, TALON_TIMEOUT_MS);
-		//hingeFollower.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 255, TALON_TIMEOUT_MS);
+		//shoulderfollower.setStatusFramePeriod(StatusFrame.Status_1_General, 255, TALON_TIMEOUT_MS);
+		//shoulderFollower.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 255, TALON_TIMEOUT_MS);
 
 		setPIDParameters();
 		
@@ -128,16 +128,16 @@ public class Hinge extends SubsystemBase implements IHinge {
 		// This ensures the best resolution possible when performing closed-loops in firmware.
 		// CTRE Magnetic Encoder (relative/quadrature) =  4096 units per rotation		
 		// FX Integrated Sensor = 2048 units per rotation
-		hinge.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor,	PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
+		shoulder.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor,	PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
 
 		// this will reset the encoder automatically when at or past the reverse limit sensor
-		hinge.configSetParameter(ParamEnum.eClearPositionOnLimitR, 1, 0, 0, TALON_TIMEOUT_MS);
-		hinge.configSetParameter(ParamEnum.eClearPositionOnLimitF, 0, 0, 0, TALON_TIMEOUT_MS);		
+		shoulder.configSetParameter(ParamEnum.eClearPositionOnLimitR, 1, 0, 0, TALON_TIMEOUT_MS);
+		shoulder.configSetParameter(ParamEnum.eClearPositionOnLimitF, 0, 0, 0, TALON_TIMEOUT_MS);		
 		
 		isMoving = false;
 		isMovingUp = false;
 
-		hasBeenHomed = true; // we always consider the hinged homed as we have limit sensors on both sides
+		hasBeenHomed = true; // we always consider the shoulderd homed as we have limit sensors on both sides
 	}
 
 	/*@Override
@@ -158,11 +158,11 @@ public class Hinge extends SubsystemBase implements IHinge {
 
 	// returns the state of the limit switch
 	public boolean getLimitSwitchState() {
-		return hinge.getSensorCollection().isRevLimitSwitchClosed();
+		return shoulder.getSensorCollection().isRevLimitSwitchClosed();
 	}
 
 	public boolean getForwardLimitSwitchState() {
-		return hinge.getSensorCollection().isFwdLimitSwitchClosed();
+		return shoulder.getSensorCollection().isFwdLimitSwitchClosed();
 	}
 
 	
@@ -170,8 +170,8 @@ public class Hinge extends SubsystemBase implements IHinge {
 	public boolean tripleCheckMove() {
 		if (isMoving) {
 			
-			double error = hinge.getClosedLoopError(PRIMARY_PID_LOOP);
-			//System.out.println("Hinge moving error: " + Math.abs(error));
+			double error = shoulder.getClosedLoopError(PRIMARY_PID_LOOP);
+			//System.out.println("Shoulder moving error: " + Math.abs(error));
 			
 			boolean isOnTarget = (Math.abs(error) < TICK_THRESH);
 			
@@ -180,7 +180,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 			} else { // if we are not on target in this iteration
 				if (onTargetCount > 0) { // even though we were on target at least once during a previous iteration
 					onTargetCount = 0; // we reset the counter as we are not on target anymore
-					System.out.println("Triple-check failed (hinge moving).");
+					System.out.println("Triple-check failed (shoulder moving).");
 				} else {
 					// we are definitely moving
 				}
@@ -191,8 +191,8 @@ public class Hinge extends SubsystemBase implements IHinge {
 			}
 			
 			if (!isMoving) {
-				System.out.println("You have reached the target (hinge moving).");
-				//hinge.set(ControlMode.PercentOutput,0);
+				System.out.println("You have reached the target (shoulder moving).");
+				//shoulder.set(ControlMode.PercentOutput,0);
 				if (isMovingUp) {
 					stay();
 				} else {
@@ -215,7 +215,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 			setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
 			tac = VIRTUAL_HOME_OFFSET_TICKS; // because we cannot reach 0 reliably
-			hinge.set(ControlMode.Position,tac);
+			shoulder.set(ControlMode.Position,tac);
 			
 			isMoving = true;
 			isMovingUp = true;
@@ -237,7 +237,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 
 			//tac = ANGLE_TO_TRAVEL_TICKS / 2;
 			tac = ANGLE_TO_MIDWAY_TICKS;
-			hinge.set(ControlMode.Position,tac);
+			shoulder.set(ControlMode.Position,tac);
 			
 			isMoving = true;
 			isMovingUp = true;
@@ -256,7 +256,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 			setNominalAndPeakOutputs(SUPER_REDUCED_PCT_OUTPUT);
 	
 			tac = ANGLE_TO_TRAVEL_TICKS;
-			hinge.set(ControlMode.Position,tac);
+			shoulder.set(ControlMode.Position,tac);
 			
 			isMoving = true;
 			isMovingUp = false;
@@ -267,11 +267,11 @@ public class Hinge extends SubsystemBase implements IHinge {
 	}
 
 	public double getPosition() {
-		return hinge.getSelectedSensorPosition(PRIMARY_PID_LOOP) * GEAR_RATIO / TICKS_PER_REVOLUTION;
+		return shoulder.getSelectedSensorPosition(PRIMARY_PID_LOOP) * GEAR_RATIO / TICKS_PER_REVOLUTION;
 	}
 
 	public double getEncoderPosition() {
-		return hinge.getSelectedSensorPosition(PRIMARY_PID_LOOP);
+		return shoulder.getSelectedSensorPosition(PRIMARY_PID_LOOP);
 	}
 
 	public boolean isMoving() {
@@ -296,7 +296,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 	
 	public void stop() {	 
 
-		hinge.set(ControlMode.PercentOutput, 0);
+		shoulder.set(ControlMode.PercentOutput, 0);
 		
 		isMoving = false;
 		
@@ -304,7 +304,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 	}	
 	
 	private void setPIDParameters() {		
-		hinge.configAllowableClosedloopError(SLOT_0, TALON_TICK_THRESH, TALON_TIMEOUT_MS);
+		shoulder.configAllowableClosedloopError(SLOT_0, TALON_TICK_THRESH, TALON_TIMEOUT_MS);
 		
 		// P is the proportional gain. It modifies the closed-loop output by a proportion (the gain value)
 		// of the closed-loop error.
@@ -331,19 +331,19 @@ public class Hinge extends SubsystemBase implements IHinge {
 		// In order to calculate feed-forward, you will need to measure your motor's velocity at a specified percent output
 		// (preferably an output close to the intended operating range).
 		
-		hinge.config_kP(SLOT_0, MOVE_PROPORTIONAL_GAIN, TALON_TIMEOUT_MS);
-		hinge.config_kI(SLOT_0, MOVE_INTEGRAL_GAIN, TALON_TIMEOUT_MS);
-		hinge.config_kD(SLOT_0, MOVE_DERIVATIVE_GAIN, TALON_TIMEOUT_MS);
-		hinge.config_kF(SLOT_0, 0, TALON_TIMEOUT_MS);
+		shoulder.config_kP(SLOT_0, MOVE_PROPORTIONAL_GAIN, TALON_TIMEOUT_MS);
+		shoulder.config_kI(SLOT_0, MOVE_INTEGRAL_GAIN, TALON_TIMEOUT_MS);
+		shoulder.config_kD(SLOT_0, MOVE_DERIVATIVE_GAIN, TALON_TIMEOUT_MS);
+		shoulder.config_kF(SLOT_0, 0, TALON_TIMEOUT_MS);
 	}
 
 	public void setNominalAndPeakOutputs(double peakOutput)
 	{
-		hinge.configPeakOutputForward(peakOutput, TALON_TIMEOUT_MS);
-		hinge.configPeakOutputReverse(-peakOutput, TALON_TIMEOUT_MS);
+		shoulder.configPeakOutputForward(peakOutput, TALON_TIMEOUT_MS);
+		shoulder.configPeakOutputReverse(-peakOutput, TALON_TIMEOUT_MS);
 		
-		hinge.configNominalOutputForward(0, TALON_TIMEOUT_MS);
-		hinge.configNominalOutputForward(0, TALON_TIMEOUT_MS);
+		shoulder.configNominalOutputForward(0, TALON_TIMEOUT_MS);
+		shoulder.configNominalOutputForward(0, TALON_TIMEOUT_MS);
 	}
 	
 	// for debug purpose only
@@ -351,7 +351,7 @@ public class Hinge extends SubsystemBase implements IHinge {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			hinge.set(ControlMode.PercentOutput, -joystick.getY());
+			shoulder.set(ControlMode.PercentOutput, -joystick.getY());
 		}
 	}	
 	
@@ -362,8 +362,8 @@ public class Hinge extends SubsystemBase implements IHinge {
 	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
 	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 
 	public void resetEncoder() {
-		hinge.set(ControlMode.PercentOutput,0); // we stop AND MAKE SURE WE DO NOT MOVE WHEN SETTING POSITION
-		hinge.setSelectedSensorPosition(0, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS); // we mark the virtual zero
+		shoulder.set(ControlMode.PercentOutput,0); // we stop AND MAKE SURE WE DO NOT MOVE WHEN SETTING POSITION
+		shoulder.setSelectedSensorPosition(0, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS); // we mark the virtual zero
 	}
 
 }

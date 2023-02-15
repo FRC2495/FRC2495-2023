@@ -2,12 +2,12 @@ package frc.robot.interfaces;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public interface IHinge {
+public interface IShoulder {
 
 	// returns the state of the limit switch
 	public boolean getLimitSwitchState();
 	
-	// homes the hinge
+	// homes the shoulder
 	// This is done in two steps:
 	// step 1: if not already at the switch, we go down slowly until we hit the limit switch.
 	// step 2: we go back up a little and mark the position as the virtual/logical zero.

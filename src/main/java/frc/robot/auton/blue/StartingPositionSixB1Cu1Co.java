@@ -1,7 +1,7 @@
 package frc.robot.auton.blue;
 
 import frc.robot.commands.claw.*;
-import frc.robot.commands.hinge.*;
+import frc.robot.commands.shoulder.*;
 import frc.robot.commands.arm.*;
 import frc.robot.commands.drivetrain.*;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -13,8 +13,8 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
     public StartingPositionSixB1Cu1Co(){
 
         addCommands(
-            new HingeMoveUp());
-            // lifts hinge up out of frame perimeter        
+            new ShoulderMoveUp());
+            // lifts shoulder up out of frame perimeter        
 
             new ArmExtendWithStallDetection();
             // extends arm up
@@ -28,8 +28,8 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
             new DrivetrainTurnAngleUsingPidController(+180);
             // turns from facing cube node to cone pickup
 
-            new HingeMoveDown();
-            // lowers hinge from up to near the ground
+            new ShoulderMoveDown();
+            // lowers shoulder from up to near the ground
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_LEFT_TURNING_TO_CUBE_PICKUP_SP2);
             // moves from turning point to cone pickup 
@@ -37,8 +37,8 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
             new ClawSetClosed();
             // closes claw to pick up cone (may be changed to sensor picking up cube automatically)
 
-            new HingeMoveUp();
-            // brings hinge up to avoid bumping into anything
+            new ShoulderMoveUp();
+            // brings shoulder up to avoid bumping into anything
         
             new DrivetrainTurnAngleUsingPidController(-180);
             // turns from cube pickup towards cone node

@@ -85,8 +85,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isUp",
-              "_title": "Hinge isUp",
+              "_source0": "network_table:///SmartDashboard/Shoulder isUp",
+              "_title": "Shoulder isUp",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -98,8 +98,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isMidway",
-              "_title": "Hinge isMidway",
+              "_source0": "network_table:///SmartDashboard/Shoulder isMidway",
+              "_title": "Shoulder isMidway",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -214,8 +214,8 @@
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Hinge Target",
-              "_title": "Hinge Target"
+              "_source0": "network_table:///SmartDashboard/Shoulder Target",
+              "_title": "Shoulder Target"
             }
           },
           "4,2": {
@@ -225,8 +225,8 @@
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Hinge Enc Position",
-              "_title": "Hinge Enc Position"
+              "_source0": "network_table:///SmartDashboard/Shoulder Enc Position",
+              "_title": "Shoulder Enc Position"
             }
           },
           "5,2": {
@@ -260,8 +260,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge Limit Switch",
-              "_title": "Hinge Limit Switch",
+              "_source0": "network_table:///SmartDashboard/Shoulder Limit Switch",
+              "_title": "Shoulder Limit Switch",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -310,8 +310,8 @@
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Hinge Position",
-              "_title": "Hinge Position"
+              "_source0": "network_table:///SmartDashboard/Shoulder Position",
+              "_title": "Shoulder Position"
             }
           },
           "5,3": {
@@ -321,8 +321,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge IsHoming?",
-              "_title": "Hinge IsHoming?",
+              "_source0": "network_table:///SmartDashboard/Shoulder IsHoming?",
+              "_title": "Shoulder IsHoming?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -424,8 +424,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isDown",
-              "_title": "Hinge isDown",
+              "_source0": "network_table:///SmartDashboard/Shoulder isDown",
+              "_title": "Shoulder isDown",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -511,8 +511,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge IsMoving?",
-              "_title": "Hinge IsMoving?",
+              "_source0": "network_table:///SmartDashboard/Shoulder IsMoving?",
+              "_title": "Shoulder IsMoving?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -660,8 +660,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge Has Been Homed?",
-              "_title": "Hinge Has Been Homed?",
+              "_source0": "network_table:///SmartDashboard/Shoulder Has Been Homed?",
+              "_title": "Shoulder Has Been Homed?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -1472,8 +1472,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isDown",
-              "_title": "SmartDashboard/Hinge isDown",
+              "_source0": "network_table:///SmartDashboard/Shoulder isDown",
+              "_title": "SmartDashboard/Shoulder isDown",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -1485,8 +1485,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isMidway",
-              "_title": "SmartDashboard/Hinge isMidway",
+              "_source0": "network_table:///SmartDashboard/Shoulder isMidway",
+              "_title": "SmartDashboard/Shoulder isMidway",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -1498,8 +1498,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isUp",
-              "_title": "SmartDashboard/Hinge isUp",
+              "_source0": "network_table:///SmartDashboard/Shoulder isUp",
+              "_title": "SmartDashboard/Shoulder isUp",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -1621,8 +1621,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge Has Been Homed?",
-              "_title": "SmartDashboard/Hinge Has Been Homed?",
+              "_source0": "network_table:///SmartDashboard/Shoulder Has Been Homed?",
+              "_title": "SmartDashboard/Shoulder Has Been Homed?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -1995,7 +1995,7 @@
       }
     },
     {
-      "title": "DIAGHinge",
+      "title": "DIAGShoulder",
       "autoPopulate": false,
       "autoPopulatePrefix": "",
       "widgetPane": {
@@ -2011,8 +2011,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge Has Been Homed?",
-              "_title": "SmartDashboard/Hinge Has Been Homed?",
+              "_source0": "network_table:///SmartDashboard/Shoulder Has Been Homed?",
+              "_title": "SmartDashboard/Shoulder Has Been Homed?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2024,8 +2024,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge IsMoving?",
-              "_title": "SmartDashboard/Hinge IsMoving?",
+              "_source0": "network_table:///SmartDashboard/Shoulder IsMoving?",
+              "_title": "SmartDashboard/Shoulder IsMoving?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2037,8 +2037,8 @@
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Hinge Position",
-              "_title": "SmartDashboard/Hinge Position"
+              "_source0": "network_table:///SmartDashboard/Shoulder Position",
+              "_title": "SmartDashboard/Shoulder Position"
             }
           },
           "4,2": {
@@ -2048,8 +2048,8 @@
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Hinge Target",
-              "_title": "SmartDashboard/Hinge Target"
+              "_source0": "network_table:///SmartDashboard/Shoulder Target",
+              "_title": "SmartDashboard/Shoulder Target"
             }
           },
           "5,2": {
@@ -2059,8 +2059,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isDown",
-              "_title": "SmartDashboard/Hinge isDown",
+              "_source0": "network_table:///SmartDashboard/Shoulder isDown",
+              "_title": "SmartDashboard/Shoulder isDown",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2072,8 +2072,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isMidway",
-              "_title": "SmartDashboard/Hinge isMidway",
+              "_source0": "network_table:///SmartDashboard/Shoulder isMidway",
+              "_title": "SmartDashboard/Shoulder isMidway",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2085,8 +2085,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge isUp",
-              "_title": "SmartDashboard/Hinge isUp",
+              "_source0": "network_table:///SmartDashboard/Shoulder isUp",
+              "_title": "SmartDashboard/Shoulder isUp",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2124,8 +2124,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge Forward Limit Switch",
-              "_title": "/SmartDashboard/Hinge Forward Limit Switch",
+              "_source0": "network_table:///SmartDashboard/Shoulder Forward Limit Switch",
+              "_title": "/SmartDashboard/Shoulder Forward Limit Switch",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2137,8 +2137,8 @@
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Hinge Enc Position",
-              "_title": "SmartDashboard/Hinge Enc Position"
+              "_source0": "network_table:///SmartDashboard/Shoulder Enc Position",
+              "_title": "SmartDashboard/Shoulder Enc Position"
             }
           },
           "9,0": {
@@ -2174,8 +2174,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge Limit Switch",
-              "_title": "SmartDashboard/Hinge Limit Switch",
+              "_source0": "network_table:///SmartDashboard/Shoulder Limit Switch",
+              "_title": "SmartDashboard/Shoulder Limit Switch",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2421,8 +2421,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge Has Been Homed?",
-              "_title": "SmartDashboard/Hinge Has Been Homed?",
+              "_source0": "network_table:///SmartDashboard/Shoulder Has Been Homed?",
+              "_title": "SmartDashboard/Shoulder Has Been Homed?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2434,8 +2434,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge IsHoming?",
-              "_title": "SmartDashboard/Hinge IsHoming?",
+              "_source0": "network_table:///SmartDashboard/Shoulder IsHoming?",
+              "_title": "SmartDashboard/Shoulder IsHoming?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
@@ -2447,8 +2447,8 @@
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Hinge IsMoving?",
-              "_title": "SmartDashboard/Hinge IsMoving?",
+              "_source0": "network_table:///SmartDashboard/Shoulder IsMoving?",
+              "_title": "SmartDashboard/Shoulder IsMoving?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }

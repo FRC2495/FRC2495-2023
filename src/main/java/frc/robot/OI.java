@@ -16,10 +16,13 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.drivetrain.*;
-import frc.robot.commands.hinge.*;
+import frc.robot.commands.shoulder.*;
 import frc.robot.commands.gearbox.*;
 import frc.robot.commands.claw.*;
 import frc.robot.commands.rotator.*;
+import frc.robot.commands.shoulder.ShoulderJoystickControl;
+import frc.robot.commands.shoulder.ShoulderMoveDown;
+import frc.robot.commands.shoulder.ShoulderMoveUp;
 import frc.robot.commands.arm.*;
 import frc.robot.commands.indicator.*;
 //import frc.robot.commands.grasper.*;
@@ -146,7 +149,7 @@ public class OI {
 
 		gamepadRT = new GamepadAxis(gamepad, ControllerBase.GamepadAxes.RT);
 		//gamepadRT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));
-		gamepadRT.onTrue(new HingeMoveDown());
+		gamepadRT.onTrue(new ShoulderMoveDown());
 
 		gamepadLT = new GamepadAxis(gamepad, ControllerBase.GamepadAxes.LT);
 		//gamepadLT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_OFF));
@@ -179,17 +182,17 @@ public class OI {
 		gamepadLS = new JoystickButton(gamepad, ControllerBase.GamepadButtons.LS);
 
 		gamePadStart = new JoystickButton(gamepad, ControllerBase.GamepadButtons.START);
-		//gamePadStart.whenPressed(new HingeAndGrasperAndSpinnerStop());
-		//gamePadStart.whenPressed(new HingeAndGrasperStop());
-		//gamePadStart.whenPressed(new HingeAndGrasperAndFeederAndShooterStop());
+		//gamePadStart.whenPressed(new ShoulderAndGrasperAndSpinnerStop());
+		//gamePadStart.whenPressed(new ShoulderAndGrasperStop());
+		//gamePadStart.whenPressed(new ShoulderAndGrasperAndFeederAndShooterStop());
 		gamePadStart.onTrue(new AlmostEverythingStop());
 
 		gamepadBack = new JoystickButton(gamepad, ControllerBase.GamepadButtons.BACK);
 		gamepadBack.onTrue(new FullCalibrateAndReset());
 
 		gamepadRB = new JoystickButton(gamepad, ControllerBase.GamepadButtons.RB);
-		//gamepadRB.whenPressed(new HingeMoveMidway());
-		gamepadRB.onTrue(new HingeMoveUp());
+		//gamepadRB.whenPressed(new ShoulderMoveMidway());
+		gamepadRB.onTrue(new ShoulderMoveUp());
 
 		gamepadLB = new JoystickButton(gamepad, ControllerBase.GamepadButtons.LB);
 		//gamepadLB.whileHeld(new SpinnerSpin());
@@ -275,7 +278,7 @@ public class OI {
 		//joyLeftBtn10.whileHeld(new FeederJoystickControl());
 
 		joyLeftBtn9 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN9);
-		joyLeftBtn9.whileTrue(new HingeJoystickControl());
+		joyLeftBtn9.whileTrue(new ShoulderJoystickControl());
 
 		joyLeftBtn8 = new JoystickButton(joyLeft, ControllerBase.JoystickButtons.BTN8);
 		//joyLeftBtn8.whileHeld(new GrasperJoystickControl());

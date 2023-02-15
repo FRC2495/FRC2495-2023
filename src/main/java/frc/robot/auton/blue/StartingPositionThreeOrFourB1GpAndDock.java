@@ -4,7 +4,7 @@ package frc.robot.auton.blue;
 // Can be used to place one cube or one cone and either starting position one or two
 
 import frc.robot.commands.claw.*;
-import frc.robot.commands.hinge.*;
+import frc.robot.commands.shoulder.*;
 import frc.robot.commands.arm.*;
 import frc.robot.commands.drivetrain.*;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -16,8 +16,8 @@ public class StartingPositionThreeOrFourB1GpAndDock extends SequentialCommandGro
     public StartingPositionThreeOrFourB1GpAndDock(){
 
         addCommands(
-            new HingeMoveUp());
-            // lifts hinge up out of frame perimeter  
+            new ShoulderMoveUp());
+            // lifts shoulder up out of frame perimeter  
             
             new ArmExtendWithStallDetection();
             // extends arm above cube node
