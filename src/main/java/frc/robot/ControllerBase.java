@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * The {@code ControllerBase} class handles all input coming from the 
@@ -272,7 +273,7 @@ public class ControllerBase {
 	 * @param rumble whether or not to set the rumble on
 	 * @param gamepad reference to gamepad
 	 */
-	public static void rumble(boolean rumble, Joystick gamepad) {
+	public static void rumble(boolean rumble, XboxController gamepad) {
 		if (rumble) {
 			gamepad.setRumble(Joystick.RumbleType.kLeftRumble, 1);
 			gamepad.setRumble(Joystick.RumbleType.kRightRumble, 1);
