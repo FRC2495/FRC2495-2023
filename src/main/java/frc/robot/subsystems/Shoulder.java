@@ -27,8 +27,8 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	public static final double GEAR_RATIO = 3.0; // TODO change if needed
 	
-	public static final int ANGLE_TO_TRAVEL_TICKS = -140000; // TODO set proper value
-	public static final int ANGLE_TO_MIDWAY_TICKS = -75000;
+	public static final int ANGLE_TO_TRAVEL_TICKS = 140000; // TODO set proper value
+	public static final int ANGLE_TO_MIDWAY_TICKS = 75000;
 	
 	/*
 	!!! VIRTUAL_HOME_OFFSET_TICKS is important for moving up,     !!!
@@ -214,7 +214,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 			
 			setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
-			tac = ANGLE_TO_TRAVEL_TICKS; // because we cannot reach 0 reliably
+			tac = -ANGLE_TO_TRAVEL_TICKS; // because we cannot reach 0 reliably
 			shoulder.set(ControlMode.Position,tac);
 			
 			isMoving = true;
@@ -236,7 +236,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 			setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT); // we may need to check if we were up in which case we may want to reduce output
 
 			//tac = ANGLE_TO_TRAVEL_TICKS / 2;
-			tac = ANGLE_TO_MIDWAY_TICKS;
+			tac = -ANGLE_TO_MIDWAY_TICKS;
 			shoulder.set(ControlMode.Position,tac);
 			
 			isMoving = true;

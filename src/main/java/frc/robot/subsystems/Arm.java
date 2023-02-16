@@ -31,7 +31,7 @@ public class Arm extends SubsystemBase implements IArm {
 
 	
 	// general settings
-	public static final int LENGTH_OF_TRAVEL_TICKS = -550000; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_TRAVEL_TICKS = 550000; // TODO adjust as needed (halve for Talon FX)
 
 	static final double MAX_PCT_OUTPUT = 1.0;
 	static final int WAIT_MS = 1000;
@@ -238,7 +238,7 @@ public class Arm extends SubsystemBase implements IArm {
 		System.out.println("Extending");
 		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
-		tac = +LENGTH_OF_TRAVEL_TICKS;
+		tac = -LENGTH_OF_TRAVEL_TICKS;
 		
 		arm.set(ControlMode.Position,tac);
 		

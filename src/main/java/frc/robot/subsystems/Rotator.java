@@ -31,9 +31,9 @@ public class Rotator extends SubsystemBase implements IRotator {
 
 	
 	// general settings
-	public static final int LENGTH_OF_TRAVEL_TICKS = 35000; // adjust as needed
+	public static final int LENGTH_OF_TRAVEL_TICKS = 2000; // adjust as needed
 
-	public static final int LENGTH_OF_TRAVEL_TICKS_MIDWAY = 35000; // adjust as needed
+	public static final int LENGTH_OF_TRAVEL_TICKS_MIDWAY = 1000; // adjust as needed
 
 	static final double MAX_PCT_OUTPUT = 1.0;
 	static final int WAIT_MS = 1000;
@@ -48,13 +48,13 @@ public class Rotator extends SubsystemBase implements IRotator {
 	
 	static final double REDUCED_PCT_OUTPUT = 0.5;
 	
-	static final double MOVE_PROPORTIONAL_GAIN = 0.1;
+	static final double MOVE_PROPORTIONAL_GAIN = 1; //0.1;
 	static final double MOVE_INTEGRAL_GAIN = 0.0;
 	static final double MOVE_DERIVATIVE_GAIN = 0.0;
 	
 	static final int TALON_TICK_THRESH = 128; //64;//128;
 	static final double TICK_THRESH = 512; //128;	
-	public static final double TICK_PER_100MS_THRESH = 64; // about a tenth of a rotation per second 
+	public static final double TICK_PER_100MS_THRESH = 2; // 64; // about a tenth of a rotation per second 
 	
 	private final static int MOVE_ON_TARGET_MINIMUM_COUNT= 20; // number of times/iterations we need to be on target to really be on target
 
@@ -287,7 +287,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		
 		//setPIDParameters();
 		System.out.println("Closing");
-		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
+		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
 
 		tac = 0; // adjust as needed
 		rotator.set(ControlMode.Position,tac);

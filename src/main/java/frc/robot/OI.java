@@ -178,8 +178,10 @@ public class OI {
 		gamepadLXn.onTrue(new RotatorFlipWithStallDetection());
 		
 		gamepadRS = new JoystickButton(gamepad, ControllerBase.GamepadButtons.RS);
+		gamepadRS.onTrue(new RotatorFlipWithStallDetection()); // temp
 
 		gamepadLS = new JoystickButton(gamepad, ControllerBase.GamepadButtons.LS);
+		gamepadLS.onTrue(new RotatorRestWithStallDetection()); // temp
 
 		gamePadStart = new JoystickButton(gamepad, ControllerBase.GamepadButtons.START);
 		//gamePadStart.whenPressed(new ShoulderAndGrasperAndSpinnerStop());
