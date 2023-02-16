@@ -27,15 +27,15 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	public static final double GEAR_RATIO = 3.0; // TODO change if needed
 	
-	public static final int ANGLE_TO_TRAVEL_TICKS = Robot.COMPETITION_BOT_CONFIG?90000:90000; // TODO set proper value
-	public static final int ANGLE_TO_MIDWAY_TICKS = Robot.COMPETITION_BOT_CONFIG?45000:45000;
+	public static final int ANGLE_TO_TRAVEL_TICKS = -140000; // TODO set proper value
+	public static final int ANGLE_TO_MIDWAY_TICKS = -75000;
 	
 	/*
 	!!! VIRTUAL_HOME_OFFSET_TICKS is important for moving up,     !!!
 	!!! if this is changed make sure to check to see if moveUp() works !!!
 	(it's used as an error margin for moving up, since we can't reliably check when it's up)
 	*/
-	static final double VIRTUAL_HOME_OFFSET_TICKS = 1000; // position of virtual home compared to physical home
+	static final double VIRTUAL_HOME_OFFSET_TICKS = -1000; // position of virtual home compared to physical home
 	
 	static final double MAX_PCT_OUTPUT = 1.0; // ~full speed
 	
@@ -214,7 +214,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 			
 			setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
-			tac = VIRTUAL_HOME_OFFSET_TICKS; // because we cannot reach 0 reliably
+			tac = ANGLE_TO_TRAVEL_TICKS; // because we cannot reach 0 reliably
 			shoulder.set(ControlMode.Position,tac);
 			
 			isMoving = true;
@@ -255,7 +255,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 			
 			setNominalAndPeakOutputs(SUPER_REDUCED_PCT_OUTPUT);
 	
-			tac = ANGLE_TO_TRAVEL_TICKS;
+			tac = VIRTUAL_HOME_OFFSET_TICKS;
 			shoulder.set(ControlMode.Position,tac);
 			
 			isMoving = true;

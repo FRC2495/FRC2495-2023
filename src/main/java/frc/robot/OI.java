@@ -198,16 +198,19 @@ public class OI {
 		//gamepadLB.whileHeld(new SpinnerSpin());
 		//gamepadLB.whenPressed(new SpinnerRaiserUp());
 		//gamepadLB.whenPressed(new IfNuclearOptionEnabled(new Climb(), new DoNothing()));
+		gamepadLB.onTrue(new ShoulderMoveDown()); // tempoorary assignment
 		
 		gamepadY = new JoystickButton(gamepad, ControllerBase.GamepadButtons.Y);
 		//gamepadY.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));	
 		//gamepadY.whileHeld(new WinchWinchStopperMagicWinchUp());
 		//gamepadY.whileHeld(new ShooterShootHigh());
+		gamepadY.onTrue(new ArmExtendWithStallDetection()); // temp
 
 		gamepadX = new JoystickButton(gamepad, ControllerBase.GamepadButtons.X);
 		//gamepadX.whileHeld(new WinchWinchStopperMagicWinchDown());
 		//gamepadX.whileHeld(new FeederFeed());
 		//gamepadX.whileHeld(new ShooterShootLow());
+		gamepadX.onTrue(new ArmRetractWithStallDetection()); // temp
 
 		gamepadB = new JoystickButton(gamepad, ControllerBase.GamepadButtons.B);
 		//gamepadB.whileHeld(new GrasperRelease());

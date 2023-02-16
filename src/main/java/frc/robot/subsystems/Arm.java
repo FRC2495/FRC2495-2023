@@ -31,7 +31,7 @@ public class Arm extends SubsystemBase implements IArm {
 
 	
 	// general settings
-	public static final int LENGTH_OF_TRAVEL_TICKS = -450000; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_TRAVEL_TICKS = -550000; // TODO adjust as needed (halve for Talon FX)
 
 	static final double MAX_PCT_OUTPUT = 1.0;
 	static final int WAIT_MS = 1000;
@@ -93,7 +93,7 @@ public class Arm extends SubsystemBase implements IArm {
 		// In order for limit switches and closed-loop features to function properly the sensor and motor has to be in-phase.
 		// This means that the sensor position must move in a positive direction as the motor controller drives positive output.
 		
-		arm.setSensorPhase(false); // false for SRX // TODO switch to true if required if switching to Talon FX
+		arm.setSensorPhase(true); // false for SRX // TODO switch to true if required if switching to Talon FX
 		
 		//Enable limit switches
 		arm.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, TALON_TIMEOUT_MS);
@@ -236,7 +236,7 @@ public class Arm extends SubsystemBase implements IArm {
 		
 		//setPIDParameters();
 		System.out.println("Extending");
-		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
 		tac = +LENGTH_OF_TRAVEL_TICKS;
 		
@@ -253,7 +253,7 @@ public class Arm extends SubsystemBase implements IArm {
 		
 		//setPIDParameters();
 		System.out.println("Retracting");
-		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
 		tac = 0; // adjust as needed
 		arm.set(ControlMode.Position,tac);
@@ -343,7 +343,7 @@ public class Arm extends SubsystemBase implements IArm {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			arm.set(ControlMode.PercentOutput, -joystick.getY()); // adjust sign if desired
+			arm.set(ControlMode.PercentOutput, +joystick.getY()); // adjust sign if desired
 		}
 	}
 
