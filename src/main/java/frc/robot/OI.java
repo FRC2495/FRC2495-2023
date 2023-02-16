@@ -99,18 +99,18 @@ public class OI {
 	public Trigger gamepadB;
 	public Trigger gamepadX;
 	public Trigger gamepadY;
-	public Trigger gamepadLB;
-	public Trigger gamepadRB;
+	public Trigger gamepadLBumper;
+	public Trigger gamepadRBumper;
 	public Trigger gamepadBack;
 	public Trigger gamePadStart;
-	public Trigger gamepadLS;
-	public Trigger gamepadRS;
+	public Trigger gamepadLStick;
+	public Trigger gamepadRStick;
 	public Trigger gamepadLXp;
 	public Trigger gamepadLXn;
 	public Trigger gamepadLYp;
 	public Trigger gamepadLYn;
-	public Trigger gamepadLT;
-	public Trigger gamepadRT;
+	public Trigger gamepadLTrigger;
+	public Trigger gamepadRTrigger;
 	public Trigger gamepadRXp;
 	public Trigger gamepadRXn;
 	public Trigger gamepadRYp;
@@ -145,11 +145,11 @@ public class OI {
 		gamepadRXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RX,-0.5);
 		//gamepadRXn.whenPressed(new RearElbowsCloseWithStallDetection());
 
-		gamepadRT = gamepad.rightTrigger();
+		gamepadRTrigger = gamepad.rightTrigger();
 		//gamepadRT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));
-		gamepadRT.onTrue(new ShoulderMoveDown());
+		gamepadRTrigger.onTrue(new ShoulderMoveDown());
 
-		gamepadLT = gamepad.leftTrigger();
+		gamepadLTrigger = gamepad.leftTrigger();
 		//gamepadLT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_OFF));
 		//gamepadLT.whenPressed(new FrontArmsRetract());
 		//gamepadLT.whileHeld(new FeederFeed());
@@ -175,11 +175,11 @@ public class OI {
 		//gamepadLXn.whenPressed(new FrontElbowsMidwayWithStallDetection());
 		gamepadLXn.onTrue(new RotatorFlipWithStallDetection());
 		
-		gamepadRS = gamepad.rightStick();
-		gamepadRS.onTrue(new RotatorFlipWithStallDetection()); // temp
+		gamepadRStick = gamepad.rightStick();
+		gamepadRStick.onTrue(new RotatorFlipWithStallDetection()); // temp
 
-		gamepadLS = gamepad.leftStick();
-		gamepadLS.onTrue(new RotatorRestWithStallDetection()); // temp
+		gamepadLStick = gamepad.leftStick();
+		gamepadLStick.onTrue(new RotatorRestWithStallDetection()); // temp
 
 		gamePadStart = gamepad.start();
 		//gamePadStart.whenPressed(new ShoulderAndGrasperAndSpinnerStop());
@@ -190,15 +190,15 @@ public class OI {
 		gamepadBack = gamepad.back();
 		gamepadBack.onTrue(new FullCalibrateAndReset());
 
-		gamepadRB = gamepad.rightBumper();
+		gamepadRBumper = gamepad.rightBumper();
 		//gamepadRB.whenPressed(new ShoulderMoveMidway());
-		gamepadRB.onTrue(new ShoulderMoveUp());
+		gamepadRBumper.onTrue(new ShoulderMoveUp());
 
-		gamepadLB = gamepad.leftBumper();
+		gamepadLBumper = gamepad.leftBumper();
 		//gamepadLB.whileHeld(new SpinnerSpin());
 		//gamepadLB.whenPressed(new SpinnerRaiserUp());
 		//gamepadLB.whenPressed(new IfNuclearOptionEnabled(new Climb(), new DoNothing()));
-		gamepadLB.onTrue(new ShoulderMoveDown()); // tempoorary assignment
+		gamepadLBumper.onTrue(new ShoulderMoveDown()); // tempoorary assignment
 		
 		gamepadY = gamepad.y();
 		//gamepadY.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));	
