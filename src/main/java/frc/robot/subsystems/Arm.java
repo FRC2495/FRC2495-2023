@@ -31,7 +31,7 @@ public class Arm extends SubsystemBase implements IArm {
 
 	
 	// general settings
-	public static final int LENGTH_OF_TRAVEL_TICKS = 550000; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_TRAVEL_TICKS = 610000; // TODO adjust as needed (halve for Talon FX)
 
 	static final double MAX_PCT_OUTPUT = 1.0;
 	static final int WAIT_MS = 1000;
@@ -331,6 +331,18 @@ public class Arm extends SubsystemBase implements IArm {
 
 	public synchronized boolean isExtending() {
 		return isExtending;
+	}
+
+	public boolean isExtended() {
+		return Math.abs(getEncoderPosition()) > LENGTH_OF_TRAVEL_TICKS * 2/3;
+	}
+	
+	public boolean isRetracted() {
+		return Math.abs(getEncoderPosition()) < LENGTH_OF_TRAVEL_TICKS * 1/3;
+	}
+	
+	public boolean isMidway() {
+		return !isExtended() && !isRetracted();
 	}
 
 	// return if stalled

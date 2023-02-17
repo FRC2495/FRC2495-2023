@@ -21,6 +21,12 @@ public interface IRotator {
 	
 	public boolean isFlipping();	
 
+	public boolean isFlipped();
+	
+	public boolean isRested();
+	
+	public boolean isSideway();
+
 	// return if stalled
 	public boolean isStalled();
 

@@ -19,6 +19,12 @@ public interface IArm {
 	
 	public boolean isExtending();	
 
+	public boolean isExtended();
+	
+	public boolean isRetracted();
+	
+	public boolean isMidway();
+
 	// return if stalled
 	public boolean isStalled();
 

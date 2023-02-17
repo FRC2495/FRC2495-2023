@@ -54,7 +54,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 	
 	static final int TALON_TICK_THRESH = 128; //64;//128;
 	static final double TICK_THRESH = 512; //128;	
-	public static final double TICK_PER_100MS_THRESH = 2; // 64; // about a tenth of a rotation per second 
+	public static final double TICK_PER_100MS_THRESH = 32; // 64; // about a tenth of a rotation per second 
 	
 	private final static int MOVE_ON_TARGET_MINIMUM_COUNT= 20; // number of times/iterations we need to be on target to really be on target
 
@@ -236,7 +236,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		
 		//setPIDParameters();
 		System.out.println("Opening");
-		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
 		tac = -LENGTH_OF_TRAVEL_TICKS;
 		
@@ -253,7 +253,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		
 		//setPIDParameters();
 		System.out.println("Moving");
-		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
 		tac = -position;
 		
@@ -270,7 +270,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		
 		//setPIDParameters();
 		System.out.println("Opening");
-		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
 		tac = -LENGTH_OF_TRAVEL_TICKS_MIDWAY;
 		
@@ -365,6 +365,18 @@ public class Rotator extends SubsystemBase implements IRotator {
 
 	public synchronized boolean isFlipping() {
 		return isFlipping;
+	}
+
+	public boolean isRested() {
+		return Math.abs(getEncoderPosition()) < LENGTH_OF_TRAVEL_TICKS * 1/3;
+	}
+	
+	public boolean isFlipped() {
+		return Math.abs(getEncoderPosition()) > LENGTH_OF_TRAVEL_TICKS * 2/3;
+	}
+	
+	public boolean isSideway() {
+		return !isRested() && !isFlipped();
 	}
 	
 	// return if stalled

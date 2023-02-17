@@ -29,6 +29,9 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	public static final int ANGLE_TO_TRAVEL_TICKS = 140000; // TODO set proper value
 	public static final int ANGLE_TO_MIDWAY_TICKS = 75000;
+	//public static final int ANGLE_TO_FLOOR_TICKS = ;
+	//public static final int ANGLE_TO_LEVEL_2_TICKS = ;
+	//public static final int ANGLE_TO_LEVEL_3_TICKS = ;
 	
 	/*
 	!!! VIRTUAL_HOME_OFFSET_TICKS is important for moving up,     !!!
@@ -55,7 +58,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	static final double MOVE_INTEGRAL_GAIN = 0.0;
 	static final double MOVE_DERIVATIVE_GAIN = 0.0;
 	
-	static final int TALON_TICK_THRESH = 256;
+	static final int TALON_TICK_THRESH = 1024; //256;
 	static final double TICK_THRESH = 8192; //4096;	
 	
 	private final static int MOVE_ON_TARGET_MINIMUM_COUNT= 20; // number of times/iterations we need to be on target to really be on target
@@ -279,11 +282,13 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	}
 	
 	public boolean isUp() {
-		return Math.abs(getEncoderPosition()) < ANGLE_TO_TRAVEL_TICKS * 1/3;
+		//return Math.abs(getEncoderPosition()) < ANGLE_TO_TRAVEL_TICKS * 1/3;
+		return Math.abs(getEncoderPosition()) > ANGLE_TO_TRAVEL_TICKS * 2/3;
 	}
 	
 	public boolean isDown() {
-		return Math.abs(getEncoderPosition()) > ANGLE_TO_TRAVEL_TICKS * 2/3;
+		//return Math.abs(getEncoderPosition()) > ANGLE_TO_TRAVEL_TICKS * 2/3;
+		return Math.abs(getEncoderPosition()) < ANGLE_TO_TRAVEL_TICKS * 1/3;
 	}
 	
 	public boolean isMidway() {
