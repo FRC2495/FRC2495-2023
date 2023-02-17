@@ -334,15 +334,19 @@ public class Arm extends SubsystemBase implements IArm {
 	}
 
 	public boolean isExtended() {
-		return Math.abs(getEncoderPosition()) > LENGTH_OF_TRAVEL_TICKS * 2/3;
+		return Math.abs(getEncoderPosition()) > LENGTH_OF_TRAVEL_TICKS * 9/10;
 	}
 	
 	public boolean isRetracted() {
-		return Math.abs(getEncoderPosition()) < LENGTH_OF_TRAVEL_TICKS * 1/3;
+		return Math.abs(getEncoderPosition()) < LENGTH_OF_TRAVEL_TICKS * 1/10;
 	}
 	
 	public boolean isMidway() {
 		return !isExtended() && !isRetracted();
+	}
+
+	public boolean isDangerous() {
+		return !getLimitSwitchState();
 	}
 
 	// return if stalled

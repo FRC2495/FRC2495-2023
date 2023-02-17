@@ -25,6 +25,8 @@ public interface IArm {
 	
 	public boolean isMidway();
 
+	public boolean isDangerous();
+
 	// return if stalled
 	public boolean isStalled();
 

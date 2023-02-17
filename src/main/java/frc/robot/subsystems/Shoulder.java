@@ -295,6 +295,10 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 		return !isUp() && !isDown();
 	}
 
+	public boolean isDangerous() {
+		return isDown();
+	}
+
 	public void stay() {	 		
 		isMoving = false;		
 	}

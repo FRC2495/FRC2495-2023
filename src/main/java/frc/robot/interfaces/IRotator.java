@@ -27,6 +27,8 @@ public interface IRotator {
 	
 	public boolean isSideway();
 
+	public boolean isDangerous();
+
 	// return if stalled
 	public boolean isStalled();
 

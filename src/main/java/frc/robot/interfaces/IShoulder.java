@@ -33,6 +33,8 @@ public interface IShoulder {
 	
 	public boolean isMidway();
 
+	public boolean isDangerous();
+
 	public void stay();
 	
 	public void stop();

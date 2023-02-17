@@ -378,6 +378,10 @@ public class Rotator extends SubsystemBase implements IRotator {
 	public boolean isSideway() {
 		return !isRested() && !isFlipped();
 	}
+
+	public boolean isDangerous() {
+		return isSideway();
+	}
 	
 	// return if stalled
 	public boolean isStalled() {

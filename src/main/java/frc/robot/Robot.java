@@ -543,6 +543,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("Shoulder isDown", shoulderControl.isDown());
 		SmartDashboard.putBoolean("Shoulder isMidway", shoulderControl.isMidway());
 		SmartDashboard.putBoolean("Shoulder isUp", shoulderControl.isUp());
+		SmartDashboard.putBoolean("Shoulder isDangerous", shoulderControl.isDangerous());
 		
 		SmartDashboard.putBoolean("Gyro Manually Calibrated?",hasGyroBeenManuallyCalibratedAtLeastOnce);
 		
@@ -591,6 +592,7 @@ public class Robot extends TimedRobot {
 
 		SmartDashboard.putString("Claw Position", claw.getPosition().toString());
 
+
 		SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitchState());
 		SmartDashboard.putBoolean("Arm Reverse Limit Switch", arm.getReverseLimitSwitchState());
 		SmartDashboard.putNumber("Arm Enc Position", arm.getEncoderPosition());
@@ -600,6 +602,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("Arm isRetracted", arm.isRetracted());
 		SmartDashboard.putBoolean("Arm isMidway", arm.isMidway());
 		SmartDashboard.putBoolean("Arm isExtended", arm.isExtended());
+		SmartDashboard.putBoolean("Arm isDangerous", arm.isDangerous());
 
 		SmartDashboard.putBoolean("Rotator Limit Switch", rotator.getLimitSwitchState());
 		SmartDashboard.putBoolean("Rotator Reverse Limit Switch", rotator.getReverseLimitSwitchState());
@@ -610,6 +613,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("Rotator isFlipped", rotator.isFlipped());
 		SmartDashboard.putBoolean("Rotator isSideway", rotator.isSideway());
 		SmartDashboard.putBoolean("Rotator isRested", rotator.isRested());
+		SmartDashboard.putBoolean("Rotator isDangerous", rotator.isDangerous());
 	}
 
 	public static void setGyroHasBeenManuallyCalibratedAtLeastOnce(boolean flag) {
