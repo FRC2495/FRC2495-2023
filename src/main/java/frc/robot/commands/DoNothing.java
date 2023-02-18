@@ -12,8 +12,6 @@ public class DoNothing extends InstantCommand {
 	 */
 	public DoNothing() {
 		super();
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 	}
 
 	// Called once when the command executes

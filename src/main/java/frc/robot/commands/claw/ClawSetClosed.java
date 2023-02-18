@@ -16,9 +16,6 @@ import frc.robot.subsystems.Claw.Position;
 public class ClawSetClosed extends InstantCommand {
 
 	public ClawSetClosed() { //true is up, false is down
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		//requires(Robot.claw); // While using this command no other command can use it
 		addRequirements(Robot.claw);
 	}
 

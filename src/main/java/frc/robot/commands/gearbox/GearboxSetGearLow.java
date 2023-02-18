@@ -15,11 +15,8 @@ import frc.robot.subsystems.Gearbox.Gear;
 // To set low gear
 public class GearboxSetGearLow extends InstantCommand {
 
-	public GearboxSetGearLow() { //true is up, false is down
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		//requires(Robot.gearbox); // While using this command no other command can use it 
-		// addRequirements(Robot.gearbox);
+	public GearboxSetGearLow() {
+		addRequirements(Robot.gearbox);
 	}
 
 	// Called once when the command executes

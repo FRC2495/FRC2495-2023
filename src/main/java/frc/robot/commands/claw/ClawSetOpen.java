@@ -14,10 +14,8 @@ import frc.robot.subsystems.Claw.Position;
 
 // To set claw open
 public class ClawSetOpen extends InstantCommand {
+	
 	public ClawSetOpen() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		//requires(Robot.claw); //
 		addRequirements(Robot.claw);
 	}
 

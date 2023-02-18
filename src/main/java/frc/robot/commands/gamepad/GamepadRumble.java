@@ -17,8 +17,6 @@ public class GamepadRumble extends InstantCommand {
 
 		m_rumble = rumble;
 
-		//setRunWhenDisabled(true); // allows running of command when robot is disabled
-
 		// ControllerBase only supports instant commands, so no need to reserve it
 	}
 

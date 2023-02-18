@@ -14,10 +14,8 @@ import frc.robot.subsystems.Gearbox.Gear;
 
 // To set high gear
 public class GearboxSetGearHigh extends InstantCommand {
+	
 	public GearboxSetGearHigh() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		//requires(Robot.gearbox);
 		addRequirements(Robot.gearbox);
 	}
 
