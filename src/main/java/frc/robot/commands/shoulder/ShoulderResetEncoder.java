@@ -11,7 +11,7 @@ import frc.robot.Robot;
 public class ShoulderResetEncoder extends InstantCommand {
 
 	public ShoulderResetEncoder() {
-		addRequirements(Robot.shoulderControl);
+		addRequirements(Robot.shoulder);
 	}
 
 	// This instant command can run disabled
@@ -24,7 +24,7 @@ public class ShoulderResetEncoder extends InstantCommand {
 	@Override
 	public void initialize() {
 		System.out.println("ShoulderResetEncoder: initialize");
-		Robot.shoulderControl.resetEncoder();
+		Robot.shoulder.resetEncoder();
 	}
 
 }

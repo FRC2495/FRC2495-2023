@@ -11,14 +11,14 @@ import frc.robot.Robot;
 public class ShoulderMoveUp extends CommandBase {
 
 	public ShoulderMoveUp() {
-		addRequirements(Robot.shoulderControl);
+		addRequirements(Robot.shoulder);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	public void initialize() {
 		System.out.println("ShoulderMoveUp: initialize");
-		Robot.shoulderControl.moveUp();
+		Robot.shoulder.moveUp();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -30,13 +30,13 @@ public class ShoulderMoveUp extends CommandBase {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	public boolean isFinished() {
-		return !Robot.shoulderControl.tripleCheckMove();
+		return !Robot.shoulder.tripleCheckMove();
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	public void end(boolean interupted) {
 		System.out.println("ShoulderMoveUp: end");
-		Robot.shoulderControl.stay();  // we don't want to stop so we stay up...
+		Robot.shoulder.stay();  // we don't want to stop so we stay up...
 	}
 }

@@ -11,14 +11,14 @@ import frc.robot.Robot;
 /*public*/ class ShoulderMoveDown extends CommandBase {
 
 	public ShoulderMoveDown() {
-		addRequirements(Robot.shoulderControl);
+		addRequirements(Robot.shoulder);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	public void initialize() {
 		System.out.println("ShoulderMoveDown: initialize");
-		Robot.shoulderControl.moveDown();
+		Robot.shoulder.moveDown();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -30,14 +30,14 @@ import frc.robot.Robot;
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	public boolean isFinished() {
-		return !Robot.shoulderControl.tripleCheckMove();
+		return !Robot.shoulder.tripleCheckMove();
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	public void end(boolean interrupted) {
 		System.out.println("ShoulderMoveDown: end");
-		Robot.shoulderControl.stop();
-		//Robot.shoulderControl.stay();
+		Robot.shoulder.stop();
+		//Robot.shoulder.stay();
 	}
 }

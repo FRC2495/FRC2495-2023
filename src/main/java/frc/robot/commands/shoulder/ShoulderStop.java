@@ -11,14 +11,14 @@ import frc.robot.Robot;
 public class ShoulderStop extends InstantCommand {
 
 	public ShoulderStop() {
-		addRequirements(Robot.shoulderControl);
+		addRequirements(Robot.shoulder);
 	}
 
 	// Called once when this command runs
 	@Override
 	public void initialize() {
 		System.out.println("ShoulderStop: initialize");
-		Robot.shoulderControl.stop();
+		Robot.shoulder.stop();
 	}
 
 }

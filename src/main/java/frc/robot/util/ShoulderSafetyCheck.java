@@ -16,6 +16,6 @@ public class ShoulderSafetyCheck implements BooleanSupplier
 {
     @Override
     public boolean getAsBoolean() {
-        return !Robot.shoulderControl.isDangerous();
+        return !Robot.shoulder.isDangerous();
     }
 }

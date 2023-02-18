@@ -143,10 +143,10 @@ public class Robot extends TimedRobot {
 
 	//BaseMotorController feederMotor;
 
-	public static /*I*/Shoulder shoulderControl;
+	public static /*I*/Shoulder shoulder;
 	
 	WPI_TalonSRX shoulder_master;
-	//BaseMotorController hinge_follower;
+	//BaseMotorController shoulder_follower;
 
 	//WPI_TalonSRX grasperMotor;
 
@@ -279,14 +279,14 @@ public class Robot extends TimedRobot {
 		//rearRight = new CANSparkMax(Ports.CAN.RIGHT_REAR, MotorType.kBrushless);
 
 		shoulder_master = new WPI_TalonSRX(Ports.CAN.SHOULDER_MASTER);
-		//hinge_follower = new WPI_TalonSRX(Ports.CAN.HINGE_FOLLOWER);
+		//shoulder_follower = new WPI_TalonSRX(Ports.CAN.SHOULDER_FOLLOWER);
 
 		//grasperMotor = new WPI_TalonSRX(Ports.CAN.GRASPER);
 
 		drivetrain = new Drivetrain(frontLeft, frontRight, rearLeft, rearRight, gyro, this, camera);	
 		//drivetrain = new SparkMaxDrivetrain(frontLeft, frontRight, rearLeft, rearRight, gyro, this, camera);	
 		
-		shoulderControl = new Shoulder(shoulder_master/*, hinge_follower*/, this);
+		shoulder = new Shoulder(shoulder_master/*, shoulder_follower*/, this);
 		
 		//grasper = new Grasper(grasperMotor, this);
 
@@ -534,16 +534,16 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Filtered Vertical Offset to Target", camera.getFilteredVerticalOffsetToCompositeTarget());
 		
 		
-		SmartDashboard.putBoolean("Shoulder Limit Switch", shoulderControl.getLimitSwitchState());
-		SmartDashboard.putBoolean("Shoulder Forward Limit Switch", shoulderControl.getForwardLimitSwitchState());
-		SmartDashboard.putNumber("Shoulder Position", shoulderControl.getPosition());
-		SmartDashboard.putNumber("Shoulder Enc Position", shoulderControl.getEncoderPosition());
-		SmartDashboard.putBoolean("Shoulder IsMoving?", shoulderControl.isMoving());
-		SmartDashboard.putNumber("Shoulder Target", shoulderControl.getTarget());
-		SmartDashboard.putBoolean("Shoulder isDown", shoulderControl.isDown());
-		SmartDashboard.putBoolean("Shoulder isMidway", shoulderControl.isMidway());
-		SmartDashboard.putBoolean("Shoulder isUp", shoulderControl.isUp());
-		SmartDashboard.putBoolean("Shoulder isDangerous", shoulderControl.isDangerous());
+		SmartDashboard.putBoolean("Shoulder Limit Switch", shoulder.getLimitSwitchState());
+		SmartDashboard.putBoolean("Shoulder Forward Limit Switch", shoulder.getForwardLimitSwitchState());
+		SmartDashboard.putNumber("Shoulder Position", shoulder.getPosition());
+		SmartDashboard.putNumber("Shoulder Enc Position", shoulder.getEncoderPosition());
+		SmartDashboard.putBoolean("Shoulder IsMoving?", shoulder.isMoving());
+		SmartDashboard.putNumber("Shoulder Target", shoulder.getTarget());
+		SmartDashboard.putBoolean("Shoulder isDown", shoulder.isDown());
+		SmartDashboard.putBoolean("Shoulder isMidway", shoulder.isMidway());
+		SmartDashboard.putBoolean("Shoulder isUp", shoulder.isUp());
+		SmartDashboard.putBoolean("Shoulder isDangerous", shoulder.isDangerous());
 		
 		SmartDashboard.putBoolean("Gyro Manually Calibrated?",hasGyroBeenManuallyCalibratedAtLeastOnce);
 		

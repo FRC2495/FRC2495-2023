@@ -13,7 +13,7 @@ public class ShoulderJoystickControl extends CommandBase {
 	public ShoulderJoystickControl() {
 
 		addRequirements(
-			Robot.shoulderControl,
+			Robot.shoulder,
 			Robot.drivetrain); // this is needed so that the default drivetrain command does not run at the same time
 	}
 
@@ -26,7 +26,7 @@ public class ShoulderJoystickControl extends CommandBase {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	public void execute() {
-		Robot.shoulderControl.joystickControl(Robot.oi.getLeftJoystick());
+		Robot.shoulder.joystickControl(Robot.oi.getLeftJoystick());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -39,6 +39,6 @@ public class ShoulderJoystickControl extends CommandBase {
 	@Override
 	public void end(boolean interupted) {
 		System.out.println("ShoulderJoystickControl: end");
-		Robot.shoulderControl.stop();
+		Robot.shoulder.stop();
 	}
 }
