@@ -19,7 +19,7 @@ public class StartingPositionThreeOrFourB1GpAndDock extends SequentialCommandGro
             new ShoulderMoveUp());
             // lifts shoulder up out of frame perimeter  
             
-            new ArmExtendWithStallDetection();
+            new ArmSafeExtendWithStallDetection();
             // extends arm above cube node
 
             new ClawSetOpen();

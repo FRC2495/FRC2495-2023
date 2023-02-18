@@ -16,7 +16,7 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
             new ShoulderMoveUp());
             // lifts shoulder up out of frame perimeter        
 
-            new ArmExtendWithStallDetection();
+            new ArmSafeExtendWithStallDetection();
             // extends arm up
 
             new ClawSetOpen();
@@ -28,7 +28,7 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
             new DrivetrainTurnAngleUsingPidController(+180);
             // turns from facing cube node to cone pickup
 
-            new ShoulderMoveDown();
+            new ShoulderSafeMoveDown();
             // lowers shoulder from up to near the ground
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_LEFT_TURNING_TO_CUBE_PICKUP_SP2);

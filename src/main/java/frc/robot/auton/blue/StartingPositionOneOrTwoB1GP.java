@@ -19,7 +19,7 @@ public class StartingPositionOneOrTwoB1GP extends SequentialCommandGroup {
             new ShoulderMoveUp());
             // lifts shoulder up out of frame perimeter  
             
-            new ArmExtendWithStallDetection();
+            new ArmSafeExtendWithStallDetection();
             // extends arm above cube node
 
 
