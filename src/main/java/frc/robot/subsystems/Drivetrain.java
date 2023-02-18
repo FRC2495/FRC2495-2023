@@ -527,8 +527,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 		setNominalAndPeakOutputs(percentOutput); //this has a global impact, so we reset in stop()
 
-		rtac = + angle; 
-		ltac = - angle;
+		rtac = + 8192 * angle / 360; 
+		ltac = - 8192 * angle / 360; 
 
 		System.out.println("rtac, ltac: " + rtac + ", " + ltac);
 		masterRight.set(ControlMode.Position, rtac);
