@@ -461,6 +461,11 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		
 		resetEncoders();
 		setPIDParameters();
+
+		// use slot 0 for closed-looping
+		//masterLeft.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
+		//masterRight.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
+
 		setNominalAndPeakOutputs(percentOutput); //this has a global impact, so we reset in stop()
 
 		//if(Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
@@ -549,6 +554,11 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		
 		resetEncoders();
 		setPIDParameters();
+
+		// use slot 0 for closed-looping
+		//masterLeft.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
+		//masterRight.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
+
 		//if(Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
 			rtac = rdist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
 			ltac = ldist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;

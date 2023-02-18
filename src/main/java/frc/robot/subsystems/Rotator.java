@@ -121,6 +121,9 @@ public class Rotator extends SubsystemBase implements IRotator {
 		//rotator_follower.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 255, TALON_TIMEOUT_MS);
 
 		setPIDParameters();
+
+		// use slot 0 for closed-looping
+		//rotator.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
 		
 		// set peak output to max in case if had been reduced previously
 		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);

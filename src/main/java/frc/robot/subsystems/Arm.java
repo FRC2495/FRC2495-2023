@@ -122,6 +122,9 @@ public class Arm extends SubsystemBase implements IArm {
 
 		setPIDParameters();
 		
+		// use slot 0 for closed-looping
+ 		//arm.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
+		
 		// set peak output to max in case if had been reduced previously
 		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
 
