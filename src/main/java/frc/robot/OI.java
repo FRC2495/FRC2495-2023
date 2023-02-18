@@ -150,7 +150,7 @@ public class OI {
 
 		gamepadRTrigger = gamepad.rightTrigger();
 		//gamepadRT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));
-		gamepadRTrigger.onTrue(new ShoulderSafeMoveDown());
+		//gamepadRTrigger.onTrue(new ShoulderSafeMoveDown());
 
 		gamepadLTrigger = gamepad.leftTrigger();
 		//gamepadLT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_OFF));
@@ -171,18 +171,18 @@ public class OI {
 
 		gamepadLXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LX,0.5);
 		//gamepadLXp.whenPressed(new FrontElbowsCloseWithStallDetection());
-		gamepadLXp.onTrue(new RotatorSafeRestWithStallDetection());
+		//gamepadLXp.onTrue(new RotatorSafeRestWithStallDetection());
 
 		gamepadLXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LX,-0.5);
 		//gamepadLXn.whenPressed(new FrontElbowsOpen());
 		//gamepadLXn.whenPressed(new FrontElbowsMidwayWithStallDetection());
-		gamepadLXn.onTrue(new RotatorSafeFlipWithStallDetection());
+		//gamepadLXn.onTrue(new RotatorSafeFlipWithStallDetection());
 		
 		gamepadRStick = gamepad.rightStick();
-		gamepadRStick.onTrue(new RotatorSafeFlipWithStallDetection()); // temp
+		//gamepadRStick.onTrue(new RotatorSafeFlipWithStallDetection()); // temp
 
 		gamepadLStick = gamepad.leftStick();
-		gamepadLStick.onTrue(new RotatorSafeRestWithStallDetection()); // temp
+		//gamepadLStick.onTrue(new RotatorSafeRestWithStallDetection()); // temp
 
 		gamePadStart = gamepad.start();
 		//gamePadStart.whenPressed(new ShoulderAndGrasperAndSpinnerStop());
@@ -195,25 +195,26 @@ public class OI {
 
 		gamepadRBumper = gamepad.rightBumper();
 		//gamepadRB.whenPressed(new ShoulderMoveMidway());
-		gamepadRBumper.onTrue(new ShoulderMoveUp());
+		//gamepadRBumper.onTrue(new ShoulderMoveUp());
+		gamepadRBumper.onTrue(new RotatorSafeFlipWithStallDetection());
 
 		gamepadLBumper = gamepad.leftBumper();
 		//gamepadLB.whileHeld(new SpinnerSpin());
 		//gamepadLB.whenPressed(new SpinnerRaiserUp());
 		//gamepadLB.whenPressed(new IfNuclearOptionEnabled(new Climb(), new DoNothing()));
-		gamepadLBumper.onTrue(new ShoulderSafeMoveDown()); // tempoorary assignment
+		//gamepadLBumper.onTrue(new ShoulderSafeMoveDown()); // temporary assignment
+		gamepadLBumper.onTrue(new RotatorSafeRestWithStallDetection());
 		
 		gamepadY = gamepad.y();
 		//gamepadY.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));	
 		//gamepadY.whileHeld(new WinchWinchStopperMagicWinchUp());
 		//gamepadY.whileHeld(new ShooterShootHigh());
-		gamepadY.onTrue(new ArmSafeExtendWithStallDetection()); // temp
+		//gamepadY.onTrue(new ArmSafeExtendWithStallDetection());
 
 		gamepadX = gamepad.x();
 		//gamepadX.whileHeld(new WinchWinchStopperMagicWinchDown());
 		//gamepadX.whileHeld(new FeederFeed());
 		//gamepadX.whileHeld(new ShooterShootLow());
-		gamepadX.onTrue(new ArmRetractWithStallDetection()); // temp
 
 		gamepadB = gamepad.b();
 		//gamepadB.whileHeld(new GrasperRelease());
@@ -228,11 +229,11 @@ public class OI {
 
 		joyRightBtn11 = joyRight.button(ControllerBase.JoystickButtons.BTN11); 
 		//joyRightBtn11.whileHeld(new RearArmsJoystickControl());
-		joyRightBtn11.whileTrue(new ArmJoystickControl());
+		//joyRightBtn11.whileTrue(new ArmJoystickControl());
 	
 		joyRightBtn10 = joyRight.button(ControllerBase.JoystickButtons.BTN10);
 		//joyRightBtn10.whileHeld(new FrontArmsJoystickControl());
-		joyRightBtn10.whileTrue(new ArmJoystickControl());
+		//joyRightBtn10.whileTrue(new ArmJoystickControl());
 
 		joyRightBtn9 = joyRight.button(ControllerBase.JoystickButtons.BTN9);
 		//joyRightBtn9.whenPressed(new WinchStopperSetStop());
@@ -244,7 +245,7 @@ public class OI {
 		//joyRightBtn8.whenPressed(new WinchStopperSetFree());
 		//joyRightBtn8.whenPressed(new WinchLockWinchStopperSetUnlockedAndFree());
 		//joyRightBtn8.whileHeld(new FrontElbowsJoystickControl());
-		joyRightBtn8.whileTrue(new RotatorJoystickControl());
+		joyRightBtn8.whileTrue(new ArmJoystickControl());
 		
 		joyRightBtn7 = joyRight.button(ControllerBase.JoystickButtons.BTN7);
 		joyRightBtn7.onTrue(new DrivetrainStop());
@@ -288,6 +289,7 @@ public class OI {
 
 		joyLeftBtn8 = joyLeft.button(ControllerBase.JoystickButtons.BTN8);
 		//joyLeftBtn8.whileHeld(new GrasperJoystickControl());
+		joyLeftBtn8.whileTrue(new ShoulderJoystickControl());
 
 		joyLeftBtn7 = joyLeft.button(ControllerBase.JoystickButtons.BTN7);
 		joyLeftBtn7.onTrue(new DrivetrainStop());
@@ -313,9 +315,11 @@ public class OI {
 
 		dpadUp = gamepad.povUp();
 		//dpadUp.whileHeld(new ShooterShootUsingCamera());
+		dpadUp.onTrue(new ShoulderMoveUp());
 
 		dpadDown = gamepad.povDown();
 		//dpadDown.whileHeld(new ShooterShootPreset());
+		dpadDown.onTrue(new ShoulderSafeMoveDown());
 
 		dpadLeft = gamepad.povLeft();
 		//dpadLeft.whenPressed(new ShooterDecreasePresetRpm());
