@@ -7,7 +7,9 @@ package frc.robot.sensors;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
-/** Add your docs here. */
+/**
+ * The {@code SwitchedCamera} class contains fields and methods pertaining to the function of the switched camera.
+ */
 public class SwitchedCamera {
 
 	public synchronized static void setUsbCamera(int camera) {

@@ -4,7 +4,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 
 /**
- * Add your docs here.
+ * This command does nothing.
  */
 public class DoNothing extends InstantCommand {
 	/**

@@ -7,7 +7,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Ports;
 
 
-//Activates the piston to shoot the ball into the shooter 
+/**
+ * The {@code Claw} class contains fields and methods pertaining to the function of the claw.
+ */
 public class Claw extends SubsystemBase {
 	
 	static final int WAIT_MS = 1000;

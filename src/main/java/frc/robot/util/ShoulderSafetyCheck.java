@@ -8,7 +8,10 @@ import java.util.function.BooleanSupplier;
 
 import frc.robot.Robot;
 
-/** Add your docs here. */
+/** The purpose of this class is to check if it's okay to extend the arm or to rotate the rotator.
+ * 
+ * It's the case when the shoulder is not in the danger zone.
+ */
 public class ShoulderSafetyCheck implements BooleanSupplier
 {
     @Override
