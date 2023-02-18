@@ -60,20 +60,24 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	static final int TALON_TICK_THRESH = 1024; //256;
 	static final double TICK_THRESH = 8192; //4096;	
+	public static final double TICK_PER_100MS_THRESH = 256;
 	
 	private final static int MOVE_ON_TARGET_MINIMUM_COUNT= 20; // number of times/iterations we need to be on target to really be on target
 
+	private final static int MOVE_STALLED_MINIMUM_COUNT = MOVE_ON_TARGET_MINIMUM_COUNT * 2 + 30; // number of times/iterations we need to be stalled to really be stalled
 	
 	// variables
-	boolean isMoving, isMovingUp;
+	boolean isMoving;
+	boolean isMovingUp;
+	boolean isReallyStalled;
 	
 	WPI_TalonSRX shoulder;
 	//BaseMotorController shoulder_follower;
 	
 	double tac;
-	boolean hasBeenHomed = false;
 
 	private int onTargetCount; // counter indicating how many times/iterations we were on target
+	private int stalledCount; // counter indicating how many times/iterations we were stalled	
 
 	Robot robot; 
 	
@@ -123,6 +127,10 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 
 		setPIDParameters();
 		
+		// use slot 0 for closed-looping
+ 		//shoulder.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
+		
+		// set peak output to max in case if had been reduced previously
 		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
 		// Sensors for motor controllers provide feedback about the position, velocity, and acceleration
@@ -139,8 +147,8 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 		
 		isMoving = false;
 		isMovingUp = false;
-
-		hasBeenHomed = true; // we always consider the shoulderd homed as we have limit sensors on both sides
+		isReallyStalled = false;
+		stalledCount = 0;	
 	}
 
 	@Override
@@ -148,16 +156,6 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 		// Put code here to be run every loop
 
 	}
-
-	// returns the state of the limit switch
-	public boolean getLimitSwitchState() {
-		return shoulder.getSensorCollection().isRevLimitSwitchClosed();
-	}
-
-	public boolean getForwardLimitSwitchState() {
-		return shoulder.getSensorCollection().isFwdLimitSwitchClosed();
-	}
-
 	
 	// This method should be called to assess the progress of a move
 	public boolean tripleCheckMove() {
@@ -196,67 +194,95 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 		}
 		return isMoving; 
 	}
-	
-	public void moveUp() {
+
+	// return if drivetrain might be stalled
+	public boolean tripleCheckIfStalled() {
+		if (isMoving) {
+			
+			double velocity = getEncoderVelocity();
+			
+			boolean isStalled = (Math.abs(velocity) < TICK_PER_100MS_THRESH);
+			
+			if (isStalled) { // if we are stalled in this iteration 
+				stalledCount++; // we increase the counter
+			} else { // if we are not stalled in this iteration
+				if (stalledCount > 0) { // even though we were stalled at least once during a previous iteration
+					stalledCount = 0; // we reset the counter as we are not stalled anymore
+					System.out.println("Triple-check failed (detecting stall).");
+				} else {
+					// we are definitely not stalled
+					
+					//System.out.println("moving velocity : " + velocity);
+				}
+			}
+			
+			if (isMoving && stalledCount > MOVE_STALLED_MINIMUM_COUNT) { // if we have met the minimum
+				isReallyStalled = true;
+			}
+					
+			if (isReallyStalled) {
+				System.out.println("WARNING: Stall detected!");
+				stop(); // WE STOP IF A STALL IS DETECTED				 
+			}
+		}
 		
-		// since we reset encoder on limit sensor it is always ok to go to zero.
+		return isReallyStalled;
+	}
 
-		//if (hasBeenHomed) {
-			//setPIDParameters();
-			System.out.println("Moving Up");
-			
-			setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
+	public int getEncoderVelocity() {
+		return (int) (shoulder.getSelectedSensorVelocity(PRIMARY_PID_LOOP));
+	}
+	
+	public void moveUp() {	
 
-			tac = -ANGLE_TO_TRAVEL_TICKS; // because we cannot reach 0 reliably
-			shoulder.set(ControlMode.Position,tac);
-			
-			isMoving = true;
-			isMovingUp = true;
-			onTargetCount = 0;
-		//} else {
-		//	System.out.println("You have not been home, your mother must be worried sick");
-		//}
+		//setPIDParameters();
+		System.out.println("Moving Up");
+		
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
-		hasBeenHomed = true; // we consider that we homed if we went up all the way at least once.
+		tac = -ANGLE_TO_TRAVEL_TICKS; // because we cannot reach 0 reliably
+		shoulder.set(ControlMode.Position,tac);
+		
+		isMoving = true;
+		isMovingUp = true;
+		onTargetCount = 0;
+		isReallyStalled = false;
+		stalledCount = 0;
 	}
 
 	public void moveMidway() {
 		
-		if (hasBeenHomed) {
-			//setPIDParameters();
-			System.out.println("Moving Midway");
-			
-			setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT); // we may need to check if we were up in which case we may want to reduce output
+		//setPIDParameters();
+		System.out.println("Moving Midway");
+		
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT); // we may need to check if we were up in which case we may want to reduce output
 
-			//tac = ANGLE_TO_TRAVEL_TICKS / 2;
-			tac = -ANGLE_TO_MIDWAY_TICKS;
-			shoulder.set(ControlMode.Position,tac);
-			
-			isMoving = true;
-			isMovingUp = true;
-			onTargetCount = 0;
-		} else {
-			System.out.println("You have not been home, your mother must be worried sick");
-		}
+		//tac = ANGLE_TO_TRAVEL_TICKS / 2;
+		tac = -ANGLE_TO_MIDWAY_TICKS;
+		shoulder.set(ControlMode.Position,tac);
+		
+		isMoving = true;
+		isMovingUp = true;
+		onTargetCount = 0;
+		isReallyStalled = false;
+		stalledCount = 0;
 	}
 	
 	public void moveDown() {
 		
-		if (hasBeenHomed) {
-			//setPIDParameters();
-			System.out.println("Moving Down");
-			
-			setNominalAndPeakOutputs(SUPER_REDUCED_PCT_OUTPUT);
-	
-			tac = VIRTUAL_HOME_OFFSET_TICKS;
-			shoulder.set(ControlMode.Position,tac);
-			
-			isMoving = true;
-			isMovingUp = false;
-			onTargetCount = 0;
-		} else {
-			System.out.println("You have not been home, your mother must be worried sick");
-		}
+		//setPIDParameters();
+		System.out.println("Moving Down");
+		
+		setNominalAndPeakOutputs(SUPER_REDUCED_PCT_OUTPUT);
+
+		tac = VIRTUAL_HOME_OFFSET_TICKS;
+		shoulder.set(ControlMode.Position,tac);
+		
+		isMoving = true;
+		isMovingUp = false;
+		onTargetCount = 0;
+		isReallyStalled = false;
+		stalledCount = 0;
 	}
 
 	public double getPosition() {
@@ -267,30 +293,9 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 		return shoulder.getSelectedSensorPosition(PRIMARY_PID_LOOP);
 	}
 
-	public boolean isMoving() {
-		return isMoving;
-	}
-	
-	public boolean isUp() {
-		//return Math.abs(getEncoderPosition()) < ANGLE_TO_TRAVEL_TICKS * 1/3;
-		return Math.abs(getEncoderPosition()) > ANGLE_TO_TRAVEL_TICKS * 2/3;
-	}
-	
-	public boolean isDown() {
-		//return Math.abs(getEncoderPosition()) > ANGLE_TO_TRAVEL_TICKS * 2/3;
-		return Math.abs(getEncoderPosition()) < ANGLE_TO_TRAVEL_TICKS * 1/3;
-	}
-	
-	public boolean isMidway() {
-		return !isUp() && !isDown();
-	}
-
-	public boolean isDangerous() {
-		return isDown();
-	}
-
 	public void stay() {	 		
 		isMoving = false;		
+		isMovingUp = false;
 	}
 	
 	public void stop() {	 
@@ -298,6 +303,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 		shoulder.set(ControlMode.PercentOutput, 0);
 		
 		isMoving = false;
+		isMovingUp = false;		
 		
 		setNominalAndPeakOutputs(MAX_PCT_OUTPUT); // we undo what me might have changed
 	}	
@@ -344,6 +350,35 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 		shoulder.configNominalOutputForward(0, TALON_TIMEOUT_MS);
 		shoulder.configNominalOutputForward(0, TALON_TIMEOUT_MS);
 	}
+
+	public boolean isMoving() {
+		return isMoving;
+	}
+
+	public boolean isMovingUp() {
+		return isMovingUp;
+	}
+	
+	public boolean isUp() {
+		return Math.abs(getEncoderPosition()) > ANGLE_TO_TRAVEL_TICKS * 2/3;
+	}
+	
+	public boolean isDown() {
+		return Math.abs(getEncoderPosition()) < ANGLE_TO_TRAVEL_TICKS * 1/3;
+	}
+	
+	public boolean isMidway() {
+		return !isUp() && !isDown();
+	}
+
+	public boolean isDangerous() {
+		return isDown();
+	}
+
+	// return if stalled
+	public boolean isStalled() {
+		return isReallyStalled;
+	}	
 	
 	// for debug purpose only
 	public void joystickControl(Joystick joystick)
@@ -356,6 +391,15 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	public double getTarget() {
 		return tac;
+	}
+
+	// returns the state of the limit switch
+	public boolean getLimitSwitchState() {
+		return shoulder.getSensorCollection().isRevLimitSwitchClosed();
+	}
+
+	public boolean getForwardLimitSwitchState() {
+		return shoulder.getSensorCollection().isFwdLimitSwitchClosed();
 	}
 
 	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
