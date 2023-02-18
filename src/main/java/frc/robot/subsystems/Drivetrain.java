@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.StatusFrame;
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.phoenix.motorcontrol.RemoteSensorSource;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.MathUtil;
@@ -99,6 +100,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	static final int PRIMARY_PID_LOOP = 0;
 	
 	static final int SLOT_0 = 0;
+
+	static final int REMOTE_0 = 0;
 	
 	static final double REDUCED_PCT_OUTPUT = 0.4;
 	static final double HIGH_PCT_OUTPUT = 0.5;
@@ -493,13 +496,50 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 	
 	}
+
 	public void moveDistanceHighSpeed(double dist) // moves the distance in inch given
 	{
 		moveDistance(dist, HIGH_PCT_OUTPUT);
 	}
-	
-	
-	
+
+	// this method needs to be paired with checkMoveDistance()
+	/*public void moveAngle(int angle, double percentOutput) {
+
+		pidgey.setStatusFramePeriod(PigeonIMU_StatusFrame.CondStatus_9_SixDeg_YPR, 5, TALON_TIMEOUT_MS);
+
+		masterLeft.configRemoteFeedbackFilter(pidgey.getDeviceID(), RemoteSensorSource.Pigeon_Yaw, REMOTE_0, TALON_TIMEOUT_MS);
+		masterRight.configRemoteFeedbackFilter(pidgey.getDeviceID(), RemoteSensorSource.Pigeon_Yaw, REMOTE_0, TALON_TIMEOUT_MS);
+
+		masterLeft.configSelectedFeedbackSensor(FeedbackDevice.RemoteSensor0, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
+		masterRight.configSelectedFeedbackSensor(FeedbackDevice.RemoteSensor0, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
+
+		stop(); // in case we were still doing something
+		
+		resetEncoders();
+
+		pidgey.setYaw(0, TALON_TIMEOUT_MS);
+
+		setPIDParameters();
+
+		// use slot 0 for closed-looping
+		//masterLeft.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
+		//masterRight.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
+
+		setNominalAndPeakOutputs(percentOutput); //this has a global impact, so we reset in stop()
+
+		rtac = + angle; 
+		ltac = - angle;
+
+		System.out.println("rtac, ltac: " + rtac + ", " + ltac);
+		masterRight.set(ControlMode.Position, rtac);
+		masterLeft.set(ControlMode.Position, ltac);
+
+		isMoving = true;
+		onTargetCountMoving = 0;
+		isReallyStalled = false;
+		stalledCount = 0;
+	}*/
+		
 	public boolean tripleCheckMoveDistance() {
 		if (isMoving) {
 			
@@ -542,6 +582,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	{
 		return Math.toRadians(angle) * RADIUS_DRIVEVETRAIN_INCHES;
 	}
+
 	// this method needs to be paired with checkMoveDistance()
 	public void moveDistanceAlongArc(int angle) {
 		stop(); // in case we were still doing something
@@ -582,8 +623,6 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		isReallyStalled = false;
 		stalledCount = 0;
 	}
-	// this method needs to be paired with checkMoveDistance()
-
 	
 	// return if drivetrain might be stalled
 	public boolean tripleCheckIfStalled() {
