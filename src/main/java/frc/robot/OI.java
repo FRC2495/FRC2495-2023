@@ -163,23 +163,23 @@ public class OI {
 		gamepadLYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LY,-0.5);
 		//gamepadLYn.whenPressed(new FrontArmsRetract());
 		//gamepadLYn.whenPressed(new FrontArmsExtendWithStallDetection());
-		gamepadLYn.onTrue(new ArmExtendWithStallDetection());
+		gamepadLYn.onTrue(new ArmSafeExtendWithStallDetection());
 		//gamepadLYn.whenPressed(new SpinnerSpinThrice()); // pushing forward
 
 		gamepadLXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LX,0.5);
 		//gamepadLXp.whenPressed(new FrontElbowsCloseWithStallDetection());
-		gamepadLXp.onTrue(new RotatorRestWithStallDetection());
+		gamepadLXp.onTrue(new RotatorSafeRestWithStallDetection());
 
 		gamepadLXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LX,-0.5);
 		//gamepadLXn.whenPressed(new FrontElbowsOpen());
 		//gamepadLXn.whenPressed(new FrontElbowsMidwayWithStallDetection());
-		gamepadLXn.onTrue(new RotatorFlipWithStallDetection());
+		gamepadLXn.onTrue(new RotatorSafeFlipWithStallDetection());
 		
 		gamepadRStick = gamepad.rightStick();
-		gamepadRStick.onTrue(new RotatorFlipWithStallDetection()); // temp
+		gamepadRStick.onTrue(new RotatorSafeFlipWithStallDetection()); // temp
 
 		gamepadLStick = gamepad.leftStick();
-		gamepadLStick.onTrue(new RotatorRestWithStallDetection()); // temp
+		gamepadLStick.onTrue(new RotatorSafeRestWithStallDetection()); // temp
 
 		gamePadStart = gamepad.start();
 		//gamePadStart.whenPressed(new ShoulderAndGrasperAndSpinnerStop());
@@ -204,7 +204,7 @@ public class OI {
 		//gamepadY.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));	
 		//gamepadY.whileHeld(new WinchWinchStopperMagicWinchUp());
 		//gamepadY.whileHeld(new ShooterShootHigh());
-		gamepadY.onTrue(new ArmExtendWithStallDetection()); // temp
+		gamepadY.onTrue(new ArmSafeExtendWithStallDetection()); // temp
 
 		gamepadX = gamepad.x();
 		//gamepadX.whileHeld(new WinchWinchStopperMagicWinchDown());
