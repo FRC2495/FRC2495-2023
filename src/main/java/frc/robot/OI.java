@@ -147,7 +147,7 @@ public class OI {
 
 		gamepadRTrigger = gamepad.rightTrigger();
 		//gamepadRT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));
-		gamepadRTrigger.onTrue(new ShoulderMoveDown());
+		gamepadRTrigger.onTrue(new ShoulderSafeMoveDown());
 
 		gamepadLTrigger = gamepad.leftTrigger();
 		//gamepadLT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_OFF));
@@ -198,7 +198,7 @@ public class OI {
 		//gamepadLB.whileHeld(new SpinnerSpin());
 		//gamepadLB.whenPressed(new SpinnerRaiserUp());
 		//gamepadLB.whenPressed(new IfNuclearOptionEnabled(new Climb(), new DoNothing()));
-		gamepadLBumper.onTrue(new ShoulderMoveDown()); // tempoorary assignment
+		gamepadLBumper.onTrue(new ShoulderSafeMoveDown()); // tempoorary assignment
 		
 		gamepadY = gamepad.y();
 		//gamepadY.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));	
