@@ -130,11 +130,14 @@ public class OI {
 
 		gamepad = new CommandXboxController(Ports.USB.GAMEPAD);
 
-		gamepadRYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.RY,0.5);
+		gamepadRYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.RY,0.1);
+		gamepadRYp.whileTrue(new ArmGamepadControl());
+
 		//gamepadRYp.whenPressed(new RearArmsExtend());
 		//gamepadRYp.whenPressed(new RearArmsRetractWithStallDetection());
 
-		gamepadRYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RY,-0.5);
+		gamepadRYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RY,-0.1);
+		gamepadRYn.whileTrue(new ArmGamepadControl());
 		//gamepadRYn.whenPressed(new RearArmsRetract());
 		//gamepadRYn.whenPressed(new RearArmsExtendWithStallDetection());
 

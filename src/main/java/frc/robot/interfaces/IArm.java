@@ -1,6 +1,7 @@
 package frc.robot.interfaces;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 
 public interface IArm {
 	// returns the state of the limit switch
@@ -39,6 +40,8 @@ public interface IArm {
 
 	// for debug purpose only
 	public void joystickControl(Joystick joystick);
+
+	public void gamepadControl(XboxController gamepad);
 	
 	public double getTarget();
 }

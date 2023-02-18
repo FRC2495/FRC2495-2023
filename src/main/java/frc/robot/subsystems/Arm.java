@@ -17,6 +17,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.interfaces.*;
@@ -360,6 +361,14 @@ public class Arm extends SubsystemBase implements IArm {
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
 			arm.set(ControlMode.PercentOutput, +joystick.getY()); // adjust sign if desired
+		}
+	}
+
+	public void gamepadControl(XboxController gamepad)
+	{
+		if (!isMoving) // if we are already doing a move we don't take over
+		{
+			arm.set(ControlMode.PercentOutput, +gamepad.getRightY()); // adjust sign if desired
 		}
 	}
 
