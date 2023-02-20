@@ -184,8 +184,8 @@ public class Ports {
 			// 2023 robot
 			public static final int GEAR_HIGH = 0;
 			public static final int GEAR_LOW = 1;
-			public static final int CLAW_CLOSED = 2;
-			public static final int CLAW_OPEN = 3; 		}
+			public static final int CLAW_CLOSED = 3;
+			public static final int CLAW_OPEN = 2; 		}
 
 		/**
 		 * PWM ports
