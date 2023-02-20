@@ -1,13 +1,19 @@
 package frc.robot.interfaces;
 
+import edu.wpi.first.wpilibj2.command.Subsystem;
+
 import edu.wpi.first.wpilibj.Joystick;
 
-public interface IDrivetrain {
+public interface IDrivetrain extends Subsystem {
 	
 	// this method needs to be paired with checkTurnAngleUsingPidController()
 	public void turnAngleUsingPidController(double angle);
 	
 	public boolean tripleCheckTurnAngleUsingPidController();
+
+	public void turnUsingCameraPidController();
+
+	public boolean tripleCheckTurnUsingCameraPidController();
 	
 	// this method needs to be paired with checkMoveDistance()
 	public void moveDistance(double dist);
@@ -46,6 +52,10 @@ public interface IDrivetrain {
 	public boolean isMoving();
 	
 	public boolean isTurning();
+
+	public boolean isMovingUsingCamera();
+
+	public boolean isTurningUsingCamera();
 	
 	// return if stalled
 	public boolean isStalled();

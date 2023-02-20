@@ -2,10 +2,14 @@ package frc.robot.interfaces;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public interface IShoulder {
+import edu.wpi.first.wpilibj2.command.Subsystem;
+
+public interface IShoulder extends Subsystem {
 
 	// returns the state of the limit switch
 	public boolean getLimitSwitchState();
+
+	public boolean getForwardLimitSwitchState();
 	
 	// homes the shoulder
 	// This is done in two steps:
@@ -42,6 +46,9 @@ public interface IShoulder {
 	// return if stalled
 	public boolean isStalled();
 
+	// checks if drivetrain might be stalled
+	public boolean tripleCheckIfStalled();
+
 	public void stay();
 	
 	public void stop();
@@ -51,5 +58,7 @@ public interface IShoulder {
 	
 	public double getTarget();
 	
-
+	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
+	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 
+	public void resetEncoder();
 }

@@ -1,13 +1,19 @@
 package frc.robot.interfaces;
 
+import edu.wpi.first.wpilibj2.command.Subsystem;
+
 import edu.wpi.first.wpilibj.Joystick;
 
-public interface IRotator {
+public interface IRotator extends Subsystem {
 	// returns the state of the limit switch
 	public boolean getLimitSwitchState();
+
+	public boolean getReverseLimitSwitchState();
 	
 	// This method should be called to assess the progress of a move
 	public boolean tripleCheckMove();
+
+	public void move(int position);
 
 	public void flip();
 
@@ -32,6 +38,9 @@ public interface IRotator {
 	// return if stalled
 	public boolean isStalled();
 
+	// checks if drivetrain might be stalled
+	public boolean tripleCheckIfStalled();
+
 	public void stay();	
 		
 	public void stop();
@@ -43,4 +52,8 @@ public interface IRotator {
 	public void joystickControl(Joystick joystick);
 	
 	public double getTarget();
+
+	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
+	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 
+	public void resetEncoder();
 }

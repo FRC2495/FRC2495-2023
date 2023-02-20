@@ -1,11 +1,15 @@
 package frc.robot.interfaces;
 
+import edu.wpi.first.wpilibj2.command.Subsystem;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 
-public interface IArm {
+public interface IArm extends Subsystem {
 	// returns the state of the limit switch
 	public boolean getLimitSwitchState();
+
+	public boolean getReverseLimitSwitchState();
 	
 	// This method should be called to assess the progress of a move
 	public boolean tripleCheckMove();
@@ -33,6 +37,9 @@ public interface IArm {
 	// return if stalled
 	public boolean isStalled();
 
+	// checks if drivetrain might be stalled
+	public boolean tripleCheckIfStalled();
+
 	public void stay();	
 		
 	public void stop();
@@ -46,4 +53,8 @@ public interface IArm {
 	public void gamepadControl(XboxController gamepad);
 	
 	public double getTarget();
+
+	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
+	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 
+	public void resetEncoder();
 }

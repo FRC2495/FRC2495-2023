@@ -121,8 +121,7 @@ public class Robot extends TimedRobot {
 	
 	// motorized devices
 	
-	public static /*I*/Drivetrain drivetrain;
-	//public static /*I*/SparkMaxDrivetrain drivetrain;
+	public static IDrivetrain drivetrain;
 
 	WPI_TalonSRX frontLeft;
 	WPI_TalonSRX frontRight;
@@ -143,7 +142,7 @@ public class Robot extends TimedRobot {
 
 	//BaseMotorController feederMotor;
 
-	public static /*I*/Shoulder shoulder;
+	public static IShoulder shoulder;
 	
 	WPI_TalonSRX shoulder_master;
 	//BaseMotorController shoulder_follower;
@@ -156,12 +155,12 @@ public class Robot extends TimedRobot {
 	WPI_TalonSRX arm_master;
 	//BaseMotorController arm_follower;
 
-	public static /*I*/Arm arm;
+	public static IArm arm;
 
 	WPI_TalonSRX rotator_master;
 	//BaseMotorController rotator_follower;
 
-	public static /*I*/Rotator rotator;
+	public static IRotator rotator;
 
 	
 	// pneumatic devices
