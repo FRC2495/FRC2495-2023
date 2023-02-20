@@ -12,7 +12,7 @@ import frc.robot.commands.DoNothing;
 public class ShoulderSafeMoveDownWithStallDetection extends ConditionalCommand {
 
 	public ShoulderSafeMoveDownWithStallDetection() {
-		super(new ShoulderMoveDownWithStallDetection(), new DoNothing(), new ArmAndRotatorSafetyCheck());
+		super(new ShoulderMoveDownWithStallDetection(), new DoNothing(), new ArmAndRotatorSafetyCheckForShoulder());
 	}
 
 }
