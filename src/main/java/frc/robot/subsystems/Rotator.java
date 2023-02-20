@@ -137,7 +137,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		rotator.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
 		
 		// this will reset the encoder automatically when at or past the forward limit sensor
-		rotator.configSetParameter(ParamEnum.eClearPositionOnLimitF, 0/*1*/, 0, 0, TALON_TIMEOUT_MS);
+		rotator.configSetParameter(ParamEnum.eClearPositionOnLimitF, 1/*1*/, 0, 0, TALON_TIMEOUT_MS);
 		rotator.configSetParameter(ParamEnum.eClearPositionOnLimitR, 0, 0, 0, TALON_TIMEOUT_MS);
 		
 		isMoving = false;
