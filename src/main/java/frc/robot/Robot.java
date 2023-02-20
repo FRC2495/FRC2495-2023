@@ -548,7 +548,9 @@ public class Robot extends TimedRobot {
 		
 		SmartDashboard.putBoolean("Gyro Manually Calibrated?",hasGyroBeenManuallyCalibratedAtLeastOnce);
 		
+		SmartDashboard.putNumber("AccelZ", accelerometer.getAccelZ());
 		SmartDashboard.putNumber("Tilt", accelerometer.getTilt());
+		SmartDashboard.putBoolean("isFlat", accelerometer.isFlat());
 		
 		//SmartDashboard.putNumber("Range to target", sonar.getRangeInInches());
 		//SmartDashboard.putNumber("Sonar Voltage", sonar.getVoltage()); 

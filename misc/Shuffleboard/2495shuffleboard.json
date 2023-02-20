@@ -2275,19 +2275,6 @@
               "_showGlyph": false
             }
           },
-          "6,1": {
-            "size": [
-              3,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Color Detected",
-              "_title": "SmartDashboard/Color Detected",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "6,0": {
             "size": [
               1,
@@ -2323,6 +2310,34 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Color Sensor Blue",
               "_title": "SmartDashboard/Color Sensor Blue",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "6,1": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/isFlat",
+              "_title": "SmartDashboard/isFlat",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
+            }
+          },
+          "8,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/AccelZ",
+              "_title": "SmartDashboard/AccelZ",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -2806,19 +2821,6 @@
               "_showGlyph": false
             }
           },
-          "0,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/COLOR TO DETECT",
-              "_title": "SmartDashboard/COLOR TO DETECT",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,0": {
             "size": [
               3,
@@ -2903,6 +2905,21 @@
               "_title": "SmartDashboard/Shooter Magic Rpm",
               "_glyph": 148,
               "_showGlyph": false
+            }
+          },
+          "0,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/isFlat",
+              "_title": "SmartDashboard/isFlat",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
             }
           }
         }
