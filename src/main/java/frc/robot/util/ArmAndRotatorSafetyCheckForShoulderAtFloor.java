@@ -8,7 +8,7 @@ import java.util.function.BooleanSupplier;
 
 import frc.robot.Robot;
 
-/** The purpose of this class is to check if it's okay to extend the arm or to rotate the rotator.
+/** The purpose of this class is to check if it's okay to move the shoulder to the floor
  * 
  * It's the case when the shoulder is not in the danger zone.
  */
