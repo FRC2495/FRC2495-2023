@@ -17,8 +17,8 @@ import frc.robot.Robot;
 	// Called just before this Command runs the first time
 	@Override
 	public void initialize() {
-		System.out.println("ShoulderSafeMoveFloorWithStallDetection: initialize");
-		Robot.shoulder.moveUp();
+		System.out.println("ShoulderMoveFloorWithStallDetection: initialize");
+		Robot.shoulder.moveFloor();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -36,7 +36,7 @@ import frc.robot.Robot;
 	// Called once after isFinished returns true
 	@Override
 	public void end(boolean interupted) {
-		System.out.println("ShoulderSafeMoveFloorWithStallDetection: end");
+		System.out.println("ShoulderMoveFloorWithStallDetection: end");
 		Robot.shoulder.stay();
 	}
 }
