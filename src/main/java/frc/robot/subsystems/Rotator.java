@@ -31,7 +31,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 
 	
 	// general settings
-	public static final int LENGTH_OF_TRAVEL_TICKS = 2000; // adjust as needed
+	public static final int LENGTH_OF_TRAVEL_TICKS = 2100; // adjust as needed
 
 	public static final int LENGTH_OF_TRAVEL_TICKS_MIDWAY = 1000; // adjust as needed
 
