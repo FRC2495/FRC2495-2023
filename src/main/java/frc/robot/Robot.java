@@ -540,6 +540,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Shoulder Enc Position", shoulder.getEncoderPosition());
 		SmartDashboard.putBoolean("Shoulder IsMoving?", shoulder.isMoving());
 		SmartDashboard.putNumber("Shoulder Target", shoulder.getTarget());
+		SmartDashboard.putBoolean("Shoulder isStalled?", shoulder.isStalled());
 		SmartDashboard.putBoolean("Shoulder isDown", shoulder.isDown());
 		SmartDashboard.putBoolean("Shoulder isMidway", shoulder.isMidway());
 		SmartDashboard.putBoolean("Shoulder isUp", shoulder.isUp());

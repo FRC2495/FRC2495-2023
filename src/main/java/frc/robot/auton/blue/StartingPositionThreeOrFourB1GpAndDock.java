@@ -16,7 +16,7 @@ public class StartingPositionThreeOrFourB1GpAndDock extends SequentialCommandGro
     public StartingPositionThreeOrFourB1GpAndDock(){
 
         addCommands(
-            new ShoulderMoveUp());
+            new ShoulderMoveUpWithStallDetection());
             // lifts shoulder up out of frame perimeter  
             
             new ArmSafeExtendWithStallDetection();

@@ -252,19 +252,19 @@ public class OI {
 
 		dpadUp = gamepad.povUp();
 		//dpadUp.whileHeld(new ShooterShootUsingCamera());
-		dpadUp.onTrue(new ShoulderMoveUp());
+		dpadUp.onTrue(new ShoulderMoveUpWithStallDetection());
 
 		dpadDown = gamepad.povDown();
 		//dpadDown.whileHeld(new ShooterShootPreset());
-		dpadDown.onTrue(new ShoulderSafeMoveDown());
+		dpadDown.onTrue(new ShoulderSafeMoveDownWithStallDetection());
 
 		dpadLeft = gamepad.povLeft();
 		//dpadLeft.whenPressed(new ShooterDecreasePresetRpm());
-		dpadLeft.onTrue(new ShoulderSafeMoveFloor());
+		dpadLeft.onTrue(new ShoulderSafeMoveFloorWithStallDetection());
 
 		dpadRight = gamepad.povRight();
 		//dpadRight.whenPressed(new ShooterIncreasePresetRpm());
-		dpadRight.onTrue(new ShoulderMoveLevelTwo());
+		dpadRight.onTrue(new ShoulderMoveLevelTwoWithStallDetection());
 
 
 		// DEFAULT COMMANDS

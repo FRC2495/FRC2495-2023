@@ -39,6 +39,9 @@ public interface IShoulder {
 
 	public boolean isDangerous();
 
+	// return if stalled
+	public boolean isStalled();
+
 	public void stay();
 	
 	public void stop();

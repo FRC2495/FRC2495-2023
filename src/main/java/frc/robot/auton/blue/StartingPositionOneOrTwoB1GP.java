@@ -31,7 +31,7 @@ public class StartingPositionOneOrTwoB1GP extends SequentialCommandGroup {
             new ArmRetractWithStallDetection();
             // retracts arm
 
-            new ShoulderSafeMoveDown();
+            new ShoulderSafeMoveDownWithStallDetection();
             // brings shoulder into frame perimeter
 
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY);

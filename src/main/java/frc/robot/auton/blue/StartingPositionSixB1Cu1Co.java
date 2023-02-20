@@ -28,7 +28,7 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
             new DrivetrainTurnAngleUsingPidController(+180);
             // turns from facing cube node to cone pickup
 
-            new ShoulderSafeMoveDown();
+            new ShoulderSafeMoveDownWithStallDetection();
             // lowers shoulder from up to near the ground
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_LEFT_TURNING_TO_CUBE_PICKUP_SP2);
@@ -37,7 +37,7 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
             new ClawSetClosed();
             // closes claw to pick up cone (may be changed to sensor picking up cube automatically)
 
-            new ShoulderMoveUp();
+            new ShoulderMoveUpWithStallDetection();
             // brings shoulder up to avoid bumping into anything
         
             new DrivetrainTurnAngleUsingPidController(-180);
