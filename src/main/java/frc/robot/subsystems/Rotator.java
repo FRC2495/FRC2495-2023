@@ -280,7 +280,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 		
 		//setPIDParameters();
 		System.out.println("Closing");
-		setNominalAndPeakOutputs(MAX_PCT_OUTPUT);
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT/*MAX_PCT_OUTPUT*/);
 
 		tac = 0; // adjust as needed
 		rotator.set(ControlMode.Position,tac);
