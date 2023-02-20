@@ -51,7 +51,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	
 	public static final double TURN_USING_CAMERA_PROPORTIONAL_GAIN = 0.001; //0.005; // TODO tune 320 pixels -> 1.6 pct output
 	public static final double TURN_USING_CAMERA_INTEGRAL_GAIN = 0.0;
-	public static final double TURN_USING_CAMERA_DERIVATIVE_GAIN = 0.01;
+	public static final double TURN_USING_CAMERA_DERIVATIVE_GAIN = 0.00;
 	
 	public static final int PIXEL_THRESHOLD = HMCamera.HORIZONTAL_CAMERA_RES_PIXELS / 40; // about 3/2 degrees - TODO adjust as needed
 	
@@ -67,7 +67,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	static final double MIN_TURN_PCT_OUTPUT = 0.1;
 	static final double MAX_TURN_PCT_OUTPUT = 0.3;
 	
-	static final double TURN_PROPORTIONAL_GAIN = 0.01; //0.02;
+	static final double TURN_PROPORTIONAL_GAIN = 0.005; //0.01; //0.02;
 	static final double TURN_INTEGRAL_GAIN = 0.0;
 	static final double TURN_DERIVATIVE_GAIN = 0.0; //0.0001; //0.1;
 	
