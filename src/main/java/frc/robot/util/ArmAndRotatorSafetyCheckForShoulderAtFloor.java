@@ -8,14 +8,14 @@ import java.util.function.BooleanSupplier;
 
 import frc.robot.Robot;
 
-/** The purpose of this class is to check if it's okay to move the shoulder down.
+/** The purpose of this class is to check if it's okay to extend the arm or to rotate the rotator.
  * 
- * It's the case when both the arm and the rotator are not in their respective danger zone.
+ * It's the case when the shoulder is not in the danger zone.
  */
-public class ArmAndRotatorSafetyCheck implements BooleanSupplier
+public class ArmAndRotatorSafetyCheckForShoulderAtFloor implements BooleanSupplier
 {
     @Override
     public boolean getAsBoolean() {
-        return !Robot.arm.isDangerous() && !Robot.rotator.isDangerous();
+        return !Robot.arm.isDangerousForShoulderAtFloor() && !Robot.rotator.isDangerous();
     }
 }

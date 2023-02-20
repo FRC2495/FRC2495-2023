@@ -12,7 +12,7 @@ import frc.robot.commands.DoNothing;
 public class ShoulderSafeMoveFloor extends ConditionalCommand {
 
 	public ShoulderSafeMoveFloor() {
-		super(new ShoulderMoveFloor(), new DoNothing(), new ArmAndRotatorSafetyCheck());
+		super(new ShoulderMoveFloor(), new DoNothing(), new ArmAndRotatorSafetyCheckForShoulderAtFloor());
 	}
 
 }

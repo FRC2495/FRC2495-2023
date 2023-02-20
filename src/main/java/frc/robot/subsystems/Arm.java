@@ -343,6 +343,10 @@ public class Arm extends SubsystemBase implements IArm {
 		return !getLimitSwitchState();
 	}
 
+	public boolean isDangerousForShoulderAtFloor() {
+		return isExtended();
+	}
+
 	// return if stalled
 	public boolean isStalled() {
 		return isReallyStalled;
