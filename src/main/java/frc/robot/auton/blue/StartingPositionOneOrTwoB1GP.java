@@ -22,9 +22,17 @@ public class StartingPositionOneOrTwoB1GP extends SequentialCommandGroup {
             new ArmSafeExtendWithStallDetection();
             // extends arm above cube node
 
-
             new ClawSetOpen();
             // opens claw to put cube onto cube node
+
+            new ClawSetClosed();
+            // closes claw
+
+            new ArmRetractWithStallDetection();
+            // retracts arm
+
+            new ShoulderSafeMoveDown();
+            // brings shoulder into frame perimeter
 
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY);
             // moves backwards to outside the community
