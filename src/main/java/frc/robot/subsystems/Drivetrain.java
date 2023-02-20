@@ -69,7 +69,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	
 	static final double TURN_PROPORTIONAL_GAIN = 0.01; //0.02;
 	static final double TURN_INTEGRAL_GAIN = 0.0;
-	static final double TURN_DERIVATIVE_GAIN = 0.1;
+	static final double TURN_DERIVATIVE_GAIN = 0.0; //0.0001; //0.1;
 	
 	static final int DEGREE_THRESHOLD = 3; //1;
 	
@@ -276,6 +276,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		gyro.reset(); // resets to zero for now
 		//double current = gyro.getAngle();
 		double heading = angle; //+ current; // calculates new heading
+
+		//System.out.println("heading " + heading);
 		
 		turnPidController.setSetpoint(heading); // sets the heading
 		//turnPidController.enable(); // begins running
@@ -306,6 +308,9 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	
 	public void calculateTurnAngleUsingPidController() {	
 		if (isTurning) {
+
+			//System.out.println("gyro angle: " + gyro.getAngle());
+
 			double output = MathUtil.clamp(turnPidController.calculate(gyro.getAngle()), -MAX_TURN_PCT_OUTPUT, MAX_TURN_PCT_OUTPUT);
 			pidWrite(output);
 		}
@@ -811,6 +816,9 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	//@Override
 	public void pidWrite(double output) {
+
+		//System.out.println("position error: " + turnPidController.getPositionError());
+		//System.out.println("raw output: " + output);
 		
 		// calling disable() on controller will force a call to pidWrite with zero output
 		// which we need to handle by not doing anything that could have a side effect 
@@ -822,6 +830,9 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		{
 			output = Math.signum(output) * MIN_TURN_PCT_OUTPUT;
 		}
+
+		//System.out.println("output: " + output);
+
 		masterRight.set(ControlMode.PercentOutput, -output);
 		masterLeft.set(ControlMode.PercentOutput, -output);		
 	}
