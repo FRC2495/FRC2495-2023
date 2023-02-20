@@ -8,7 +8,7 @@ import frc.robot.Robot;
 /**
  *
  */
-public class ShoulderMoveFloor extends CommandBase {
+/*public*/ class ShoulderMoveFloor extends CommandBase {
 
 	public ShoulderMoveFloor() {
 		addRequirements(Robot.shoulder);

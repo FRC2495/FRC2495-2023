@@ -260,7 +260,7 @@ public class OI {
 
 		dpadLeft = gamepad.povLeft();
 		//dpadLeft.whenPressed(new ShooterDecreasePresetRpm());
-		dpadLeft.onTrue(new ShoulderMoveFloor());
+		dpadLeft.onTrue(new ShoulderSafeMoveFloor());
 
 		dpadRight = gamepad.povRight();
 		//dpadRight.whenPressed(new ShooterIncreasePresetRpm());
