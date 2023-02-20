@@ -50,8 +50,8 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	static final int SLOT_0 = 0;
 	
-	static final double REDUCED_PCT_OUTPUT = 0.4;
-	static final double SUPER_REDUCED_PCT_OUTPUT = 0.2;
+	static final double REDUCED_PCT_OUTPUT = 0.6;
+	static final double SUPER_REDUCED_PCT_OUTPUT = 0.3;
 	
 	static final double MOVE_PROPORTIONAL_GAIN = 0.06;
 	static final double MOVE_INTEGRAL_GAIN = 0.0;

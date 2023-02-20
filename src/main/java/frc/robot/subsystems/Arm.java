@@ -45,7 +45,7 @@ public class Arm extends SubsystemBase implements IArm {
 	
 	static final int SLOT_0 = 0;
 	
-	static final double REDUCED_PCT_OUTPUT = 0.5;
+	static final double REDUCED_PCT_OUTPUT = 0.7;
 	
 	static final double MOVE_PROPORTIONAL_GAIN = 0.6; // 1.2 for SRX // TODO switch to 0.6 if required if switching to Talon FX (as encoder resolution is halved)
 	static final double MOVE_INTEGRAL_GAIN = 0.0;
