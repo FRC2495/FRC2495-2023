@@ -28,6 +28,8 @@ public interface IArm {
 
 	public boolean isDangerous();
 
+	public boolean isDangerousForShoulderAtFloor();
+
 	// return if stalled
 	public boolean isStalled();
 
