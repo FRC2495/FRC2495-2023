@@ -16,7 +16,7 @@ public class StartingPositionOneOrTwoB1GP extends SequentialCommandGroup {
     public StartingPositionOneOrTwoB1GP(){
 
         addCommands(
-            new ShoulderMoveUp());
+            new ShoulderMoveUpWithStallDetection());
             // lifts shoulder up out of frame perimeter  
             
             new ArmSafeExtendWithStallDetection();

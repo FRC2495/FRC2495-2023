@@ -13,7 +13,7 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
     public StartingPositionSixB1Cu1Co(){
 
         addCommands(
-            new ShoulderMoveUp());
+            new ShoulderMoveUpWithStallDetection());
             // lifts shoulder up out of frame perimeter        
 
             new ArmSafeExtendWithStallDetection();
