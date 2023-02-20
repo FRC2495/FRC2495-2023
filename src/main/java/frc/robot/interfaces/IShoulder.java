@@ -16,8 +16,12 @@ public interface IShoulder {
 	public boolean tripleCheckMove();
 	
 	public void moveUp();
+
+	public void moveLevelTwo();
 	
 	public void moveMidway();
+
+	public void moveFloor();
 	
 	public void moveDown();
 

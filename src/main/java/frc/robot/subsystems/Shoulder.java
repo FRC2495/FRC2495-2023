@@ -29,10 +29,9 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	public static final int ANGLE_TO_TRAVEL_TICKS = 140000; // TODO set proper value
 	public static final int ANGLE_TO_MIDWAY_TICKS = 75000;
-	//public static final int ANGLE_TO_FLOOR_TICKS = ;
-	//public static final int ANGLE_TO_LEVEL_2_TICKS = ;
-	//public static final int ANGLE_TO_LEVEL_3_TICKS = ;
-	
+	public static final int ANGLE_TO_FLOOR_TICKS = 0; // todo set proper value
+	public static final int ANGLE_TO_LEVEL_2_TICKS = 0; // todo set proper value
+
 	/*
 	!!! VIRTUAL_HOME_OFFSET_TICKS is important for moving up,     !!!
 	!!! if this is changed make sure to check to see if moveUp() works !!!
@@ -250,6 +249,23 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 		stalledCount = 0;
 	}
 
+	public void moveLevelTwo() {	
+
+		//setPIDParameters();
+		System.out.println("Moving to Level Two");
+		
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
+
+		tac = -ANGLE_TO_LEVEL_2_TICKS; // because we cannot reach 0 reliably
+		shoulder.set(ControlMode.Position,tac);
+		
+		isMoving = true;
+		isMovingUp = true;
+		onTargetCount = 0;
+		isReallyStalled = false;
+		stalledCount = 0;
+	}
+
 	public void moveMidway() {
 		
 		//setPIDParameters();
@@ -259,6 +275,24 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 
 		//tac = ANGLE_TO_TRAVEL_TICKS / 2;
 		tac = -ANGLE_TO_MIDWAY_TICKS;
+		shoulder.set(ControlMode.Position,tac);
+		
+		isMoving = true;
+		isMovingUp = true;
+		onTargetCount = 0;
+		isReallyStalled = false;
+		stalledCount = 0;
+		
+	}
+
+	public void moveFloor() {	
+
+		//setPIDParameters();
+		System.out.println("Moving to Floor");
+		
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
+
+		tac = -ANGLE_TO_FLOOR_TICKS; // because we cannot reach 0 reliably
 		shoulder.set(ControlMode.Position,tac);
 		
 		isMoving = true;
