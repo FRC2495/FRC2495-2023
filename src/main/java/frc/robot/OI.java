@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController; 
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 
 import frc.robot.commands.drivetrain.*;
 import frc.robot.commands.shoulder.*;
@@ -100,10 +101,12 @@ public class OI {
 		gamepadRTrigger = gamepad.rightTrigger();
 		//gamepadRT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));
 		//gamepadRTrigger.onTrue(new ShoulderSafeMoveDown());
+		gamepadRTrigger.onTrue(new PrintCommand("Right trigger triggered!"));
 
 		gamepadLTrigger = gamepad.leftTrigger();
 		//gamepadLT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_OFF));
 		//gamepadLT.whileHeld(new FeederFeed());
+		gamepadLTrigger.onTrue(new PrintCommand("Left trigger triggered!"));
 
 		gamepadLYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LY,0.5);
 		gamepadLYp.onTrue(new ArmRetractWithStallDetection());
