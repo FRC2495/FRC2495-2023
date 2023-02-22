@@ -502,7 +502,12 @@ public class Robot extends TimedRobot {
 		updateToSmartDash();
 
 		indicator.updateRainbow();
-		
+
+		// https://www.chiefdelphi.com/t/commandxboxcontroller-lefttrigger-and-righttrigger-not-triggering/427504/31
+		if (!DriverStation.getJoystickIsXbox(Ports.USB.GAMEPAD)) {
+        
+			DriverStation.reportError("XBOX 360 CONTROLLER NOT DETECTED! RESCAN USB DEVICES (F1)", false);
+		}		
 	}
 	
 	public void updateToSmartDash()
