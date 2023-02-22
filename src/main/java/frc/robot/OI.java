@@ -94,9 +94,11 @@ public class OI {
 		gamepadRYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RY,-0.1);
 		gamepadRYn.whileTrue(new ArmGamepadControl());
 
-		gamepadRXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.RX,0.5);
+		gamepadRXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.RX,0.1);
+		gamepadRXp.whileTrue(new RotatorGamepadControl());
 
-		gamepadRXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RX,-0.5);
+		gamepadRXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RX,-0.1);
+		gamepadRXn.whileTrue(new RotatorGamepadControl());
 
 		gamepadRTrigger = gamepad.rightTrigger();
 		//gamepadRT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));
