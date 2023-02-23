@@ -395,7 +395,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			rotator.set(ControlMode.PercentOutput, -gamepad.getRightX()); // adjust sign if desired
+			rotator.set(ControlMode.PercentOutput, -gamepad.getRightX()*0.25); // adjust sign if desired
 		}
 	}
 

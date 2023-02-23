@@ -16,21 +16,21 @@ public class StartingPositionThreeOrFourB1GpAndDock extends SequentialCommandGro
     public StartingPositionThreeOrFourB1GpAndDock(){
 
         addCommands(
-            new ShoulderMoveUpWithStallDetection());
+            new ShoulderMoveUpWithStallDetection(),
             // lifts shoulder up out of frame perimeter  
             
-            new ArmSafeExtendWithStallDetection();
+            new ArmSafeExtendWithStallDetection(),
             // extends arm above cube node
 
-            new ClawSetOpen();
+            new ClawSetOpen(),
             // opens claw to put cube onto cube node
 
-            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_CHARGING_STATION);
+            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_CHARGING_STATION)
             // moves backwards onto charging station
 
             // rubber block mechanic?
             
-  
+        );
     }
 
     

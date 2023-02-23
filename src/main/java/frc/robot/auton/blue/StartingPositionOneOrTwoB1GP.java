@@ -8,7 +8,7 @@ import frc.robot.commands.shoulder.*;
 import frc.robot.commands.arm.*;
 import frc.robot.commands.drivetrain.*;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.auton.AutonConstants;
 
 public class StartingPositionOneOrTwoB1GP extends SequentialCommandGroup {
@@ -16,27 +16,29 @@ public class StartingPositionOneOrTwoB1GP extends SequentialCommandGroup {
     public StartingPositionOneOrTwoB1GP(){
 
         addCommands(
-            new ShoulderMoveUpWithStallDetection());
+            new ShoulderMoveUpWithStallDetection(),
             // lifts shoulder up out of frame perimeter  
             
-            new ArmSafeExtendWithStallDetection();
+            new ArmSafeExtendWithStallDetection(),
             // extends arm above cube node
 
-            new ClawSetOpen();
+            new ClawSetOpen(),
             // opens claw to put cube onto cube node
 
-            new ClawSetClosed();
+            new WaitCommand(1),
+
+            new ClawSetClosed(),
             // closes claw
 
-            new ArmRetractWithStallDetection();
+            new ArmRetractWithStallDetection(),
             // retracts arm
 
-            new ShoulderSafeMoveDownWithStallDetection();
+            new ShoulderSafeMoveDownWithStallDetection(),
             // brings shoulder into frame perimeter
 
-            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY);
+            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY)
             // moves backwards to outside the community
-            
+        ); 
   
     }
 

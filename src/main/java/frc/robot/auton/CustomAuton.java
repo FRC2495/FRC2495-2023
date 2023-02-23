@@ -113,7 +113,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_BOTH_NODE:
-						//TODO
+						addCommands(new StartingPositionTwoB1Cu1Co());
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
 						//TODO
