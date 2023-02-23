@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 //import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
@@ -422,7 +423,15 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 			shoulder.set(ControlMode.PercentOutput, -joystick.getY());
 		}
 	}	
-	
+
+	public void gamepadControl(XboxController gamepad)
+	{
+		if (!isMoving) // if we are already doing a move we don't take over
+		{
+			shoulder.set(ControlMode.PercentOutput, +gamepad.getLeftY()*0.1); // adjust sign if desired
+		}
+	}
+
 	public double getTarget() {
 		return tac;
 	}

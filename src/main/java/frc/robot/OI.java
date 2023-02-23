@@ -103,20 +103,22 @@ public class OI {
 		gamepadRTrigger = gamepad.rightTrigger();
 		//gamepadRT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_ON));
 		//gamepadRTrigger.onTrue(new ShoulderSafeMoveDown());
-		gamepadRTrigger.onTrue(new PrintCommand("Right trigger triggered!"));
+		//gamepadRTrigger.onTrue(new PrintCommand("Right trigger triggered!"));
+		gamepadRTrigger.onTrue(new ArmSafeExtendWithStallDetection());
 
 		gamepadLTrigger = gamepad.leftTrigger();
 		//gamepadLT.whenPressed(new CameraSetLedMode(ICamera.LedMode.FORCE_OFF));
 		//gamepadLT.whileHeld(new FeederFeed());
-		gamepadLTrigger.onTrue(new PrintCommand("Left trigger triggered!"));
+		//gamepadLTrigger.onTrue(new PrintCommand("Left trigger triggered!"));
+		gamepadLTrigger.onTrue(new ArmRetractWithStallDetection());
 
-		gamepadLYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LY,0.5);
-		gamepadLYp.onTrue(new ArmRetractWithStallDetection());
-		//gamepadLYp.whenPressed(new SpinnerColorMatch()); // pulling back towards operator
+		gamepadLYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LY,0.1);
+		//gamepadLYp.onTrue(new ArmRetractWithStallDetection());
+		gamepadLYp.onTrue(new ShoulderGamepadControl());
 
-		gamepadLYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LY,-0.5);
-		gamepadLYn.onTrue(new ArmSafeExtendWithStallDetection());
-		//gamepadLYn.whenPressed(new SpinnerSpinThrice()); // pushing forward
+		gamepadLYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LY,-0.1);
+		//gamepadLYn.onTrue(new ArmSafeExtendWithStallDetection());
+		gamepadLYn.onTrue(new ShoulderGamepadControl());
 
 		gamepadLXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LX,0.5);
 		//gamepadLXp.onTrue(new RotatorSafeRestWithStallDetection());

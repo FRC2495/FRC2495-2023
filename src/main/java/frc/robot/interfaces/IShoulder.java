@@ -1,7 +1,7 @@
 package frc.robot.interfaces;
 
 import edu.wpi.first.wpilibj.Joystick;
-
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 
 public interface IShoulder extends Subsystem {
@@ -55,7 +55,9 @@ public interface IShoulder extends Subsystem {
 		
 	// for debug purpose only
 	public void joystickControl(Joystick joystick);
-	
+
+	public void gamepadControl(XboxController gamepad);
+
 	public double getTarget();
 	
 	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
