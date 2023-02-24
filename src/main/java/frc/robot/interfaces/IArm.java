@@ -15,6 +15,8 @@ public interface IArm extends Subsystem {
 	public boolean tripleCheckMove();
 
 	public void extend();
+
+	public void extendPickup();
 	
 	public void retract();
 	

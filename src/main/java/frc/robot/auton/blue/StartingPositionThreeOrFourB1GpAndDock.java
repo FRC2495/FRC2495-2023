@@ -8,6 +8,7 @@ import frc.robot.commands.shoulder.*;
 import frc.robot.commands.arm.*;
 import frc.robot.commands.drivetrain.*;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 import frc.robot.auton.AutonConstants;
 
@@ -24,6 +25,8 @@ public class StartingPositionThreeOrFourB1GpAndDock extends SequentialCommandGro
 
             new ClawSetOpen(),
             // opens claw to put cube onto cube node
+
+            new WaitCommand(1),
 
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_CHARGING_STATION)
             // moves backwards onto charging station

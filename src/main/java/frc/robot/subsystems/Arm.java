@@ -33,6 +33,7 @@ public class Arm extends SubsystemBase implements IArm {
 	
 	// general settings
 	public static final int LENGTH_OF_TRAVEL_TICKS = 610000; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_PICKUP_TICKS = 550000; // TODO adjust as needed (halve for Talon FX)
 
 	static final double MAX_PCT_OUTPUT = 1.0;
 	static final int WAIT_MS = 1000;
@@ -233,6 +234,23 @@ public class Arm extends SubsystemBase implements IArm {
 		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
 		tac = -LENGTH_OF_TRAVEL_TICKS;
+		
+		arm.set(ControlMode.Position,tac);
+		
+		isMoving = true;
+		isExtending = true;
+		onTargetCount = 0;
+		isReallyStalled = false;
+		stalledCount = 0;
+	}
+
+	public void extendPickup() {
+		
+		//setPIDParameters();
+		System.out.println("Extending to Pickup");
+		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
+
+		tac = -LENGTH_OF_PICKUP_TICKS;
 		
 		arm.set(ControlMode.Position,tac);
 		

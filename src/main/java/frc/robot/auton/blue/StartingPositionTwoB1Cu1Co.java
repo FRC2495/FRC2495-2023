@@ -13,25 +13,26 @@ public class StartingPositionTwoB1Cu1Co extends SequentialCommandGroup {
     public StartingPositionTwoB1Cu1Co(){
 
         addCommands(
-            new ShoulderMoveUpWithStallDetection(),
+
+        new ShoulderMoveUpWithStallDetection(),
             // lifts shoulder up out of frame perimeter        
 
             new ArmSafeExtendWithStallDetection(),
-            // extends arm up
-
-            // uses limelight to adjust claw onto cube node
+            // extends arm up 
 
             new ClawSetOpen(),
             // opens claw to put cube on cube node
 
             new WaitCommand(1),
 
-            new ArmRetractWithStallDetection(),
-
-            new ShoulderSafeMoveFloor(),
+            new ArmSafePickupExtendWithStallDetection(),
+            // retracts arm to pickup encoder
 
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_LEFT_TURNING_BEFORE_CONE_PICKUP),
             // moves from starting position one to turning point before cube pickup
+
+            new ShoulderSafeMoveFloorWithStallDetection(),
+            // lowers shoulder from up to pickup
 
             new DrivetrainTurnAngleUsingPidController(+160),
             // turns from facing cone node to cube pickup
@@ -40,23 +41,34 @@ public class StartingPositionTwoB1Cu1Co extends SequentialCommandGroup {
             // moves from turning point to cube pickup 
 
             new ClawSetClosed(),
-            // closes claw to pick up cube (may be changed to sensor picking up cube automatically)
+            // closes claw to pick up cone (may be changed to sensor picking up cube automatically)
+
+            new WaitCommand(1),
+
+            new ArmRetractWithStallDetection(),
+            // retracts arm to avoid dragging on floor
+        
+            new DrivetrainTurnAngleUsingPidController(-180),
+            // turns from cone pickup towards cone node
+
+            new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_RIGHT_CUBE_PICKUP_TO_CUBE_NODE_SP6),
+            // moves from cone pickup to cone node
+
+            new DrivetrainTurnUsingCameraPidControllerWithStallDetection(),
+            // turns to cone node
 
             new ShoulderMoveUpWithStallDetection(),
-            // brings shoulder up to avoid bumping into anything
-        
-            new DrivetrainTurnAngleUsingPidController(-164),
-            // turns from cube pickup towards cube node/april tag
+            // move shoulder up for claw to face cone node
 
-            // uses limelight to adjust drivetrain to apriltag of cube node
+            new ArmSafeExtendWithStallDetection(),
+            // extend arm to have cone over node
 
-            new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_CONE_PICKUP_TO_CONE_NODE),
-            // moves from cube pickup to cube node
+            new ClawSetOpen(),
+            // opens claw to place cone on cone node
 
-            // uses limelight to adjust claw to apriltag of cube node
-
-            new ClawSetOpen()
-            // opens claw to place cube on cube node
+            new ArmRetractWithStallDetection()
+            // retracts arm to get ready for teleop mod
+            
         );
     }
 

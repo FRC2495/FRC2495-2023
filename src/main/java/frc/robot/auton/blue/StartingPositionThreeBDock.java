@@ -11,11 +11,11 @@ public class StartingPositionThreeBDock extends SequentialCommandGroup {
 
         addCommands(
 
-            new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_CHARGING_STATION));
+            new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_CHARGING_STATION)
+            
+            
+            );
             // moves from cube node to charging station
-
-            // rubber block mechanic
-
   
     }
 
