@@ -150,7 +150,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	PIDController moveUsingCameraPidController; // the PID controller used to turn
 
 	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW = 17.325*0.8;
-	//private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH = 8;
+	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH = 8;
 	
 	public Drivetrain(WPI_TalonSRX masterLeft_in, WPI_TalonSRX masterRight_in, BaseMotorController followerLeft_in, BaseMotorController followerRight_in, ADXRS450_Gyro gyro_in, Robot robot_in, ICamera camera_in) 
 	{
@@ -466,20 +466,20 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 		setNominalAndPeakOutputs(percentOutput); //this has a global impact, so we reset in stop()
 
-		//if(Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
+		if(Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
 			rtac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
 			ltac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
 			
 			rtac = + rtac; // account for fact that front of robot is back from sensor's point of view
 			ltac = - ltac;
-		/*}
+		}
 		else{			//Using the high gear ratio between input gear and output gear
 			rtac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
 			ltac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
 			
 			rtac = - rtac; // account for fact that front of robot is back from sensor's point of view
 			ltac = - ltac;
-		}*/
+		}
 
 		System.out.println("rtac, ltac: " + rtac + ", " + ltac);
 		masterRight.set(ControlMode.Position, rtac);
@@ -595,20 +595,20 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		//masterLeft.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
 		//masterRight.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
 
-		//if(Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
+		if(Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
 			rtac = rdist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
 			ltac = ldist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
 			
 			rtac = - rtac; // account for fact that front of robot is back from sensor's point of view
 			ltac = - ltac;
-		/*}
+		}
 		else{			//Using the high gear ratio between input gear and output gear
 			rtac = rdist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
 			ltac = ldist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
 			
 			rtac = - rtac; // account for fact that front of robot is back from sensor's point of view
 			ltac = - ltac;
-		}*/
+		}
 		System.out.println("rtac, ltac: " + rtac + ", " + ltac);
 		masterRight.set(ControlMode.Position, -rtac);
 		masterLeft.set(ControlMode.Position, -ltac);
