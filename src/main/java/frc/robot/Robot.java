@@ -413,7 +413,7 @@ public class Robot extends TimedRobot {
 
 		LimelightCamera.setLedMode(ICamera.LedMode.PIPELINE);
 
-		SwitchedCamera.setUsbCamera(Ports.UsbCamera.GRASPER_CAMERA);
+		SwitchedCamera.setUsbCamera(Ports.UsbCamera.BOTTOM_CAMERA);
 	
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -444,7 +444,7 @@ public class Robot extends TimedRobot {
 
 		LimelightCamera.setLedMode(ICamera.LedMode.PIPELINE);
 
-		SwitchedCamera.setUsbCamera(Ports.UsbCamera.GRASPER_CAMERA);
+		SwitchedCamera.setUsbCamera(Ports.UsbCamera.TOP_CAMERA);
 
 		//gamepadRumbleUsingCameraCommand.start();
 
@@ -486,7 +486,7 @@ public class Robot extends TimedRobot {
 
 		LimelightCamera.setLedMode(ICamera.LedMode.FORCE_OFF);
 
-		SwitchedCamera.setUsbCamera(Ports.UsbCamera.GRASPER_CAMERA);
+		SwitchedCamera.setUsbCamera(Ports.UsbCamera.BOTTOM_CAMERA);
 	}
 
 	@Override

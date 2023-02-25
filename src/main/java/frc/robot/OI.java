@@ -211,7 +211,7 @@ public class OI {
 		joyRightBtn3 = joyRight.button(ControllerBase.JoystickButtons.BTN3);
 
 		joyRightBtn2 = joyRight.button(ControllerBase.JoystickButtons.BTN2);
-		joyRightBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.SHOOTER_CAMERA));
+		joyRightBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.BOTTOM_CAMERA));
 
 		joyRightBtn1 = joyRight.button(ControllerBase.JoystickButtons.BTN1);
 		joyRightBtn1.onTrue(new GearboxSetGearHigh());
@@ -251,7 +251,7 @@ public class OI {
 		joyLeftBtn3.onTrue(new DrivetrainMoveDistance(50));
 
 		joyLeftBtn2 = joyLeft.button(ControllerBase.JoystickButtons.BTN2);
-		joyLeftBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.GRASPER_CAMERA));
+		joyLeftBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.TOP_CAMERA));
 
 		joyLeftBtn1 = joyLeft.button(ControllerBase.JoystickButtons.BTN1);
 		joyLeftBtn1.onTrue(new GearboxSetGearLow());

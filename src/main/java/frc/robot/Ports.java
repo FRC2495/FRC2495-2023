@@ -182,8 +182,8 @@ public class Ports {
 			public static final int REAR_ELBOWS_CLOSED = 5;*/
 
 			// 2023 robot
-			public static final int GEAR_HIGH = 0;
-			public static final int GEAR_LOW = 1;
+			public static final int GEAR_HIGH = 1;
+			public static final int GEAR_LOW = 0;
 			public static final int CLAW_CLOSED = 3;
 			public static final int CLAW_OPEN = 2; 		}
 
@@ -199,7 +199,7 @@ public class Ports {
 		 */
 		public static class UsbCamera {
 			public static final int PRIMARY_CAMERA = 0;
-			public static final int GRASPER_CAMERA = 1;
-			public static final int SHOOTER_CAMERA = 2;
+			public static final int BOTTOM_CAMERA = 1;
+			public static final int TOP_CAMERA = 2;
 		}
 }
