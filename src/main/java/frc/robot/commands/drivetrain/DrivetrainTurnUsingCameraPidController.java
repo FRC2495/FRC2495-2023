@@ -4,15 +4,15 @@ package frc.robot.commands.drivetrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.Robot;
-//import frc.robot.subsystems.Gearbox;
-//import frc.robot.subsystems.Gearbox.Gear;
+import frc.robot.subsystems.Gearbox;
+import frc.robot.subsystems.Gearbox.Gear;
 
 /**
  *
  */
 public class DrivetrainTurnUsingCameraPidController extends CommandBase {
 
-	//Gear prevSetting;
+	Gear prevSetting;
 
 	public DrivetrainTurnUsingCameraPidController() {
 		addRequirements(Robot.drivetrain);
@@ -22,9 +22,9 @@ public class DrivetrainTurnUsingCameraPidController extends CommandBase {
 	@Override
 	public void initialize() {
 		System.out.println("DrivetrainTurnUsingCameraPidController: initialize");
-		//prevSetting = Robot.gearbox.getGear(); //Saves previous gear setting
+		prevSetting = Robot.gearbox.getGear(); //Saves previous gear setting
 
-		//Robot.gearbox.setGear(Gearbox.Gear.LOW);
+		Robot.gearbox.setGear(Gearbox.Gear.LOW);
 		Robot.drivetrain.turnUsingCameraPidController();
 	}
 
@@ -45,6 +45,6 @@ public class DrivetrainTurnUsingCameraPidController extends CommandBase {
 	public void end(boolean interrupted) {
 		System.out.println("DrivetrainTurnUsingCameraPidController: end");
 		Robot.drivetrain.stop();
-		//Robot.gearbox.setGear(prevSetting);
+		Robot.gearbox.setGear(prevSetting);
 	}
 }

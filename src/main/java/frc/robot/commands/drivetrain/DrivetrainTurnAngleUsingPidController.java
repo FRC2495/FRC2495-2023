@@ -4,8 +4,8 @@ package frc.robot.commands.drivetrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.Robot;
-//import frc.robot.subsystems.Gearbox.Gear;
-//import frc.robot.subsystems.Gearbox;
+import frc.robot.subsystems.Gearbox.Gear;
+import frc.robot.subsystems.Gearbox;
 
 /**
  *
@@ -13,7 +13,7 @@ import frc.robot.Robot;
 public class DrivetrainTurnAngleUsingPidController extends CommandBase {
 
 	private int m_angle;
-	//Gear prevSetting;
+	Gear prevSetting;
 
 	public DrivetrainTurnAngleUsingPidController(int angle) {
 		m_angle = angle;
@@ -25,9 +25,9 @@ public class DrivetrainTurnAngleUsingPidController extends CommandBase {
 	@Override
 	public void initialize() {
 		System.out.println("DrivetrainTurnAngleUsingPidController: initialize");
-		//prevSetting = Robot.gearbox.getGear(); //Saves previous gear setting
+		prevSetting = Robot.gearbox.getGear(); //Saves previous gear setting
 
-		//Robot.gearbox.setGear(Gearbox.Gear.LOW);
+		Robot.gearbox.setGear(Gearbox.Gear.LOW);
 		Robot.drivetrain.turnAngleUsingPidController(m_angle);
 	}
 
@@ -48,6 +48,6 @@ public class DrivetrainTurnAngleUsingPidController extends CommandBase {
 	public void end(boolean interrupted) {
 		System.out.println("DrivetrainTurnAngleUsingPidController: end");
 		Robot.drivetrain.stop();
-		//Robot.gearbox.setGear(prevSetting);
+		Robot.gearbox.setGear(prevSetting);
 	}
 }
