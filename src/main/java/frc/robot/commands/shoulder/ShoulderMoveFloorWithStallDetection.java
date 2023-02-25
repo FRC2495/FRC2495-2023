@@ -37,6 +37,7 @@ import frc.robot.Robot;
 	@Override
 	public void end(boolean interupted) {
 		System.out.println("ShoulderMoveFloorWithStallDetection: end");
+		//Robot.shoulder.stop();
 		Robot.shoulder.stay();
 	}
 }

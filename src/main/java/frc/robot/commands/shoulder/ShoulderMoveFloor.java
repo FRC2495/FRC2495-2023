@@ -37,7 +37,7 @@ import frc.robot.Robot;
 	@Override
 	public void end(boolean interrupted) {
 		System.out.println("ShoulderMoveFloor: end");
-		Robot.shoulder.stop();
-		//Robot.shoulder.stay();
+		//Robot.shoulder.stop();
+		Robot.shoulder.stay();
 	}
 }
