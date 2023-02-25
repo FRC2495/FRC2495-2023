@@ -477,7 +477,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 			rtac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
 			ltac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
 			
-			rtac = - rtac; // account for fact that front of robot is back from sensor's point of view
+			rtac = + rtac; // account for fact that front of robot is back from sensor's point of view
 			ltac = - ltac;
 		}
 
