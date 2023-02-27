@@ -18,7 +18,7 @@ import frc.robot.Robot;
 	@Override
 	public void initialize() {
 		System.out.println("ArmPickupExtend initialize");
-		Robot.arm.extend();
+		Robot.arm.extendPickup();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
