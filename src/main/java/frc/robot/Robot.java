@@ -111,7 +111,7 @@ public class Robot extends TimedRobot {
 	public static ADXRS450_Gyro gyro; // gyro
 	static boolean hasGyroBeenManuallyCalibratedAtLeastOnce = false;
 	
-	//public static Sonar sonar;
+	public static Sonar sonar;
 	
 	public static HMAccelerometer accelerometer;
 
@@ -249,7 +249,7 @@ public class Robot extends TimedRobot {
 
 		// sensors
 			
-		//sonar = new Sonar(Ports.Analog.SONAR); 
+		sonar = new Sonar(Ports.Analog.SONAR); 
 			
 		gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0); // we want to instantiate before we pass to drivetrain	
 
@@ -553,11 +553,12 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("Gyro Manually Calibrated?",hasGyroBeenManuallyCalibratedAtLeastOnce);
 		
 		SmartDashboard.putNumber("AccelZ", accelerometer.getAccelZ());
+		SmartDashboard.putNumber("FilteredAccelZ", accelerometer.getFilteredAccelZ());
 		SmartDashboard.putNumber("Tilt", accelerometer.getTilt());
 		SmartDashboard.putBoolean("isFlat", accelerometer.isFlat());
 		
-		//SmartDashboard.putNumber("Range to target", sonar.getRangeInInches());
-		//SmartDashboard.putNumber("Sonar Voltage", sonar.getVoltage()); 
+		SmartDashboard.putNumber("Range to target", sonar.getRangeInInches());
+		SmartDashboard.putNumber("Sonar Voltage", sonar.getVoltage()); 
 		
 		//SmartDashboard.putBoolean("Grasper IsGrasping?", grasper.isGrasping());
 		//SmartDashboard.putBoolean("Grasper IsReleasing?", grasper.isReleasing());
