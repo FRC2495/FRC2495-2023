@@ -2341,6 +2341,45 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "8,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/FilteredAccelZ",
+              "_title": "SmartDashboard/FilteredAccelZ",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "5,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/FilteredTilt",
+              "_title": "SmartDashboard/FilteredTilt",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "6,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/AccurateTilt",
+              "_title": "SmartDashboard/AccurateTilt",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
@@ -3383,7 +3422,7 @@
   "windowGeometry": {
     "x": 0.0,
     "y": 0.0,
-    "width": 1536.0,
-    "height": 824.0
+    "width": 1550.4000244140625,
+    "height": 838.4000244140625
   }
 }

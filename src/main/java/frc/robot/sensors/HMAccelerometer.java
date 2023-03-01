@@ -11,7 +11,7 @@ import edu.wpi.first.math.filter.LinearFilter;
  */
 public class HMAccelerometer {
 	
-	static final double TILT_THRESH_DEGREES = 15.0;
+	static final double TILT_THRESH_DEGREES = 5.0;
 	
 	private BuiltInAccelerometer accel;
 	private LinearFilter filter;
@@ -64,7 +64,7 @@ public class HMAccelerometer {
 	 * @return true if the support onto which the accelerometer is attached is flat, false otherwise
 	 */
 	public boolean isFlat() {
-		return getTilt() < TILT_THRESH_DEGREES;
+		return getAccurateTilt() < TILT_THRESH_DEGREES;
 	}
 	
 }
