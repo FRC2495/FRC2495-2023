@@ -34,6 +34,7 @@ public class IndicatorTimedScrollRainbow extends WaitCommand {
 	@Override
 	public void initialize() {
 		System.out.println("IndicatorTimedScrollRainbow: initialize");
+		super.initialize();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -47,5 +48,6 @@ public class IndicatorTimedScrollRainbow extends WaitCommand {
 	public void end(boolean interrupted) {
 		System.out.println("IndicatorTimedScrollRainbow: end");
 		//Robot.indicator.stop();
+		super.end(interrupted);
 	}
 }

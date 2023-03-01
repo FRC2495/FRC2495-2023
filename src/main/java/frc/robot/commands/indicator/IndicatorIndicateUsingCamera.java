@@ -15,10 +15,10 @@ public class IndicatorIndicateUsingCamera extends CommandBase {
 	}
 
 	// This instant command can run disabled
-	@Override
+	/*@Override
 	public boolean runsWhenDisabled() {
 		return true;
-	}
+	}*/
 
 	// Called just before this Command runs the first time
 	@Override
