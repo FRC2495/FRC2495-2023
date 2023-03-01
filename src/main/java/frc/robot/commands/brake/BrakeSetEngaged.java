@@ -22,7 +22,7 @@ public class BrakeSetEngaged extends InstantCommand {
 	// Called once when the command executes
 	@Override
 	public void initialize() {
-		System.out.println("BrakeSetClosed: initialize ");
+		System.out.println("BrakeSetEngaged: initialize ");
 		Robot.brake.setPosition(Position.ENGAGED); // Making the piston go down
 	}
 
