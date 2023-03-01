@@ -25,17 +25,20 @@ public class StartingPositionSixB1Cu1Co extends SequentialCommandGroup {
 
             new WaitCommand(1),
 
-            new ArmSafePickupExtendWithStallDetection(),
-            // retracts arm to pickup encoder
+            new ArmRetractWithStallDetection(),
+            // retracts arm to put shoulder into frame perimeter
 
+            new ShoulderSafeMoveDownWithStallDetection(),
+            // lowers shoulder into frame perimeter
+            
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_LEFT_TURNING_BEFORE_CONE_PICKUP),
             // moves from starting position one to turning point before cone pickup
 
-            new ShoulderSafeMoveFloorWithStallDetection(),
-            // lowers shoulder from up to pickup
-
             new DrivetrainTurnAngleUsingPidController(+180),
             // turns from facing cube node to cone pickup
+
+            new ShoulderSafeMoveFloorWithStallDetection(),
+            // lowers shoulder from up to pickup
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_LEFT_TURNING_TO_CUBE_PICKUP_SP2),
             // moves from turning point to cone pickup 

@@ -171,6 +171,8 @@ public class Robot extends TimedRobot {
 
 	public static Claw claw;
 
+	public static Brake brake;
+
 	//public static WinchStopper winchStopperControl; 
 	//public static WinchLock winchLockControl;
 
@@ -319,6 +321,8 @@ public class Robot extends TimedRobot {
 		gearbox = new Gearbox();
 
 		claw = new Claw();
+
+		brake = new Brake();
 
 		//winchStopperControl = new WinchStopper();
 		//winchLockControl = new WinchLock();
@@ -602,6 +606,7 @@ public class Robot extends TimedRobot {
 
 		SmartDashboard.putString("Claw Position", claw.getPosition().toString());
 
+		SmartDashboard.putString("Brake Position", brake.getPosition().toString());
 
 		SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitchState());
 		SmartDashboard.putBoolean("Arm Reverse Limit Switch", arm.getReverseLimitSwitchState());
