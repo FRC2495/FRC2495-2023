@@ -29,12 +29,12 @@ import frc.robot.sensors.HMCamera;
 public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2, PIDOutput3,*/ IDrivetrain {
 
 	// general settings
-	static final double DIAMETER_WHEEL_INCHES = 6; //5; TODO set proper diameter
+	static final double DIAMETER_WHEEL_INCHES = 5; //5; TODO set proper diameter
 	public static final double PERIMETER_WHEEL_INCHES = DIAMETER_WHEEL_INCHES * Math.PI;
 	
 	static final int TIMEOUT_MS = 15000;	
 	
-	public static final double RADIUS_DRIVEVETRAIN_INCHES = 13; // 12.5;
+	public static final double RADIUS_DRIVEVETRAIN_INCHES = 9.5; // 12.5;
 	
 	static final double MAX_PCT_OUTPUT = 1.0;
 		
@@ -46,12 +46,12 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	// NOTE: it might make sense to decrease the PID controller period below 0.02 sec (which is the period used by the main loop)
 	public static final double TURN_USING_CAMERA_PID_CONTROLLER_PERIOD_SECONDS = .01; // 0.01 sec = 10 ms 	
 	
-	public static final double MIN_TURN_USING_CAMERA_PCT_OUTPUT = 0.1; // 0.4;
-	public static final double MAX_TURN_USING_CAMERA_PCT_OUTPUT = 0.3; // 0.7;
+	public static final double MIN_TURN_USING_CAMERA_PCT_OUTPUT = 0.15; // 0.4;
+	public static final double MAX_TURN_USING_CAMERA_PCT_OUTPUT = 0.4; // 0.7;
 	
 	public static final double TURN_USING_CAMERA_PROPORTIONAL_GAIN = 0.001; //0.005; // TODO tune 320 pixels -> 1.6 pct output
 	public static final double TURN_USING_CAMERA_INTEGRAL_GAIN = 0.0;
-	public static final double TURN_USING_CAMERA_DERIVATIVE_GAIN = 0.0; // 0.00001
+	public static final double TURN_USING_CAMERA_DERIVATIVE_GAIN = 0.000001; // 0.00001
 	
 	public static final int PIXEL_THRESHOLD = HMCamera.HORIZONTAL_CAMERA_RES_PIXELS / 40; // about 3/2 degrees - TODO adjust as needed
 	
@@ -64,12 +64,12 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	// NOTE: it might make sense to decrease the PID controller period below 0.02 sec (which is the period used by the main loop)
 	static final double TURN_PID_CONTROLLER_PERIOD_SECONDS = .01; // 0.01 sec = 10 ms 	
 	
-	static final double MIN_TURN_PCT_OUTPUT = 0.1; // 0.3;
-	static final double MAX_TURN_PCT_OUTPUT = 0.3; // 0.6;
+	static final double MIN_TURN_PCT_OUTPUT = 0.2; // 0.3;
+	static final double MAX_TURN_PCT_OUTPUT = 0.4; // 0.6;
 	
-	static final double TURN_PROPORTIONAL_GAIN = 0.005; //0.02;
+	static final double TURN_PROPORTIONAL_GAIN = 0.01; //0.02;
 	static final double TURN_INTEGRAL_GAIN = 0.0;
-	static final double TURN_DERIVATIVE_GAIN = 0.0; // 0.0001
+	static final double TURN_DERIVATIVE_GAIN = 0.0001; // 0.0001
 	
 	static final int DEGREE_THRESHOLD = 3; //1;
 	
@@ -103,7 +103,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	static final int REMOTE_0 = 0;
 	
-	static final double REDUCED_PCT_OUTPUT = 0.4;
+	static final double REDUCED_PCT_OUTPUT = 0.3;
 	static final double HIGH_PCT_OUTPUT = 0.5;
 	
 	static final double MOVE_PROPORTIONAL_GAIN = 0.4;
@@ -149,8 +149,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	PIDController turnUsingCameraPidController; // the PID controller used to turn using camera
 	PIDController moveUsingCameraPidController; // the PID controller used to turn
 
-	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW = 17.325; // 17.325*0.8;
-	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH = 8;
+	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW = 17.325*0.85; // 17.325*0.8;
+	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH = 8*0.8;
 	
 	public Drivetrain(WPI_TalonSRX masterLeft_in, WPI_TalonSRX masterRight_in, BaseMotorController followerLeft_in, BaseMotorController followerRight_in, ADXRS450_Gyro gyro_in, Robot robot_in, ICamera camera_in) 
 	{
