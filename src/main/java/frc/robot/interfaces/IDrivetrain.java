@@ -9,19 +9,25 @@ public interface IDrivetrain extends Subsystem {
 	// this method needs to be paired with checkTurnAngleUsingPidController()
 	public void turnAngleUsingPidController(double angle);
 
+	// turns to previous known heading asynchronously
 	public void turnToPreviousKnownHeadingUsingPidController();
 	
+	// checks if turn if complete
 	public boolean tripleCheckTurnAngleUsingPidController();
 
+	// turns to the target using the camera
 	public void turnUsingCameraPidController();
 
+	// checks if turn is complete
 	public boolean tripleCheckTurnUsingCameraPidController();
 	
 	// this method needs to be paired with checkMoveDistance()
 	public void moveDistance(double dist);
 	
+	// same as moveDistance(), but at high speed
 	public void moveDistanceHighSpeed(double dist);
 	
+	// checks that move is complete
 	public boolean tripleCheckMoveDistance();
 
 	// this method needs to be paired with checkMoveDistance()
@@ -30,6 +36,7 @@ public interface IDrivetrain extends Subsystem {
 	// checks if drivetrain might be stalled
 	public boolean tripleCheckIfStalled();
 	
+	// stops the drivetrain (cuts power)
 	public void stop();
 	
 	public void setPIDParameters();
