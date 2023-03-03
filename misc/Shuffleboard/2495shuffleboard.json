@@ -2935,7 +2935,7 @@
               "Colors/Color when false": "#8B0000FF"
             }
           },
-          "8,3": {
+          "9,3": {
             "size": [
               1,
               1
@@ -2944,6 +2944,19 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Brake Position",
               "_title": "SmartDashboard/Brake Position",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "8,3": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Gearbox Position",
+              "_title": "SmartDashboard/Gearbox Position",
               "_glyph": 148,
               "_showGlyph": false
             }
