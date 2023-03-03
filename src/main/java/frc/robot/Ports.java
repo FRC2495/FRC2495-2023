@@ -186,8 +186,8 @@ public class Ports {
 			public static final int GEAR_LOW = 0;
 			public static final int CLAW_CLOSED = 3;
 			public static final int CLAW_OPEN = 2;
-			public static final int BRAKE_ENGAGED = 4;
-			public static final int BRAKE_RELEASED = 5;
+			public static final int BRAKE_ENGAGED = 5;
+			public static final int BRAKE_RELEASED = 4;
 		 		}
 
 		/**
