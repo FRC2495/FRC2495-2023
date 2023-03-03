@@ -10,6 +10,7 @@ package frc.robot.auton;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 import frc.robot.Robot;
+import frc.robot.commands.brake.BrakeSetReleased;
 //import frc.robot.commands.*;
 import frc.robot.commands.gearbox.*;
 
@@ -49,6 +50,8 @@ public class CustomAuton extends SequentialCommandGroup {
 		cameraOption = cameraOption_in;
 		sonarOption = sonarOption_in;
 		autonOption = autonOption_in;
+
+		addCommands(new BrakeSetReleased()); // just in case
 
 		addCommands(new GearboxSetGearLow()); // forces low gear just in case
 
