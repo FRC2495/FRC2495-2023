@@ -131,7 +131,7 @@ public class CustomAuton extends SequentialCommandGroup {
 				}
 				break;
 
-				case Robot.START_POSITION_4:
+			case Robot.START_POSITION_4:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
 						//TODO
@@ -157,7 +157,7 @@ public class CustomAuton extends SequentialCommandGroup {
 				}
 				break;
 
-				case Robot.START_POSITION_5:
+			case Robot.START_POSITION_5:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
 						//TODO
@@ -183,7 +183,7 @@ public class CustomAuton extends SequentialCommandGroup {
 				}
 				break;
 
-				case Robot.START_POSITION_6:
+			case Robot.START_POSITION_6:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
 						//TODO
