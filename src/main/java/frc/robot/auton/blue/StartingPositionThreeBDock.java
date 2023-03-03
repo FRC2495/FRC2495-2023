@@ -10,16 +10,12 @@ public class StartingPositionThreeBDock extends SequentialCommandGroup {
     public StartingPositionThreeBDock(){
 
         addCommands(
-
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_CUBE_NODE_TO_CHARGING_STATION)
+            // moves from cube node to charging station    
             
-            
-            );
-            // moves from cube node to charging station
-  
+        );
+        
     }
 
-    
-   
 
 }
