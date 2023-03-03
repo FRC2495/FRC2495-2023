@@ -8,6 +8,8 @@ public interface IDrivetrain extends Subsystem {
 	
 	// this method needs to be paired with checkTurnAngleUsingPidController()
 	public void turnAngleUsingPidController(double angle);
+
+	public void turnToPreviousKnownHeadingUsingPidController();
 	
 	public boolean tripleCheckTurnAngleUsingPidController();
 
