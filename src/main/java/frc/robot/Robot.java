@@ -94,8 +94,8 @@ public class Robot extends TimedRobot {
 	private String sonarOption;
 	private SendableChooser<String> sonarOptionChooser = new SendableChooser<>();
 	
-	public static final String GRASPER_OPTION_RELEASE = "Release";
-	public static final String GRASPER_OPTION_DONT_RELEASE = "Don't Release"; 
+	public static final String CLAW_OPTION_RELEASE = "Release";
+	public static final String CLAW_OPTION_DONT_RELEASE = "Don't Release"; 
 	private String releaseSelected;
 	private SendableChooser<String> releaseChooser = new SendableChooser<>();
 
@@ -240,8 +240,8 @@ public class Robot extends TimedRobot {
 		sonarOptionChooser.addOption("Never", SONAR_OPTION_USE_NEVER);
 		SmartDashboard.putData("Sonar options", sonarOptionChooser);
 		
-		releaseChooser.setDefaultOption("Release", GRASPER_OPTION_RELEASE);
-		releaseChooser.addOption("Don't release", GRASPER_OPTION_DONT_RELEASE);
+		releaseChooser.setDefaultOption("Release", CLAW_OPTION_RELEASE);
+		releaseChooser.addOption("Don't release", CLAW_OPTION_DONT_RELEASE);
 		SmartDashboard.putData("Release options", releaseChooser);
 
 		autonOptionChooser.setDefaultOption("Reload", AUTON_OPTION_RELOAD);
