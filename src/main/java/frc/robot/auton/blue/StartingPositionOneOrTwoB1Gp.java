@@ -10,9 +10,9 @@ import frc.robot.auton.AutonConstants;
 
 // GP = game piece
 // Can be used to place one cube or one cone and either starting position one or two
-public class StartingPositionOneOrTwoB1GPx extends SequentialCommandGroup {
+public class StartingPositionOneOrTwoB1Gp extends SequentialCommandGroup {
 
-    public StartingPositionOneOrTwoB1GPx(){
+    public StartingPositionOneOrTwoB1Gp(){
 
         addCommands(
             new ShoulderMoveUpWithStallDetection(),
