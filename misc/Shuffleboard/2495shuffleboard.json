@@ -1720,19 +1720,6 @@
               "_showGlyph": false
             }
           },
-          "0,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Start positions",
-              "_title": "SmartDashboard/Start positions",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "6,0": {
             "size": [
               1,
@@ -1878,19 +1865,6 @@
               "_showGlyph": false
             }
           },
-          "2,0": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Game piece choices",
-              "_title": "SmartDashboard/Game piece choices",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "2,3": {
             "size": [
               1,
@@ -1926,6 +1900,32 @@
               "_type": "ComboBox Chooser",
               "_source0": "network_table:///SmartDashboard/Auto choices",
               "_title": "SmartDashboard/Auto choices",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "2,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Game piece choices",
+              "_title": "SmartDashboard/Game piece choices",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Start positions",
+              "_title": "SmartDashboard/Start positions",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -2685,19 +2685,6 @@
               "_showGlyph": false
             }
           },
-          "2,0": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Game piece choices",
-              "_title": "SmartDashboard/Game piece choices",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "2,2": {
             "size": [
               1,
@@ -2707,19 +2694,6 @@
               "_type": "ComboBox Chooser",
               "_source0": "network_table:///SmartDashboard/Sonar options",
               "_title": "SmartDashboard/Sonar options",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Start positions",
-              "_title": "SmartDashboard/Start positions",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -2746,6 +2720,32 @@
               "_type": "ComboBox Chooser",
               "_source0": "network_table:///SmartDashboard/Auto choices",
               "_title": "SmartDashboard/Auto choices",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "2,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Game piece choices",
+              "_title": "SmartDashboard/Game piece choices",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Start positions",
+              "_title": "SmartDashboard/Start positions",
               "_glyph": 148,
               "_showGlyph": false
             }
