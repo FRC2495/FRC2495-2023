@@ -127,6 +127,7 @@ public class Ports {
 			public static final int ARM_FOLLOWER = 11;
 			public static final int ROTATOR_MASTER = 12;
 			public static final int ROTATOR_FOLLOWER = 13;
+			public static final int JACK_MASTER = 14;
 		}
 		
 		/**

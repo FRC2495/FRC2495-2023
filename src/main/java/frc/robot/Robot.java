@@ -142,6 +142,10 @@ public class Robot extends TimedRobot {
 
 	//BaseMotorController feederMotor;
 
+	public static IJack jack;
+
+	WPI_TalonSRX jack_master;
+
 	public static IShoulder shoulder;
 	
 	WPI_TalonSRX shoulder_master;
@@ -279,6 +283,8 @@ public class Robot extends TimedRobot {
 		//rearLeft  = new CANSparkMax(Ports.CAN.LEFT_REAR, MotorType.kBrushless);
 		//rearRight = new CANSparkMax(Ports.CAN.RIGHT_REAR, MotorType.kBrushless);
 
+		jack_master = new WPI_TalonSRX(Ports.CAN.JACK_MASTER);
+
 		shoulder_master = new WPI_TalonSRX(Ports.CAN.SHOULDER_MASTER);
 		//shoulder_follower = new WPI_TalonSRX(Ports.CAN.SHOULDER_FOLLOWER);
 
@@ -286,6 +292,8 @@ public class Robot extends TimedRobot {
 
 		drivetrain = new Drivetrain(frontLeft, frontRight, rearLeft, rearRight, gyro, this, camera);	
 		//drivetrain = new SparkMaxDrivetrain(frontLeft, frontRight, rearLeft, rearRight, gyro, this, camera);	
+
+		jack = new Jack(jack_master/*, jack_follower*/, this);
 		
 		shoulder = new Shoulder(shoulder_master/*, shoulder_follower*/, this);
 		
@@ -541,7 +549,18 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Vertical Offset to Target", camera.getVerticalOffsetToCompositeTarget());
 		SmartDashboard.putNumber("Filtered Vertical Offset to Target", camera.getFilteredVerticalOffsetToCompositeTarget());
 		
-		
+		SmartDashboard.putBoolean("Jack Limit Switch", jack.getLimitSwitchState());
+		SmartDashboard.putBoolean("Jack Forward Limit Switch", jack.getForwardLimitSwitchState());
+		SmartDashboard.putNumber("Jack Position", jack.getPosition());
+		SmartDashboard.putNumber("Jack Enc Position", jack.getEncoderPosition());
+		SmartDashboard.putBoolean("Jack IsMoving?", jack.isMoving());
+		SmartDashboard.putNumber("Jack Target", jack.getTarget());
+		SmartDashboard.putBoolean("Jack isStalled?", jack.isStalled());
+		SmartDashboard.putBoolean("Jack isDown", jack.isDown());
+		SmartDashboard.putBoolean("Jack isMidway", jack.isMidway());
+		SmartDashboard.putBoolean("Jack isUp", jack.isUp());
+		SmartDashboard.putBoolean("Jack isDangerous", jack.isDangerous());
+
 		SmartDashboard.putBoolean("Shoulder Limit Switch", shoulder.getLimitSwitchState());
 		SmartDashboard.putBoolean("Shoulder Forward Limit Switch", shoulder.getForwardLimitSwitchState());
 		SmartDashboard.putNumber("Shoulder Position", shoulder.getPosition());
