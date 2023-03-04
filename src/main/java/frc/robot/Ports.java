@@ -10,8 +10,9 @@ public class Ports {
 		// between the competition and practice robots.
 		//
 		// The radio is automatically set to 10.24.95.1
-		// The Rio is set to static 10.24.95.2
-		// The Limelight is set to 10.24.95.11 but note that pressing the reset button will revert to DHCP.
+		// The Rio is set to static 10.24.95.2, mask 255.255.255.0
+		// The Limelight is set to 10.24.95.11, mask 255.255.255.0, gateway 10.24.95.1
+		// but note that pressing the reset button will revert to DHCP.
 		// The Raspberry Pi running FRCVision is set to static 10.24.95.12, mask 255.255.255.0, gateway 10.24.95.1, DNS blank
 		//
 		// If a device cannot be accessed (e.g. because its address was somehow obtained via DHCP and mDNS is not working),
