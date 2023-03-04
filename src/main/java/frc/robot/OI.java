@@ -123,11 +123,13 @@ public class OI {
 		//gamepadLYn.onTrue(new ArmSafeExtendWithStallDetection());
 		gamepadLYn.onTrue(new ShoulderGamepadControl());
 
-		gamepadLXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LX,0.5);
+		gamepadLXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LX,0.1);
 		//gamepadLXp.onTrue(new RotatorSafeRestWithStallDetection());
+		gamepadLXp.onTrue(new JackGamepadControl());
 
-		gamepadLXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LX,-0.5);
+		gamepadLXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LX,-0.1);
 		//gamepadLXn.onTrue(new RotatorSafeFlipWithStallDetection());
+		gamepadLXn.onTrue(new JackGamepadControl());
 		
 		gamepadRStick = gamepad.rightStick();
 		//gamepadRStick.onTrue(new RotatorSafeFlipWithStallDetection()); // temp

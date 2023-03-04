@@ -412,7 +412,7 @@ public class Jack extends SubsystemBase implements IJack {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			jack.set(ControlMode.PercentOutput, +gamepad.getLeftY()*0.1); // adjust sign if desired
+			jack.set(ControlMode.PercentOutput, +gamepad.getLeftX()*0.1); // adjust sign if desired
 		}
 	}
 
