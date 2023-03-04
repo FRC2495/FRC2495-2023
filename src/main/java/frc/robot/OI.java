@@ -91,16 +91,16 @@ public class OI {
 	public OI() {
 		gamepad = new CommandXboxController(Ports.USB.GAMEPAD);
 
-		gamepadRYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.RY,0.1);
+		gamepadRYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.RY,0.2);
 		gamepadRYp.whileTrue(new ArmGamepadControl());
 
-		gamepadRYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RY,-0.1);
+		gamepadRYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RY,-0.2);
 		gamepadRYn.whileTrue(new ArmGamepadControl());
 
-		gamepadRXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.RX,0.1);
+		gamepadRXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.RX,0.2);
 		gamepadRXp.whileTrue(new RotatorGamepadControl());
 
-		gamepadRXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RX,-0.1);
+		gamepadRXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.RX,-0.2);
 		gamepadRXn.whileTrue(new RotatorGamepadControl());
 
 		gamepadRTrigger = gamepad.rightTrigger();
@@ -115,19 +115,19 @@ public class OI {
 		//gamepadLTrigger.onTrue(new PrintCommand("Left trigger triggered!"));
 		gamepadLTrigger.onTrue(new ArmRetractWithStallDetection());
 
-		gamepadLYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LY,0.1);
+		gamepadLYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LY,0.2);
 		//gamepadLYp.onTrue(new ArmRetractWithStallDetection());
 		gamepadLYp.onTrue(new ShoulderGamepadControl());
 
-		gamepadLYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LY,-0.1);
+		gamepadLYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LY,-0.2);
 		//gamepadLYn.onTrue(new ArmSafeExtendWithStallDetection());
 		gamepadLYn.onTrue(new ShoulderGamepadControl());
 
-		gamepadLXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LX,0.1);
+		gamepadLXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LX,0.2);
 		//gamepadLXp.onTrue(new RotatorSafeRestWithStallDetection());
 		gamepadLXp.onTrue(new JackGamepadControl());
 
-		gamepadLXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LX,-0.1);
+		gamepadLXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LX,-0.2);
 		//gamepadLXn.onTrue(new RotatorSafeFlipWithStallDetection());
 		gamepadLXn.onTrue(new JackGamepadControl());
 		

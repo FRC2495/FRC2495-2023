@@ -3271,7 +3271,7 @@
       }
     },
     {
-      "title": "DIAGShooter",
+      "title": "DIAGJack",
       "autoPopulate": false,
       "autoPopulatePrefix": "",
       "widgetPane": {
@@ -3281,56 +3281,43 @@
         "vgap": 16.0,
         "titleType": 0,
         "tiles": {
-          "3,0": {
+          "4,1": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Shooter Enc Velocity",
-              "_title": "SmartDashboard/Shooter Enc Velocity",
+              "_source0": "network_table:///SmartDashboard/Jack Enc Position",
+              "_title": "SmartDashboard/Jack Enc Position",
               "_glyph": 148,
               "_showGlyph": false
             }
           },
-          "1,0": {
+          "6,2": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Shooter IsShooting?",
-              "_title": "SmartDashboard/Shooter IsShooting?",
+              "_source0": "network_table:///SmartDashboard/Jack Forward Limit Switch",
+              "_title": "SmartDashboard/Jack Forward Limit Switch",
               "_glyph": 148,
               "_showGlyph": false,
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
           },
-          "4,0": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Shooter Rpm",
-              "_title": "SmartDashboard/Shooter Rpm",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,0": {
+          "3,2": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Feeder IsFeeding?",
-              "_title": "SmartDashboard/Feeder IsFeeding?",
+              "_source0": "network_table:///SmartDashboard/Jack IsMoving?",
+              "_title": "SmartDashboard/Jack IsMoving?",
               "_glyph": 148,
               "_showGlyph": false,
               "Colors/Color when true": "#7CFC00FF",
@@ -3343,37 +3330,84 @@
               1
             ],
             "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Shooter Preset Rpm",
-              "_title": "SmartDashboard/Shooter Preset Rpm",
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Jack Limit Switch",
+              "_title": "SmartDashboard/Jack Limit Switch",
               "_glyph": 148,
-              "_showGlyph": false
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
             }
           },
-          "7,1": {
+          "3,1": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Vertical Offset to Target",
-              "_title": "SmartDashboard/Vertical Offset to Target",
+              "_source0": "network_table:///SmartDashboard/Jack Position",
+              "_title": "SmartDashboard/Jack Position",
               "_glyph": 148,
               "_showGlyph": false
             }
           },
-          "8,1": {
+          "4,2": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Filtered Vertical Offset to Target",
-              "_title": "SmartDashboard/Filtered Vertical Offset to Target",
+              "_source0": "network_table:///SmartDashboard/Jack Target",
+              "_title": "SmartDashboard/Jack Target",
               "_glyph": 148,
               "_showGlyph": false
+            }
+          },
+          "4,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Jack isDangerous",
+              "_title": "SmartDashboard/Jack isDangerous",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
+            }
+          },
+          "5,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Jack isDown",
+              "_title": "SmartDashboard/Jack isDown",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
+            }
+          },
+          "5,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Jack isMidway",
+              "_title": "SmartDashboard/Jack isMidway",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
             }
           },
           "7,0": {
@@ -3382,37 +3416,28 @@
               1
             ],
             "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Distance to Target Using Horizontal FOV",
-              "_title": "SmartDashboard/Distance to Target Using Horizontal FOV",
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Jack isStalled?",
+              "_title": "SmartDashboard/Jack isStalled?",
               "_glyph": 148,
-              "_showGlyph": false
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
             }
           },
-          "8,0": {
+          "5,0": {
             "size": [
               1,
               1
             ],
             "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Filtered Distance to Target",
-              "_title": "SmartDashboard/Filtered Distance to Target",
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Jack isUp",
+              "_title": "SmartDashboard/Jack isUp",
               "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "9,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Shooter Magic Rpm",
-              "_title": "SmartDashboard/Shooter Magic Rpm",
-              "_glyph": 148,
-              "_showGlyph": false
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
             }
           }
         }
