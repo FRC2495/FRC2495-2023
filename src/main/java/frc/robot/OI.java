@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 
 import frc.robot.commands.drivetrain.*;
+import frc.robot.commands.jack.*;
 import frc.robot.commands.shoulder.*;
 import frc.robot.commands.gearbox.*;
 import frc.robot.commands.claw.*;
@@ -239,7 +240,8 @@ public class OI {
 
 		joyLeftBtn8 = joyLeft.button(ControllerBase.JoystickButtons.BTN8);
 		//joyLeftBtn8.whileHeld(new GrasperJoystickControl());
-		joyLeftBtn8.whileTrue(new ShoulderJoystickControl());
+		//joyLeftBtn8.whileTrue(new ShoulderJoystickControl());
+		joyLeftBtn8.whileTrue(new JackJoystickControl());
 
 		joyLeftBtn7 = joyLeft.button(ControllerBase.JoystickButtons.BTN7);
 		joyLeftBtn7.onTrue(new DrivetrainStop());
