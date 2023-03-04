@@ -49,11 +49,21 @@ public class StartingPositionOneOrTwoB1Gp extends SequentialCommandGroup {
             DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN),
             // moves robot forward to before second turning point
 
-            */
-            
-            
 
-            new DrivetrainTurnAngleUsingPidController(-230)
+
+
+
+            // change
+
+
+            new DrivetrainTurnAngleUsingPidController(+90), //-230
+
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(+90+25)
+
+            */
+        
+
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-25)
             
 
             //new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY)
