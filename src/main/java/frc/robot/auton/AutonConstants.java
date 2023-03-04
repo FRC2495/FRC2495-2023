@@ -2,11 +2,21 @@ package frc.robot.auton;
 
 public class AutonConstants {
 
-    public static final double DISTANCE_FROM_CONE_NODE_TO_BEFORE_FIRST_TURN = 37;
+    // Fixed auton distances
+    public static final double DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN = 37;
     public static final double DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN = 29;
+    public static final double DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_ARE_BEFORE_CONE_PICKUP = 120;
+    public static final double DISTANCE_FROM_AREA_BEFORE_CONE_PICKUP_TO_CONE_PICKUP = 24.5;
+    public static final double DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_CONE_PICKUP = 144.5; // the total of previous two constants
+    public static final double DISTANCE_FROM_CONE_PICKUP_TO_AREA_BEFORE_THIRD_TURN = 134.5;
+    public static final double DISTANCE_FROM_AREA_AFTER_THIRD_TURN_TO_AREA_BEFORE_FOURTH_TURN = 21;
+    public static final double DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE = 8;
+
+    // Fixed auton angles
+    public static final int ANGLE_BETWEEN_E_AND_E = 0;
 
 
-    // Old auton constants 2023
+    // Old auton constants 
     public static final double DISTANCE_FROM_CUBE_NODE_TO_LEFT_TURNING_BEFORE_CONE_PICKUP = 157.67; // todo adjust as needed ; for P1B
     public static final double DISTANCE_FROM_LEFT_TURNING_TO_CONE_PICKUP = 80; // todo adjust as needed ; for Path 1B
     public static final double DISTANCE_FROM_CONE_PICKUP_TO_CONE_NODE = 248.14; // todo adjust as needed ; for Path 1B , could be  248.14 - 256
