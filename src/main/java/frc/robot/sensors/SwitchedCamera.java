@@ -14,7 +14,9 @@ public class SwitchedCamera {
 
 	public synchronized static void setUsbCamera(int camera) {
 
-		// assumes you used "/PiSwitch" as the NT key on the Pi
+		// assumes you used "/PiSwitch" as the NT key on the Pi for the switched camera.
+		// For reference, 2495 SuffleBoard assumes that names of physical cameras are "rPi Camera 0", "rPi Camera 1" and "rPi Camera 2",
+		// and name of switched camera is "Switched Camera 0"
 		NetworkTableEntry cameraSelect = NetworkTableInstance.getDefault().getEntry("/PiSwitch");
 
 		if (cameraSelect != null) {
