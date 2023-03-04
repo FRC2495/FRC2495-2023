@@ -1694,19 +1694,6 @@
         "vgap": 16.0,
         "titleType": 0,
         "tiles": {
-          "0,0": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Auto choices",
-              "_title": "SmartDashboard/Auto choices",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,2": {
             "size": [
               1,
@@ -1926,6 +1913,19 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Auton option",
               "_title": "SmartDashboard/Auton option",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auto choices",
+              "_title": "SmartDashboard/Auto choices",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -2672,19 +2672,6 @@
               "_showGlyph": false
             }
           },
-          "0,0": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Auto choices",
-              "_title": "SmartDashboard/Auto choices",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,2": {
             "size": [
               1,
@@ -2746,6 +2733,19 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Game piece",
               "_title": "SmartDashboard/Game piece",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auto choices",
+              "_title": "SmartDashboard/Auto choices",
               "_glyph": 148,
               "_showGlyph": false
             }

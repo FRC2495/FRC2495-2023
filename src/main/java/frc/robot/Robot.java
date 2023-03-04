@@ -585,11 +585,12 @@ public class Robot extends TimedRobot {
 		//SmartDashboard.putNumber("Shooter Magic Rpm", magic_rpm);
 		
 		SmartDashboard.putString("Auton selected", autonChooser.getSelected());	
+		SmartDashboard.putString("Game piece", gamePieceChooser.getSelected());
 		SmartDashboard.putString("Start position", startPositionChooser.getSelected());
 		SmartDashboard.putString("Main target", mainTargetChooser.getSelected());
 		SmartDashboard.putString("Camera option", cameraOptionChooser.getSelected());
 		SmartDashboard.putString("Sonar option", sonarOptionChooser.getSelected());
-		//SmartDashboard.putString("Release chosen", releaseChooser.getSelected());
+		SmartDashboard.putString("Release chosen", releaseChooser.getSelected());
 		SmartDashboard.putString("Auton option", autonOptionChooser.getSelected());
 
 		/*SmartDashboard.putNumber("Color Sensor Red", colorSensor.getRed());

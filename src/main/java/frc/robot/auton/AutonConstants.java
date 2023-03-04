@@ -2,6 +2,11 @@ package frc.robot.auton;
 
 public class AutonConstants {
 
+    public static final double DISTANCE_FROM_CONE_NODE_TO_BEFORE_FIRST_TURN = 37;
+    public static final double DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN = 29;
+
+
+    // Old auton constants 2023
     public static final double DISTANCE_FROM_CUBE_NODE_TO_LEFT_TURNING_BEFORE_CONE_PICKUP = 157.67; // todo adjust as needed ; for P1B
     public static final double DISTANCE_FROM_LEFT_TURNING_TO_CONE_PICKUP = 80; // todo adjust as needed ; for Path 1B
     public static final double DISTANCE_FROM_CONE_PICKUP_TO_CONE_NODE = 248.14; // todo adjust as needed ; for Path 1B , could be  248.14 - 256

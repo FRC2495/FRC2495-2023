@@ -15,6 +15,8 @@ public class StartingPositionOneOrTwoB1Gp extends SequentialCommandGroup {
     public StartingPositionOneOrTwoB1Gp(){
 
         addCommands(
+            
+         /* 
             new ShoulderMoveUpWithStallDetection(),
             // lifts shoulder up out of frame perimeter  
             
@@ -34,9 +36,28 @@ public class StartingPositionOneOrTwoB1Gp extends SequentialCommandGroup {
 
             new ShoulderSafeMoveDownWithStallDetection(),
             // brings shoulder into frame perimeter
+            */
 
-            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY)
-            // moves backwards to outside the community
+            // new auton path 
+
+            /*new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CONE_NODE_TO_BEFORE_FIRST_TURN),
+            // drives robot backward from cone node to area before the first turn
+
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-20),
+            // turns robot before moving forward
+
+            DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN),
+            // moves robot forward to before second turning point
+
+            */
+            
+            
+
+            new DrivetrainTurnAngleUsingPidController(-230)
+            
+
+            //new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY)
+            // moves backwards to outside the community*/
         ); 
   
     }
