@@ -8,15 +8,15 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 
   
-public class DropConeOnTopNode extends SequentialCommandGroup{
+public class DropConeOnLowNode extends SequentialCommandGroup{
 
-    public DropConeOnTopNode() {
+    public DropConeOnLowNode() {
 
         addCommands(
             
-            new ShoulderMoveUpWithStallDetection(),
+            new ShoulderMoveLevelTwoWithStallDetection(),
 
-            new ArmSafeExtendWithStallDetection(),
+            new ArmSafeExtendLevelTwoWithStallDetection(),
 
             new ClawSetOpen(),
 

@@ -20,6 +20,9 @@ public interface IArm extends Subsystem {
 
 	// extends the arm asynchronously
 	public void extendPickup();
+
+	// extends the arm asynchronously
+	public void extendLevelTwo();
 	
 	// retracts the arm asynchronously
 	public void retract();

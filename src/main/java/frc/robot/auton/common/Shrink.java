@@ -8,19 +8,19 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 
   
-public class DropConeOnTopNode extends SequentialCommandGroup{
+public class Shrink extends SequentialCommandGroup{
 
-    public DropConeOnTopNode() {
+    public Shrink() {
 
         addCommands(
+
+            new ClawSetClosed(),
+
+            new WaitCommand(1),
             
-            new ShoulderMoveUpWithStallDetection(),
+            new ArmRetractWithStallDetection(),
 
-            new ArmSafeExtendWithStallDetection(),
-
-            new ClawSetOpen(),
-
-            new WaitCommand(1)
+            new ShoulderSafeMoveDownWithStallDetection()
 
         ); 
     }

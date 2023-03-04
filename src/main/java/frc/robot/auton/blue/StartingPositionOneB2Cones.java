@@ -8,6 +8,8 @@ import frc.robot.commands.drivetrain.*;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.auton.AutonConstants;
+import frc.robot.auton.common.DropConeOnLowNodeAndShrink;
+import frc.robot.auton.common.DropConeOnTopNodeAndShrink;
 
 // GP = game piece
 // Can be used to place one cube or one cone and either starting position one or two
@@ -20,25 +22,8 @@ public class StartingPositionOneB2Cones extends SequentialCommandGroup {
             new BrakeSetReleased(),
             // makes sure that the brake is not on the floor before match begins
 
-            new ShoulderMoveUpWithStallDetection(),
-            // lifts shoulder up out of frame perimeter
-
-            new ArmSafeExtendWithStallDetection(),
-            // extends arm above cube node
-
-            new ClawSetOpen(),
-            // opens claw to put cube onto cube node
-
-            new WaitCommand(1),
-
-            new ClawSetClosed(),
-            // closes claw
-
-            new ArmRetractWithStallDetection(),
-            // retracts arm
-
-            new ShoulderSafeMoveDownWithStallDetection(),
-            // brings shoulder into frame perimeter
+            new DropConeOnTopNodeAndShrink(),
+            // drops cone on top node and brings arm into frame perimeter
 
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY), // todo change distance if needed
             // drives backward to outside community
@@ -93,7 +78,15 @@ public class StartingPositionOneB2Cones extends SequentialCommandGroup {
             new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-AutonConstants.ANGLE_BETWEEN_AREA_BEFORE_FOURTH_TURN_AND_CONE_NODE),
             // turns to cone node
 
-            new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE)
+            new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE),
+
+            new DropConeOnLowNodeAndShrink(),
+
+            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY),
+            // drives back to prepare for teleop
+
+            new DrivetrainTurnAngleUsingPidController(+AutonConstants.ANGLE_BETWEEN_CONE_NODE_AND_CONE_PICKUP)
+            // turns 180 to prepare for teleop
 
 
         ); 

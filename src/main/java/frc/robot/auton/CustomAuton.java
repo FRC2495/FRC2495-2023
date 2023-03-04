@@ -10,7 +10,7 @@ package frc.robot.auton;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 import frc.robot.Robot;
-import frc.robot.auton.blue.StartingPositionOneB1Co;
+import frc.robot.auton.blue.StartingPositionOneB1Cone;
 import frc.robot.auton.blue.StartingPositionSixB1Cu1Co;
 import frc.robot.auton.blue.StartingPositionThreeBDock;
 import frc.robot.auton.blue.StartingPositionThreeOrFourB1GpAndDock;
@@ -59,7 +59,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						addCommands(new StartingPositionOneB1Co());
+						addCommands(new StartingPositionOneB1Cone());
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
 						//TODO
@@ -88,7 +88,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
-						addCommands(new StartingPositionOneB1Co());
+						addCommands(new StartingPositionOneB1Cone());
 						break;
 					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
 						//TODO
@@ -166,7 +166,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
-						addCommands(new StartingPositionOneB1Co());
+						addCommands(new StartingPositionOneB1Cone());
 						break;
 					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
 						//TODO
@@ -189,7 +189,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						addCommands(new StartingPositionOneB1Co());
+						addCommands(new StartingPositionOneB1Cone());
 						break;
 					case Robot.MAIN_TARGET_CUBE_NODE:
 						//TODO
