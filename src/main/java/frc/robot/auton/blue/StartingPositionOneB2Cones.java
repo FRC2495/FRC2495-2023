@@ -11,9 +11,9 @@ import frc.robot.auton.AutonConstants;
 
 // GP = game piece
 // Can be used to place one cube or one cone and either starting position one or two
-public class StartingPositionOneB2Co extends SequentialCommandGroup {
+public class StartingPositionOneB2Cones extends SequentialCommandGroup {
 
-    public StartingPositionOneB2Co(){
+    public StartingPositionOneB2Cones(){
 
         addCommands(
             
@@ -46,16 +46,16 @@ public class StartingPositionOneB2Co extends SequentialCommandGroup {
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN),
             // drives backward from cone node to area before the first turn
 
-            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-20),
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-AutonConstants.ANGLE_BETWEEN_CONE_NODE_AND_AREA_AFTER_FIRST_TURN),
             // turns before moving forward
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN),
             // moves forward to before second turning point
 
-            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(160),
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(+AutonConstants.ANGLE_BETWEEN_AREA_BEFORE_SECOND_TURN_AND_CONE_PICKUP),
             // turns toward cone pickup
 
-            new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_ARE_BEFORE_CONE_PICKUP),
+            new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_AREA_BEFORE_CONE_PICKUP),
             // moves forward to before pickup
 
             new ShoulderSafeMoveFloorWithStallDetection(),
@@ -83,14 +83,15 @@ public class StartingPositionOneB2Co extends SequentialCommandGroup {
 
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CONE_PICKUP_TO_AREA_BEFORE_THIRD_TURN),
 
-            new DrivetrainTurnAngleUsingPidController(+90), //-230
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(+AutonConstants.ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_FIRST_PART), //-230
 
-            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(+90+25), // split up the turn bc the robot cannot turn the other way bc of wall
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(+AutonConstants.ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_SECOND_PART), // split up the turn bc the robot cannot turn the other way bc of wall
             // turns toward cone node
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_THIRD_TURN_TO_AREA_BEFORE_FOURTH_TURN),
             
-            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-25),
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-AutonConstants.ANGLE_BETWEEN_AREA_BEFORE_FOURTH_TURN_AND_CONE_NODE),
+            // turns to cone node
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE)
 
