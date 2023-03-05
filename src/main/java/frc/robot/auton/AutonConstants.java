@@ -4,9 +4,10 @@ public class AutonConstants {
 
     // Fixed auton distances
 
-    public static final double DISTANCE_FROM_START_OF_CHARGING_STATION_TO_END_OF_CHARGING_STATION = 12;
-    public static final double DISTANCE_FROM_DOCK_TO_OUTSIDE_COMMUNITY = 100; // todo adjust as needed
-    public static final double DISTANCE_FROM_OUTSIDE_COMMUNITY_TO_BEFORE_DOCK = 90; // todo adjust as needed
+    // Can be used for Any Path Distances
+    public static final double DISTANCE_FROM_START_OF_CHARGING_STATION_TO_DOCKED_AT_CHARGING_STATION = 12; // todo put proper value
+    public static final double DISTANCE_FROM_DOCK_TO_OUTSIDE_COMMUNITY = 100; // todo put proper value
+    public static final double DISTANCE_FROM_OUTSIDE_COMMUNITY_TO_BEFORE_DOCK = 90; // todo put proper value
 
     // Starting Position One Distances
     public static final double DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN = 37;
@@ -19,6 +20,14 @@ public class AutonConstants {
     public static final double DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE = 8;
 
     public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 144;
+
+    // Starting Position Three + Four Distances
+    public static final double DISTANCE_FROM_DOCK_NEAR_NODE_TO_AREA_BEFORE_CONE_PICKUP = 70; // todo put proper value
+    public static final double DISTANCE_FROM_CONE_PICKUP_TO_AREA_BEFORE_DOCK = 85; // todo put proper value
+    public static final double DISTANCE_FROM_DOCK_NEAR_CONE_PICKUP_TO_AREA_NEAR_CONE_NODE = 60;
+    public static final double DISTANCE_FROM_AREA_NEAR_CONE_NODE_TO_CONE_NODE = 30;
+
+
 
     // Fixed auton angles
 
@@ -33,7 +42,7 @@ public class AutonConstants {
 
 
     // Old auton constants 
-    public static final double DISTANCE_FROM_CUBE_NODE_TO_LEFT_TURNING_BEFORE_CONE_PICKUP = 157.67; // todo adjust as needed ; for P1B
+    /*public static final double DISTANCE_FROM_CUBE_NODE_TO_LEFT_TURNING_BEFORE_CONE_PICKUP = 157.67; // todo adjust as needed ; for P1B
     public static final double DISTANCE_FROM_LEFT_TURNING_TO_CONE_PICKUP = 80; // todo adjust as needed ; for Path 1B
     public static final double DISTANCE_FROM_CONE_PICKUP_TO_CONE_NODE = 248.14; // todo adjust as needed ; for Path 1B , could be  248.14 - 256
 
@@ -47,5 +56,5 @@ public class AutonConstants {
 
     public static final double DISTANCE_FROM_RIGHT_CUBE_PICKUP_TO_CUBE_NODE_SP6 = 256; // todo adjust as needed ; for P8B
     public static final double DISTANCE_FROM_RIGHT_CUBE_PICKUP_TO_CUBE_NODE_SP5 = 252; // todo adjust as needed ; for P9B , could be 248.142-252
-    
+   */ 
 }

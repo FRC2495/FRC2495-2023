@@ -16,7 +16,7 @@ public class DockOnChargeStation extends SequentialCommandGroup{
             
             new JackMoveDownWithStallDetection(),
 
-            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_START_OF_CHARGING_STATION_TO_END_OF_CHARGING_STATION),
+            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_START_OF_CHARGING_STATION_TO_DOCKED_AT_CHARGING_STATION),
 
             new JackMoveUpWithStallDetection()
 

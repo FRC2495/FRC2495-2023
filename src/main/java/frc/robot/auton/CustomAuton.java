@@ -10,7 +10,7 @@ package frc.robot.auton;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 import frc.robot.Robot;
-import frc.robot.auton.blue.StartingPositionOneB1Cone;
+import frc.robot.auton.blue.StartingPositionOneBOneConeAndLeaveCommunity;
 import frc.robot.auton.blue.StartingPositionThreeOrFourBDock;
 import frc.robot.auton.blue.PutDownOneConeAndLeaveCommunityAndThenDock;
 import frc.robot.commands.brake.BrakeSetReleased;
@@ -57,7 +57,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						addCommands(new StartingPositionOneB1Cone());
+						addCommands(new StartingPositionOneBOneConeAndLeaveCommunity());
 						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODES:
 						//TODO
@@ -157,7 +157,7 @@ public class CustomAuton extends SequentialCommandGroup {
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						addCommands(new StartingPositionOneB1Cone());
+						addCommands(new StartingPositionOneBOneConeAndLeaveCommunity());
 						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODES:
 						//TODO

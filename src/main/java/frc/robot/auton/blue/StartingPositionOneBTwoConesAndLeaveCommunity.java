@@ -10,9 +10,9 @@ import frc.robot.auton.common.PickupConeFromFloor;
 
 // GP = game piece
 // Can be used to place one cube or one cone and either starting position one or two
-public class StartingPositionOneB2Cones extends SequentialCommandGroup {
+public class StartingPositionOneBTwoConesAndLeaveCommunity extends SequentialCommandGroup {
 
-    public StartingPositionOneB2Cones(){
+    public StartingPositionOneBTwoConesAndLeaveCommunity(){
 
         addCommands(
 
