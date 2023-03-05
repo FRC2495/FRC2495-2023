@@ -8,7 +8,7 @@ import frc.robot.Robot;
 /**
  *
  */
-/*public*/ class JackMoveDownWithStallDetection extends CommandBase {
+public class JackMoveDownWithStallDetection extends CommandBase {
 
 	public JackMoveDownWithStallDetection() {
 		addRequirements(Robot.jack);

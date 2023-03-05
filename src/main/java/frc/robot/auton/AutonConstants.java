@@ -4,6 +4,8 @@ public class AutonConstants {
 
     // Fixed auton distances
 
+    public static final double DISTANCE_FROM_START_OF_CHARGING_STATION_TO_END_OF_CHARGING_STATION = 12;
+
     // Starting Position One Distances
     public static final double DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN = 37;
     public static final double DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN = 29;

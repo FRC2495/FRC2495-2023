@@ -61,17 +61,8 @@ public class CustomAuton extends SequentialCommandGroup {
 					case Robot.MAIN_TARGET_CONE_NODE:
 						addCommands(new StartingPositionOneB1Cone());
 						break;
-					case Robot.MAIN_TARGET_CUBE_NODE:
-						//TODO
-						break;
-					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
-						//TODO
-						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODE:
 						//TODO
-						break;
-					case Robot.MAIN_TARGET_BOTH_NODE:
-						addCommands(new StartingPositionTwoB1Cu1Co());
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
 						//TODO
@@ -90,17 +81,8 @@ public class CustomAuton extends SequentialCommandGroup {
 					case Robot.MAIN_TARGET_CONE_NODE:
 						//TODO
 						break;
-					case Robot.MAIN_TARGET_CUBE_NODE:
-						addCommands(new StartingPositionOneB1Cone());
-						break;
-					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
-						//TODO
-						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODE:
 						//TODO
-						break;
-					case Robot.MAIN_TARGET_BOTH_NODE:
-						addCommands(new StartingPositionTwoB1Cu1Co());
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
 						//TODO
@@ -119,16 +101,7 @@ public class CustomAuton extends SequentialCommandGroup {
 					case Robot.MAIN_TARGET_CONE_NODE:
 						addCommands(new StartingPositionThreeOrFourB1GpAndDock());
 						break;
-					case Robot.MAIN_TARGET_CUBE_NODE:
-						//TODO
-						break;
-					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
-						//TODO
-						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODE:
-						//TODO
-						break;
-					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -148,16 +121,7 @@ public class CustomAuton extends SequentialCommandGroup {
 					case Robot.MAIN_TARGET_CONE_NODE:
 						//TODO
 						break;
-					case Robot.MAIN_TARGET_CUBE_NODE:
-						addCommands(new StartingPositionThreeOrFourB1GpAndDock());
-						break;
-					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
-						//TODO
-						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODE:
-						//TODO
-						break;
-					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -177,16 +141,7 @@ public class CustomAuton extends SequentialCommandGroup {
 					case Robot.MAIN_TARGET_CONE_NODE:
 						//TODO
 						break;
-					case Robot.MAIN_TARGET_CUBE_NODE:
-						addCommands(new StartingPositionOneB1Cone());
-						break;
-					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
-						//TODO
-						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODE:
-						//TODO
-						break;
-					case Robot.MAIN_TARGET_BOTH_NODE:
 						//TODO
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
@@ -206,17 +161,8 @@ public class CustomAuton extends SequentialCommandGroup {
 					case Robot.MAIN_TARGET_CONE_NODE:
 						addCommands(new StartingPositionOneB1Cone());
 						break;
-					case Robot.MAIN_TARGET_CUBE_NODE:
-						//TODO
-						break;
-					case Robot.MAIN_TARGET_TWO_CUBE_NODE:
-						//TODO
-						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODE:
 						//TODO
-						break;
-					case Robot.MAIN_TARGET_BOTH_NODE:
-						addCommands(new StartingPositionSixB1Cu1Co());
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
 						//TODO
