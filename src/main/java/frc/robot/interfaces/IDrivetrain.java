@@ -20,6 +20,12 @@ public interface IDrivetrain extends Subsystem {
 
 	// checks if turn is complete
 	public boolean tripleCheckTurnUsingCameraPidController();
+
+	// engages to the charge station using the accelerometer
+	public void engageUsingAccelerometerPidController();
+
+	// checks if engagement is complete
+	public boolean tripleCheckEngageUsingAccelerometerPidController();
 	
 	// this method needs to be paired with checkMoveDistance()
 	public void moveDistance(double dist);
@@ -65,6 +71,8 @@ public interface IDrivetrain extends Subsystem {
 	public boolean isMovingUsingCamera();
 
 	public boolean isTurningUsingCamera();
+
+	public boolean isEngagingUsingAccelerometer();
 	
 	// return if stalled
 	public boolean isStalled();
