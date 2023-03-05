@@ -97,6 +97,24 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	public final static int MOVE_USING_CAMERA_STALLED_MINIMUM_COUNT = MOVE_USING_CAMERA_ON_TARGET_MINIMUM_COUNT * 2 + 10; // number of times/iterations we need to be stalled to really be stalled
 
 
+	// engage using accelerometer settings
+	// NOTE: it might make sense to decrease the PID controller period below 0.02 sec (which is the period used by the main loop)
+	public static final double ENGAGE_USING_ACCELEROMETER_PID_CONTROLLER_PERIOD_SECONDS = .01; // 0.01 sec = 10 ms 	
+	
+	public static final double MIN_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT = 0.1;
+	public static final double MAX_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT = 0.3;
+	
+	public static final double ENGAGE_USING_ACCELEROMETER_PROPORTIONAL_GAIN = 0.02; // TODO tune 15 degrees -> 0.3 pct output
+	public static final double ENGAGE_USING_ACCELEROMETER_INTEGRAL_GAIN = 0.0;
+	public static final double ENGAGE_USING_ACCELEROMETER_DERIVATIVE_GAIN = 0.0;
+	
+	public static final int TILT_THRESHOLD_DEGREES = 2; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
+	
+	public final static int ENGAGE_USING_ACCELEROMETER_ON_TARGET_MINIMUM_COUNT = 10; //25; // number of times/iterations we need to be on target to really be on target
+
+	public final static int ENGAGE_USING_ACCELEROMETER_STALLED_MINIMUM_COUNT = ENGAGE_USING_ACCELEROMETER_ON_TARGET_MINIMUM_COUNT * 2 + 10; // number of times/iterations we need to be stalled to really be stalled	
+
+
 	// move settings
 	static final int PRIMARY_PID_LOOP = 0;
 	
