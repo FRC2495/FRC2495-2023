@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.interfaces.*;
 import frc.robot.Robot;
 import frc.robot.sensors.HMCamera;
+import frc.robot.sensors.HMAccelerometer;
 //import frc.robot.commands.drivetrain.*;
 //import frc.robot.util.*;
 
@@ -146,13 +147,14 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	PIDController turnPidController; // the PID controller used to turn
 
 	ICamera camera;
+	HMAccelerometer accelerometer;
 	PIDController turnUsingCameraPidController; // the PID controller used to turn using camera
 	PIDController moveUsingCameraPidController; // the PID controller used to turn
 
 	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW = 17.325*0.85; // 17.325*0.8;
 	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH = 8*0.8;
 	
-	public Drivetrain(WPI_TalonSRX masterLeft_in, WPI_TalonSRX masterRight_in, BaseMotorController followerLeft_in, BaseMotorController followerRight_in, ADXRS450_Gyro gyro_in, Robot robot_in, ICamera camera_in) 
+	public Drivetrain(WPI_TalonSRX masterLeft_in, WPI_TalonSRX masterRight_in, BaseMotorController followerLeft_in, BaseMotorController followerRight_in, ADXRS450_Gyro gyro_in, Robot robot_in, ICamera camera_in, HMAccelerometer accelerometer_in) 
 	{
 		masterLeft = masterLeft_in;
 		masterRight = masterRight_in;
@@ -161,6 +163,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		gyro = gyro_in;	
 		robot = robot_in;
 		camera = camera_in;
+		accelerometer = accelerometer_in;
 
 		masterLeft.configFactoryDefault();
 		followerLeft.configFactoryDefault();

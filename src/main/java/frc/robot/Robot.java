@@ -288,7 +288,7 @@ public class Robot extends TimedRobot {
 
 		//grasperMotor = new WPI_TalonSRX(Ports.CAN.GRASPER);
 
-		drivetrain = new Drivetrain(frontLeft, frontRight, rearLeft, rearRight, gyro, this, camera);	
+		drivetrain = new Drivetrain(frontLeft, frontRight, rearLeft, rearRight, gyro, this, camera, accelerometer);	
 		//drivetrain = new SparkMaxDrivetrain(frontLeft, frontRight, rearLeft, rearRight, gyro, this, camera);	
 
 		jack = new Jack(jack_master/*, jack_follower*/, this);
