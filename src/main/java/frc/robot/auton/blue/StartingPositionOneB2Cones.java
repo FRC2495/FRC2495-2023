@@ -3,12 +3,11 @@ package frc.robot.auton.blue;
 import frc.robot.commands.claw.*;
 import frc.robot.commands.shoulder.*;
 import frc.robot.commands.arm.*;
-import frc.robot.commands.brake.BrakeSetReleased;
 import frc.robot.commands.drivetrain.*;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.auton.AutonConstants;
-import frc.robot.auton.common.DropConeOnLowNodeAndShrink;
+import frc.robot.auton.common.DropConeOnMiddleNodeAndShrink;
 import frc.robot.auton.common.DropConeOnTopNodeAndShrink;
 
 // GP = game piece
@@ -18,9 +17,6 @@ public class StartingPositionOneB2Cones extends SequentialCommandGroup {
     public StartingPositionOneB2Cones(){
 
         addCommands(
-            
-            new BrakeSetReleased(),
-            // makes sure that the brake is not on the floor before match begins
 
             new DropConeOnTopNodeAndShrink(),
             // drops cone on top node and brings arm into frame perimeter
@@ -80,14 +76,13 @@ public class StartingPositionOneB2Cones extends SequentialCommandGroup {
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE),
 
-            new DropConeOnLowNodeAndShrink(),
+            new DropConeOnMiddleNodeAndShrink(),
 
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY),
             // drives back to prepare for teleop
 
             new DrivetrainTurnAngleUsingPidController(+AutonConstants.ANGLE_BETWEEN_CONE_NODE_AND_CONE_PICKUP)
             // turns 180 to prepare for teleop
-
 
         ); 
   

@@ -4,13 +4,13 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 
   
-public class DropConeOnLowNodeAndShrink extends SequentialCommandGroup{
+public class DropConeOnMiddleNodeAndShrink extends SequentialCommandGroup{
 
-    public DropConeOnLowNodeAndShrink() {
+    public DropConeOnMiddleNodeAndShrink() {
 
         addCommands(
             
-            new DropConeOnLowNode(),
+            new DropConeOnMiddleNode(),
 
             new Shrink()
 

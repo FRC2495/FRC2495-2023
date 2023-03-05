@@ -3,6 +3,8 @@ package frc.robot.auton;
 public class AutonConstants {
 
     // Fixed auton distances
+
+    // Starting Position One Distances
     public static final double DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN = 37;
     public static final double DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN = 29;
     public static final double DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_AREA_BEFORE_CONE_PICKUP = 120;
@@ -12,13 +14,19 @@ public class AutonConstants {
     public static final double DISTANCE_FROM_AREA_AFTER_THIRD_TURN_TO_AREA_BEFORE_FOURTH_TURN = 21;
     public static final double DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE = 8;
 
+    public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 144;
+
     // Fixed auton angles
+
+    // Starting Position One Angles
     public static final int ANGLE_BETWEEN_CONE_NODE_AND_AREA_AFTER_FIRST_TURN = 20;
     public static final int ANGLE_BETWEEN_AREA_BEFORE_SECOND_TURN_AND_CONE_PICKUP = 160;
     public static final int ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_FIRST_PART = 90;
     public static final int ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_SECOND_PART = 115; // the total of this and previous angle is supposed to be 205
     public static final int ANGLE_BETWEEN_AREA_BEFORE_FOURTH_TURN_AND_CONE_NODE = 25;
     public static final int ANGLE_BETWEEN_CONE_NODE_AND_CONE_PICKUP = 180;
+
+
 
     // Old auton constants 
     public static final double DISTANCE_FROM_CUBE_NODE_TO_LEFT_TURNING_BEFORE_CONE_PICKUP = 157.67; // todo adjust as needed ; for P1B
@@ -27,9 +35,9 @@ public class AutonConstants {
 
     public static final double DISTANCE_FROM_CUBE_NODE_TO__LEFT_TURNING_BEFORE_CUBE_PICKUP = 183.33; // todo adjust as needed ; for P2B, P8B, could be 183.33-200
     public static final double DISTANCE_FROM_LEFT_TURNING_TO_CUBE_PICKUP_SP2 = 48; // todo adjust as needed ; for P2B
-   // public static final double DISTANCE_FROM_CUBE_PICKUP_SP2_TO_CUBE_NODE = 248.13; // todo adjust as needed ; for P2B
+    //public static final double DISTANCE_FROM_CUBE_PICKUP_SP2_TO_CUBE_NODE = 248.13; // todo adjust as needed ; for P2B
 
-    public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 160; // todo adjust as needed ; for P3B, P4B, P10B, P11B 
+    //public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 160; // todo adjust as needed ; for P3B, P4B, P10B, P11B 
 
     public static final double DISTANCE_FROM_CUBE_NODE_TO_CHARGING_STATION = 96.75; // todo adjust as needed ; for P5B, P6B, P7B , could be 60.69-96.75
 
