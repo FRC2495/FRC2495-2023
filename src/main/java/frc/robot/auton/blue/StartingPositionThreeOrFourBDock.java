@@ -7,9 +7,9 @@ import frc.robot.auton.common.DockOnChargeStation;
 import frc.robot.commands.brake.BrakeSetEngaged;
 import frc.robot.commands.drivetrain.DrivetrainMoveDistanceWithStallDetection;
 
-public class StartingPositionThreeXOXrFourBDock extends SequentialCommandGroup {
+public class StartingPositionThreeOrFourBDock extends SequentialCommandGroup {
 
-    public StartingPositionThreeXOXrFourBDock(){
+    public StartingPositionThreeOrFourBDock(){
 
         addCommands(
             new DockOnChargeStation(),
