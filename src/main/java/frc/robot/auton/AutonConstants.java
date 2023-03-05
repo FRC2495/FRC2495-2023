@@ -4,11 +4,6 @@ public class AutonConstants {
 
     // Fixed auton distances
 
-    // Can be used for Any Path Distances
-    public static final double DISTANCE_FROM_START_OF_CHARGING_STATION_TO_DOCKED_AT_CHARGING_STATION = 12; // todo put proper value
-    public static final double DISTANCE_FROM_DOCK_TO_OUTSIDE_COMMUNITY = 100; // todo put proper value
-    public static final double DISTANCE_FROM_OUTSIDE_COMMUNITY_TO_BEFORE_DOCK = 90; // todo put proper value
-
     // Starting Position One Distances
     public static final double DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN = 37;
     public static final double DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN = 29;
@@ -22,11 +17,14 @@ public class AutonConstants {
     public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 144;
 
     // Starting Position Three + Four Distances
+    public static final double DISTANCE_FROM_NODE_TO_DOCK = 30; // todo put proper value
+    public static final double DISTANCE_FROM_START_OF_CHARGING_STATION_TO_DOCKED_AT_CHARGING_STATION = 12; // todo put proper value
+    public static final double DISTANCE_FROM_DOCK_TO_OUTSIDE_COMMUNITY = 100; // todo put proper value
+    public static final double DISTANCE_FROM_OUTSIDE_COMMUNITY_TO_BEFORE_DOCK = 90; // todo put proper value
     public static final double DISTANCE_FROM_DOCK_NEAR_NODE_TO_AREA_BEFORE_CONE_PICKUP = 70; // todo put proper value
     public static final double DISTANCE_FROM_CONE_PICKUP_TO_AREA_BEFORE_DOCK = 85; // todo put proper value
     public static final double DISTANCE_FROM_DOCK_NEAR_CONE_PICKUP_TO_AREA_NEAR_CONE_NODE = 60;
     public static final double DISTANCE_FROM_AREA_NEAR_CONE_NODE_TO_CONE_NODE = 30;
-
 
 
     // Fixed auton angles

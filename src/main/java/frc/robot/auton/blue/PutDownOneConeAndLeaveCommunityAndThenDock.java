@@ -13,7 +13,11 @@ public class PutDownOneConeAndLeaveCommunityAndThenDock extends SequentialComman
     public PutDownOneConeAndLeaveCommunityAndThenDock(){
 
         addCommands(
+
             new DropConeOnTopNodeAndShrink(),
+
+            // maybe we need to back up a little bit before we can dock?
+            // new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_DOCK),
 
             new LeaveCommunity(),
 

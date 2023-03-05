@@ -19,6 +19,7 @@ public class PutDownTwoConesAndDock extends SequentialCommandGroup {
             new DropConeOnTopNodeAndShrink(),
 
             // maybe we have to move back a little bit before we can dock?
+            // new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_DOCK),
 
             new DockOnChargeStation(),
 
@@ -41,8 +42,9 @@ public class PutDownTwoConesAndDock extends SequentialCommandGroup {
             new DropConeOnMiddleNodeAndShrink(),
 
             // maybe we have to move back a little bit before we can dock?
+            // new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_DOCK),
 
-            new DockOnChargeStation()
+            new Dock()
             
         );
     }
