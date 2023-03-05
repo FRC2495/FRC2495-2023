@@ -143,6 +143,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	boolean isTurning;  // indicates that the drivetrain is turning using the PID controller hereunder
 	boolean isTurningUsingCamera;  // indicates that the drivetrain is turning using the second PID controller hereunder
 	boolean isMovingUsingCamera;  // indicates that the drivetrain is turning using the third PID controller hereunder
+	boolean isEngagingUsingAccelerometer;  // indicates that the drivetrain is engaging using the fourth PID controller hereunder
 	boolean isReallyStalled;
 	
 	double ltac, rtac; // target positions 
@@ -151,6 +152,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	private int onTargetCountTurning; // counter indicating how many times/iterations we were on target
 	private int onTargetCountTurningUsingCamera; // counter indicating how many times/iterations we were on target
 	private int onTargetCountMovingUsingCamera; // counter indicating how many times/iterations we were on target
+	private int onTargetCountEngagingUsingAccelerometer; // counter indicating how many times/iterations we were on target
 	private int stalledCount; // counter indicating how many times/iterations we were stalled
 
 	WPI_TalonSRX masterLeft, masterRight; // motor controllers
@@ -168,6 +170,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	HMAccelerometer accelerometer;
 	PIDController turnUsingCameraPidController; // the PID controller used to turn using camera
 	PIDController moveUsingCameraPidController; // the PID controller used to turn
+	PIDController engageUsingAccelerometerPidController; // the PID controller used to turn
 
 	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW = 17.325*0.85; // 17.325*0.8;
 	private final static double RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH = 8*0.8;
@@ -275,6 +278,11 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		//TODO manually clamp with MathUtil.clamp(moveUsingCameraPidController.calculate(camera.pidGet2()), -MAX_MOVE_USING_CAMERA_PCT_OUTPUT, MAX_MOVE_USING_CAMERA_PCT_OUTPUT);
 		
 		moveUsingCameraPidController.setTolerance(DISTANCE_THRESHOLD_INCHES); // error tolerated
+
+		//creates a fourth PID controller
+		engageUsingAccelerometerPidController = new PIDController(ENGAGE_USING_ACCELEROMETER_PROPORTIONAL_GAIN, ENGAGE_USING_ACCELEROMETER_INTEGRAL_GAIN, ENGAGE_USING_ACCELEROMETER_DERIVATIVE_GAIN);
+
+		engageUsingAccelerometerPidController.setTolerance(TILT_THRESHOLD_DEGREES); // error tolerated
 		
 		
 		differentialDrive = new DifferentialDrive(masterLeft, masterRight);
@@ -287,6 +295,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		calculateTurnAngleUsingPidController();
 		calculateTurnUsingCameraPidController();
 		calculateMoveUsingCameraPidController();
+		calculateEngageUsingAccelerometerPidController();
 	}  
 
 	// this method needs to be paired with checkTurnAngleUsingPidController()
@@ -468,6 +477,56 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		}
 		return isMovingUsingCamera;
 	}
+
+	// this method needs to be paired with checkEngageUsingAccelerometerPidController()
+	public void engageUsingAccelerometerPidController()
+	{
+		// switches to percentage vbus
+		stop(); // resets state 
+		
+		engageUsingAccelerometerPidController.setSetpoint(0); // we want to end level
+		
+		isEngagingUsingAccelerometer = true;
+		onTargetCountEngagingUsingAccelerometer = 0;
+		isReallyStalled = false;
+		stalledCount = 0;
+	}
+
+	public void calculateEngageUsingAccelerometerPidController() {	
+		if (isEngagingUsingAccelerometer) {
+			// we use the "roll" because of the way we installed the rio on the robot even though we are really looking at "pitch"
+			double output = MathUtil.clamp(engageUsingAccelerometerPidController.calculate(accelerometer.getAccurateRoll()), -MAX_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT, MAX_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT);
+			pidWrite4(output);
+		}
+	}
+		
+	public boolean tripleCheckEngageUsingAccelerometerPidController()
+	{
+		if (isEngagingUsingAccelerometer) {
+			boolean isOnTarget = engageUsingAccelerometerPidController.atSetpoint();
+			
+			if (isOnTarget) { // if we are on target in this iteration 
+				onTargetCountEngagingUsingAccelerometer++; // we increase the counter
+			} else { // if we are not on target in this iteration
+				if (onTargetCountEngagingUsingAccelerometer > 0) { // even though we were on target at least once during a previous iteration
+					onTargetCountEngagingUsingAccelerometer = 0; // we reset the counter as we are not on target anymore
+					System.out.println("Triple-check failed (engaging using accelerometer).");
+				} else {
+					// we are definitely turning
+				}
+			}
+			
+			if (onTargetCountMovingUsingCamera > ENGAGE_USING_ACCELEROMETER_ON_TARGET_MINIMUM_COUNT) { // if we have met the minimum
+				isEngagingUsingAccelerometer = false;
+			}
+			
+			if (!isEngagingUsingAccelerometer) {
+				System.out.println("You have reached the target (engaging using accelerometer).");
+				stop();				 
+			}
+		}
+		return isEngagingUsingAccelerometer;
+	}
 		
 	public void moveDistance(double dist) // moves the distance in inch given
 	{
@@ -642,7 +701,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	
 	// return if drivetrain might be stalled
 	public boolean tripleCheckIfStalled() {
-		if (isMoving || isTurning || isMovingUsingCamera || isTurningUsingCamera) {
+		if (isMoving || isTurning || isMovingUsingCamera || isTurningUsingCamera || isEngagingUsingAccelerometer) {
 			
 			double rvelocity = getRightEncoderVelocity();
 			double lvelocity = getLeftEncoderVelocity();
@@ -678,6 +737,10 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 			if (isTurningUsingCamera && stalledCount > TURN_USING_CAMERA_STALLED_MINIMUM_COUNT) { // if we have met the minimum
 				isReallyStalled = true;
 			}
+
+			if (isEngagingUsingAccelerometer && stalledCount > ENGAGE_USING_ACCELEROMETER_STALLED_MINIMUM_COUNT) { // if we have met the minimum
+				isReallyStalled = true;
+			}
 			
 			if (isReallyStalled) {
 				System.out.println("WARNING: Stall detected!");
@@ -700,6 +763,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		isTurning = false;
 		isMovingUsingCamera = false;
 		isTurningUsingCamera = false;
+		isEngagingUsingAccelerometer = false;
 		
 		setNominalAndPeakOutputs(MAX_PCT_OUTPUT); // we undo what me might have changed
 	}
@@ -762,7 +826,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	public void joystickControl(Joystick joyLeft, Joystick joyRight, boolean held) // sets talons to
 	// joystick control
 	{
-		if (!isMoving && !isTurning && !isMovingUsingCamera && !isTurningUsingCamera) // if we are already doing a move or turn we don't take over
+		if (!isMoving && !isTurning && !isMovingUsingCamera && !isTurningUsingCamera && !isEngagingUsingAccelerometer) // if we are already doing a move or turn we don't take over
 		{
 			//if(!held)
 			//{
@@ -829,7 +893,12 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	public boolean isTurningUsingCamera() {
 		return isTurningUsingCamera;
 	}
-	
+
+	public boolean isEngagingUsingAccelerometer() {
+		return isEngagingUsingAccelerometer;
+	}
+
+
 	// return if stalled
 	public boolean isStalled() {
 		return isReallyStalled;
@@ -893,7 +962,23 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		masterRight.set(ControlMode.PercentOutput, +output); // TODO double-check signs
 		masterLeft.set(ControlMode.PercentOutput, -output);		
 	}
-	
+
+	public void pidWrite4(double output) {
+
+		// calling disable() on controller will force a call to pidWrite with zero output
+		// which we need to handle by not doing anything that could have a side effect 
+		if (output != 0 && Math.abs(engageUsingAccelerometerPidController.getPositionError()) < TILT_THRESHOLD_DEGREES)
+		{
+			output = 0;
+		}
+		if (output != 0 && Math.abs(output) < MIN_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT)
+		{
+			output = Math.signum(output) * MIN_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT;
+		}
+		masterRight.set(ControlMode.PercentOutput, +output); // TODO double-check signs
+		masterLeft.set(ControlMode.PercentOutput, -output);		
+	}
+
 	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
 	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 
 	public void resetEncoders() {
