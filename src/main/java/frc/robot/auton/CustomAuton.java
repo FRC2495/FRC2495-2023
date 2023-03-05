@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Robot;
 import frc.robot.auton.blue.StartingPositionOneB1Cone;
 import frc.robot.auton.blue.StartingPositionSixB1Cu1Co;
-import frc.robot.auton.blue.StartingPositionThreeOrFourBDock;
+import frc.robot.auton.blue.StartingPositionThreeXOXrFourBDock;
 import frc.robot.auton.blue.PutDownOneConeAndThenDock;
 import frc.robot.auton.blue.StartingPositionTwoB1Cu1Co;
 import frc.robot.commands.brake.BrakeSetReleased;
@@ -96,7 +96,7 @@ public class CustomAuton extends SequentialCommandGroup {
 			case Robot.START_POSITION_3:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
-						addCommands(new StartingPositionThreeOrFourBDock());
+						addCommands(new StartingPositionThreeXOXrFourBDock());
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
 						addCommands(new PutDownOneConeAndThenDock());
