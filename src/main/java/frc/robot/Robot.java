@@ -95,8 +95,9 @@ public class Robot extends TimedRobot {
 	private String releaseSelected;
 	private SendableChooser<String> releaseChooser = new SendableChooser<>();
 
-	public static final String AUTON_OPTION_RELOAD = "Reload";
-	public static final String AUTON_OPTION_DONT_RELOAD = "Don't Reload"; 
+	public static final String AUTON_OPTION_JUST_DROP_CONE = "Just Drop Cone";
+	public static final String AUTON_OPTION_ALSO_BACKUP = "Also Backup"; 
+	public static final String AUTON_OPTION_ALSO_DOCK = "Also Dock";
 	private String autonOption;
 	private SendableChooser<String> autonOptionChooser = new SendableChooser<>();
 
@@ -240,8 +241,9 @@ public class Robot extends TimedRobot {
 		releaseChooser.addOption("Don't release", CLAW_OPTION_DONT_RELEASE);
 		SmartDashboard.putData("Release options", releaseChooser);
 
-		autonOptionChooser.setDefaultOption("Reload", AUTON_OPTION_RELOAD);
-		autonOptionChooser.addOption("Don't Reload", AUTON_OPTION_DONT_RELOAD);
+		autonOptionChooser.setDefaultOption("Just Drop Cone", AUTON_OPTION_JUST_DROP_CONE);
+		autonOptionChooser.addOption("Also Backup", AUTON_OPTION_ALSO_BACKUP);
+		autonOptionChooser.addOption("Also Dock", AUTON_OPTION_ALSO_DOCK);
 		SmartDashboard.putData("Auton options", autonOptionChooser);		
 
 
