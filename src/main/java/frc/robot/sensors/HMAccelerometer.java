@@ -51,10 +51,32 @@ public class HMAccelerometer {
 		// https://www.thierry-lequeu.fr/data/AN3461.pdf
 		// https://www.analog.com/en/app-notes/an-1057.html
 		try {
-			return Math.toDegrees(Math.atan(Math.sqrt((Math.pow(getAccelX(),2) + Math.pow(getAccelY(),2))) / getAccelZ()));
+			return Math.toDegrees(Math.atan(Math.sqrt(Math.pow(getAccelX(),2) + Math.pow(getAccelY(),2)) / getAccelZ()));
 		}
 		catch (ArithmeticException e) {
             return 90; // if accelz is zero, we are dead
+        }
+	}
+
+	public double getAccuratePitch() {
+		// https://www.thierry-lequeu.fr/data/AN3461.pdf
+		// https://www.analog.com/en/app-notes/an-1057.html
+		try {
+			return Math.toDegrees(Math.atan(getAccelX() / Math.sqrt(Math.pow(getAccelY(),2) + Math.pow(getAccelZ(),2))));
+		}
+		catch (ArithmeticException e) {
+            return 90; // if denominator is zero, we are dead
+        }
+	}
+
+	public double getAccurateRoll() {
+		// https://www.thierry-lequeu.fr/data/AN3461.pdf
+		// https://www.analog.com/en/app-notes/an-1057.html
+		try {
+			return Math.toDegrees(Math.atan(getAccelY() / Math.sqrt(Math.pow(getAccelX(),2) + Math.pow(getAccelZ(),2))));
+		}
+		catch (ArithmeticException e) {
+            return 90; // if denominator is zero, we are dead
         }
 	}
 	
