@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController; 
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
+//import edu.wpi.first.wpilibj2.command.PrintCommand;
 
 import frc.robot.commands.drivetrain.*;
 import frc.robot.commands.jack.*;
@@ -16,8 +16,7 @@ import frc.robot.commands.gearbox.*;
 import frc.robot.commands.claw.*;
 import frc.robot.commands.rotator.*;
 import frc.robot.commands.arm.*;
-import frc.robot.commands.brake.BrakeSetEngaged;
-import frc.robot.commands.brake.BrakeSetReleased;
+//import frc.robot.commands.brake.*;
 import frc.robot.commands.indicator.*;
 //import frc.robot.commands.grasper.*;
 //import frc.robot.commands.feeder.*;
