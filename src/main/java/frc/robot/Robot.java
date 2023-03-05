@@ -56,9 +56,7 @@ public class Robot extends TimedRobot {
 
 	public static final String GAME_PIECE_NONE = "None";
 	public static final String GAME_PIECE_1_CONE = "1 Cone";
-	public static final String GAME_PIECE_1_CUBE = "1 Cube";
-	public static final String GAME_PIECE_2_CUBES = "2 Cubes";
-	public static final String GAME_PIECE_1_CONE_1_CUBE = "1 Cone and 1 Cube";
+	public static final String GAME_PIECE_2_CONES = "2 Cones";
 	private String gamePieceSelected;
 	private SendableChooser<String> gamePieceChooser = new SendableChooser<>();
 	
@@ -72,10 +70,7 @@ public class Robot extends TimedRobot {
 	private SendableChooser<String> startPositionChooser = new SendableChooser<>();
 
 	public static final String MAIN_TARGET_CONE_NODE = "Cone Node";
-	public static final String MAIN_TARGET_CUBE_NODE = "Cube Node";
-	public static final String MAIN_TARGET_TWO_CUBE_NODE = "Two Cube Node";
-	public static final String MAIN_TARGET_TWO_CONE_NODE = "Two Cone Node";
-	public static final String MAIN_TARGET_BOTH_NODE = "Both Node";
+	public static final String MAIN_TARGET_TWO_CONE_NODES = "Two Cone Nodes";
 	public static final String MAIN_TARGET_CHARGING_STATION = "Charging Station";
 	public static final String MAIN_TARGET_NOWHERE = "Nowhere";
 	private String mainTarget;
@@ -212,9 +207,7 @@ public class Robot extends TimedRobot {
 
 		gamePieceChooser.setDefaultOption("None", GAME_PIECE_NONE);
 		gamePieceChooser.addOption("1 Cone", GAME_PIECE_1_CONE);
-		gamePieceChooser.addOption("1 Cube", GAME_PIECE_1_CUBE);
-		gamePieceChooser.addOption("2 Cubes", GAME_PIECE_2_CUBES);
-		gamePieceChooser.addOption("1 Cone and 1 Cube", GAME_PIECE_1_CONE_1_CUBE);
+		gamePieceChooser.addOption("2 Cones", GAME_PIECE_2_CONES);
 		SmartDashboard.putData("Game piece choices", gamePieceChooser);
 
 		startPositionChooser.setDefaultOption("Starting Position 1", START_POSITION_1);
@@ -227,10 +220,7 @@ public class Robot extends TimedRobot {
 
 		mainTargetChooser.setDefaultOption("To Nowhere", MAIN_TARGET_NOWHERE);
 		mainTargetChooser.addOption("Cone Node", MAIN_TARGET_CONE_NODE);
-		mainTargetChooser.addOption("Cube Node", MAIN_TARGET_CUBE_NODE);
-		mainTargetChooser.addOption("Two Cube Node", MAIN_TARGET_TWO_CUBE_NODE);
-		mainTargetChooser.addOption("Two Cone Node", MAIN_TARGET_TWO_CONE_NODE);
-		mainTargetChooser.addOption("Both Node", MAIN_TARGET_BOTH_NODE);
+		mainTargetChooser.addOption("Two Cone Nodes", MAIN_TARGET_TWO_CONE_NODES);
 		mainTargetChooser.addOption("Charging Station", MAIN_TARGET_CHARGING_STATION);
 		SmartDashboard.putData("Main targets", mainTargetChooser);
 		
