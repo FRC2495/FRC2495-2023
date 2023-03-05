@@ -1,4 +1,4 @@
-package frc.robot.auton.blue;
+package frc.robot.auton.common;
 
 
 import frc.robot.commands.brake.BrakeSetEngaged;
@@ -7,17 +7,15 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 
 import frc.robot.auton.AutonConstants;
-import frc.robot.auton.common.DockOnChargeStation;
 
 
 // Can be used to place one cone in either starting position three or four
-public class PutDownOneConeAndLeaveCommunityAndThenDockStep2 extends SequentialCommandGroup {
+public class Dock extends SequentialCommandGroup {
 
-    public PutDownOneConeAndLeaveCommunityAndThenDockStep2(){
+    public Dock(){
 
         addCommands(
-            new PutDownOneConeAndLeaveCommunityAndThenDockStep1(),
-
+    
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_OUTSIDE_COMMUNITY_TO_BEFORE_DOCK),
             // drives forward just before charging station to get ready to dock
 

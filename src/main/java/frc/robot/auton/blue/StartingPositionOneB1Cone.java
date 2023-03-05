@@ -1,8 +1,7 @@
 package frc.robot.auton.blue;
 
-import frc.robot.commands.drivetrain.*;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.auton.AutonConstants;
+import frc.robot.auton.common.Backup;
 import frc.robot.auton.common.DropConeOnTopNodeAndShrink;
 
 // GP = game piece
@@ -16,9 +15,7 @@ public class StartingPositionOneB1Cone extends SequentialCommandGroup {
             new DropConeOnTopNodeAndShrink(),
             // drops cone on top node and brings arm into frame perimeter
 
-            new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY) // todo change distance if needed
-            // drives backward to outside community
-
+            new Backup()
         ); 
   
     }
