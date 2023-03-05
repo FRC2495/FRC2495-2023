@@ -72,6 +72,10 @@ public interface IDrivetrain extends Subsystem {
 	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
 	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 
 	public void resetEncoders();
+
+	public void setCoastNeutralMode();
+
+	public void setBrakeNeutralMode();
 }
 
 

@@ -181,11 +181,11 @@ public class OI {
 		joyRight = new CommandJoystick(Ports.USB.RIGHT);
 
 		joyRightBtn11 = joyRight.button(ControllerBase.JoystickButtons.BTN11); 
-		joyRightBtn11.onTrue(new BrakeSetReleased());
+		joyRightBtn11.onTrue(new Drive());
 		//joyRightBtn11.whileTrue(new ArmJoystickControl());
 	
 		joyRightBtn10 = joyRight.button(ControllerBase.JoystickButtons.BTN10);
-		joyRightBtn10.onTrue(new BrakeSetEngaged());
+		joyRightBtn10.onTrue(new Park());
 		//joyRightBtn10.whileTrue(new ArmJoystickControl());
 
 		joyRightBtn9 = joyRight.button(ControllerBase.JoystickButtons.BTN9);
@@ -227,13 +227,13 @@ public class OI {
 		joyLeft = new CommandJoystick(Ports.USB.LEFT);
 
 		joyLeftBtn11 = joyLeft.button(ControllerBase.JoystickButtons.BTN11);
-		joyLeftBtn11.onTrue(new BrakeSetReleased());
+		joyLeftBtn11.onTrue(new Drive());
 		//joyLeftBtn11.whileHeld(new WinchJoystickControl());
 		//joyLeftBtn11.whileHeld(new WinchWinchStopperJoystickControl());
 		//joyLeftBtn11.whileHeld(new ShooterJoystickControl());
 		
 		joyLeftBtn10 = joyLeft.button(ControllerBase.JoystickButtons.BTN10);
-		joyLeftBtn10.onTrue(new BrakeSetEngaged());
+		joyLeftBtn10.onTrue(new Park());
 		//joyLeftBtn10.whileHeld(new GrasperJoystickControl());
 		//joyLeftBtn10.whileHeld(new FeederJoystickControl());
 

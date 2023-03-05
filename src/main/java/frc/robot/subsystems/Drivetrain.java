@@ -882,6 +882,27 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		masterRight.setSelectedSensorPosition(0, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
 		masterLeft.setSelectedSensorPosition(0, PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
 	}	
+
+	public void setCoastNeutralMode() {
+		// Mode of operation during Neutral output may be set by using the setNeutralMode() function.
+		// As of right now, there are two options when setting the neutral mode of a motor controller,
+		// brake and coast.
+		masterLeft.setNeutralMode(NeutralMode.Coast); // sets the talons on coast mode
+		followerLeft.setNeutralMode(NeutralMode.Coast);	
+		masterRight.setNeutralMode(NeutralMode.Coast);
+		followerRight.setNeutralMode(NeutralMode.Coast);
+	}
+
+	public void setBrakeNeutralMode() {
+		// Mode of operation during Neutral output may be set by using the setNeutralMode() function.
+		// As of right now, there are two options when setting the neutral mode of a motor controller,
+		// brake and coast.
+		masterLeft.setNeutralMode(NeutralMode.Brake); // sets the talons on brake mode
+		followerLeft.setNeutralMode(NeutralMode.Brake);	
+		masterRight.setNeutralMode(NeutralMode.Brake);
+		followerRight.setNeutralMode(NeutralMode.Brake);
+	}
+
 }
 
 

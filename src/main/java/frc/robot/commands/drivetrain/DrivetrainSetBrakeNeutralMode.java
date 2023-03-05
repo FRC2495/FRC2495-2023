@@ -8,17 +8,17 @@ import frc.robot.Robot;
 /**
  *
  */
-public class DrivetrainStop extends InstantCommand {
+public class DrivetrainSetBrakeNeutralMode extends InstantCommand {
 
-	public DrivetrainStop() {
+	public DrivetrainSetBrakeNeutralMode() {
 		addRequirements(Robot.drivetrain);
 	}
 
 	// Called once when this command runs
 	@Override
 	public void initialize() {
-		System.out.println("DrivetrainStop: initialize");
-		Robot.drivetrain.stop();
+		System.out.println("DrivetrainSetBrakeNeutralMode: initialize");
+		Robot.drivetrain.setBrakeNeutralMode();
 	}
 
 }
