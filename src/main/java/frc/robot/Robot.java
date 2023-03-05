@@ -98,6 +98,8 @@ public class Robot extends TimedRobot {
 	public static final String AUTON_OPTION_JUST_DROP_CONE = "Just Drop Cone";
 	public static final String AUTON_OPTION_ALSO_BACKUP = "Also Backup"; 
 	public static final String AUTON_OPTION_ALSO_DOCK = "Also Dock";
+	public static final String AUTON_OPTION_LEAVE_COMMUNITY = "Leave Community";
+	public static final String AUTON_OPTION_COME_BACK_ON_DOCK = "Come Back On Dock";
 	private String autonOption;
 	private SendableChooser<String> autonOptionChooser = new SendableChooser<>();
 
@@ -244,6 +246,8 @@ public class Robot extends TimedRobot {
 		autonOptionChooser.setDefaultOption("Just Drop Cone", AUTON_OPTION_JUST_DROP_CONE);
 		autonOptionChooser.addOption("Also Backup", AUTON_OPTION_ALSO_BACKUP);
 		autonOptionChooser.addOption("Also Dock", AUTON_OPTION_ALSO_DOCK);
+		autonOptionChooser.addOption("Leave Community", AUTON_OPTION_LEAVE_COMMUNITY);
+		autonOptionChooser.addOption("Come Back On Dock", AUTON_OPTION_COME_BACK_ON_DOCK);
 		SmartDashboard.putData("Auton options", autonOptionChooser);		
 
 
