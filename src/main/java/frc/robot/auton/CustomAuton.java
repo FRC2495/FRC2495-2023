@@ -11,8 +11,17 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 import frc.robot.Robot;
 import frc.robot.auton.blue.StartingPositionOneBOneConeAndLeaveCommunity;
+import frc.robot.auton.blue.StartingPositionOneBTwoCones;
+import frc.robot.auton.blue.StartingPositionOneBTwoConesAndLeaveCommunity;
+import frc.robot.auton.blue.StartingPositionSixBOneConeAndLeaveCommunity;
+import frc.robot.auton.blue.StartingPositionSixBTwoCones;
+import frc.robot.auton.blue.StartingPositionSixBTwoConesAndLeaveCommunity;
+import frc.robot.auton.blue.StartingPositionThreeOrFourBDock;
 import frc.robot.auton.blue.StartingPositionThreeOrFourBDockAndLeaveCommunity;
+import frc.robot.auton.common.DropConeOnTopNodeAndShrink;
+import frc.robot.auton.blue.PutDownOneConeAndDock;
 import frc.robot.auton.blue.PutDownOneConeAndLeaveCommunityAndThenDock;
+import frc.robot.auton.blue.PutDownTwoConesAndDock;
 import frc.robot.commands.brake.BrakeSetReleased;
 //import frc.robot.commands.*;
 import frc.robot.commands.gearbox.*;
@@ -54,16 +63,68 @@ public class CustomAuton extends SequentialCommandGroup {
 			case Robot.START_POSITION_1:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						addCommands(new StartingPositionOneBOneConeAndLeaveCommunity());
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								addCommands(new DropConeOnTopNodeAndShrink());
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								addCommands(new StartingPositionOneBOneConeAndLeaveCommunity());
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODES:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								addCommands(new StartingPositionOneBTwoCones());
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								addCommands(new StartingPositionOneBTwoConesAndLeaveCommunity());
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					default:
 						// nothing
@@ -74,16 +135,68 @@ public class CustomAuton extends SequentialCommandGroup {
 			case Robot.START_POSITION_2:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODES:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;	
 					default:
 						// nothing
@@ -94,16 +207,68 @@ public class CustomAuton extends SequentialCommandGroup {
 			case Robot.START_POSITION_3:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
-						addCommands(new StartingPositionThreeOrFourBDockAndLeaveCommunity());
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								addCommands(new StartingPositionThreeOrFourBDock());
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								addCommands(new StartingPositionThreeOrFourBDockAndLeaveCommunity());
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						addCommands(new PutDownOneConeAndLeaveCommunityAndThenDock());
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								addCommands(new DropConeOnTopNodeAndShrink());
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								addCommands(new PutDownOneConeAndDock());
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								addCommands(new PutDownOneConeAndLeaveCommunityAndThenDock());
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODES:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								addCommands(new PutDownTwoConesAndDock());
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					default:
 						// nothing
@@ -112,18 +277,70 @@ public class CustomAuton extends SequentialCommandGroup {
 				break;
 
 			case Robot.START_POSITION_4:
-				switch (mainTarget) {
-					case Robot.MAIN_TARGET_CHARGING_STATION:
-						//TODO
+					switch (mainTarget) {
+						case Robot.MAIN_TARGET_CHARGING_STATION:
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								addCommands(new StartingPositionThreeOrFourBDock());
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								addCommands(new StartingPositionThreeOrFourBDockAndLeaveCommunity());
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								addCommands(new DropConeOnTopNodeAndShrink());
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								addCommands(new PutDownOneConeAndDock());
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								addCommands(new PutDownOneConeAndLeaveCommunityAndThenDock());
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODES:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								addCommands(new PutDownTwoConesAndDock());
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					default:
 						// nothing
@@ -134,16 +351,68 @@ public class CustomAuton extends SequentialCommandGroup {
 			case Robot.START_POSITION_5:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODES:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					default:
 						// nothing
@@ -154,16 +423,68 @@ public class CustomAuton extends SequentialCommandGroup {
 			case Robot.START_POSITION_6:
 				switch (mainTarget) {
 					case Robot.MAIN_TARGET_CHARGING_STATION:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_CONE_NODE:
-						addCommands(new StartingPositionOneBOneConeAndLeaveCommunity());
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								addCommands(new DropConeOnTopNodeAndShrink());
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								addCommands(new StartingPositionSixBOneConeAndLeaveCommunity());
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_TWO_CONE_NODES:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								addCommands(new StartingPositionSixBTwoCones());
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								addCommands(new StartingPositionSixBTwoConesAndLeaveCommunity());
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					case Robot.MAIN_TARGET_NOWHERE:
-						//TODO
+						switch (autonOption) {
+							case Robot.AUTON_OPTION_JUST_DROP_CONE:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_DOCK:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							default:
+								// nothing
+								break;
+						}	
 						break;
 					default:
 						// nothing
