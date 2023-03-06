@@ -12,8 +12,6 @@ public class LeftMoveFromConeNodeToConePickup extends SequentialCommandGroup {
 
         addCommands(
 
-            //new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY), // todo change distance if needed
-            // drives backward to outside community
 
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN),
             // drives backward from cone node to area before the first turn

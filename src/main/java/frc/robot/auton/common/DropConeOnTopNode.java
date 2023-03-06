@@ -20,7 +20,7 @@ public class DropConeOnTopNode extends SequentialCommandGroup{
 
             new ClawSetOpen(),
 
-            new WaitCommand(1)
+            new WaitCommand(.3)
 
         ); 
     }
