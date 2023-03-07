@@ -14,6 +14,12 @@ public class DrivetrainSetBrakeNeutralMode extends InstantCommand {
 		addRequirements(Robot.drivetrain);
 	}
 
+	// This instant command can run disabled
+	@Override
+	public boolean runsWhenDisabled() {
+		return true;
+	}
+	
 	// Called once when this command runs
 	@Override
 	public void initialize() {
