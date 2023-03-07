@@ -500,7 +500,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		masterRight.configReverseSoftLimitThreshold(-convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_REVERSE_INCHES),TALON_TIMEOUT_MS);
 		masterLeft.configForwardSoftLimitThreshold(+convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_REVERSE_INCHES),TALON_TIMEOUT_MS);
 
-		// Enables software limit switches so we never go too crazy
+		// Enables software limits so we never go too crazy
 		masterRight.overrideSoftLimitsEnable(true);
 		masterLeft.overrideSoftLimitsEnable(true);
 		
@@ -772,7 +772,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		
 		setNominalAndPeakOutputs(MAX_PCT_OUTPUT); // we undo what me might have changed
 
-		// Disables software limit switches in case we enabled them during auto-engage
+		// Disables software limits in case we enabled them during auto-engage
 		masterLeft.overrideSoftLimitsEnable(false);
 		masterRight.overrideSoftLimitsEnable(false);
 	}
