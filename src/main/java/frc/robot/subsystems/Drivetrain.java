@@ -316,6 +316,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		
 		turnPidController.setSetpoint(heading); // sets the heading
 		//turnPidController.enable(); // begins running
+		turnPidController.reset(); // resets controller
 		
 		isTurning = true;
 		onTargetCountTurning = 0;
@@ -334,6 +335,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		
 		turnPidController.setSetpoint(heading); // sets the heading
 		//turnPidController.enable(); // begins running
+		turnPidController.reset(); // resets controller
 		
 		isTurning = true;
 		onTargetCountTurning = 0;
@@ -388,6 +390,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		
 		turnUsingCameraPidController.setSetpoint(0); // we want to end centered
 		//turnUsingCameraPidController.enable(); // begins running
+		turnUsingCameraPidController.reset(); // resets controller
 		
 		isTurningUsingCamera = true;
 		onTargetCountTurningUsingCamera = 0;
@@ -441,6 +444,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		
 		moveUsingCameraPidController.setSetpoint(0); // we want to end centered
 		//moveUsingCameraPidController.enable(); // begins running
+		moveUsingCameraPidController.reset(); // resets controller
 		
 		isMovingUsingCamera = true;
 		onTargetCountMovingUsingCamera = 0;
@@ -503,6 +507,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		masterLeft.overrideSoftLimitsEnable(true);
 		
 		engageUsingAccelerometerPidController.setSetpoint(0); // we want to end level
+		engageUsingAccelerometerPidController.reset(); // resets controller
 		
 		isEngagingUsingAccelerometer = true;
 		onTargetCountEngagingUsingAccelerometer = 0;
