@@ -37,6 +37,7 @@ public class JackMoveUpWithStallDetection extends CommandBase {
 	@Override
 	public void end(boolean interupted) {
 		System.out.println("JackMoveUpWithStallDetection: end");
-		Robot.jack.stay();  // we don't want to stop so we stay up...
+		Robot.jack.stop();
+		//Robot.jack.stay();  // we don't want to stop so we stay up...
 	}
 }
