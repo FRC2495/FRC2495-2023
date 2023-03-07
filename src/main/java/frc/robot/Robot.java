@@ -576,6 +576,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("FilteredTilt", accelerometer.getFilteredTilt());
 		SmartDashboard.putNumber("AccurateTilt", accelerometer.getAccurateTilt());
 		SmartDashboard.putBoolean("isFlat", accelerometer.isFlat());
+		SmartDashboard.putNumber("AccuratePitch", accelerometer.getAccuratePitch());
+		SmartDashboard.putNumber("AccurateRoll", accelerometer.getAccurateRoll());
 		
 		SmartDashboard.putNumber("Range to target", sonar.getRangeInInches());
 		SmartDashboard.putNumber("Sonar Voltage", sonar.getVoltage()); 
