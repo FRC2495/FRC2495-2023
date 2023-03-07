@@ -37,7 +37,7 @@ public class JackMoveFloorWithStallDetection extends CommandBase {
 	@Override
 	public void end(boolean interupted) {
 		System.out.println("JackMoveFloorWithStallDetection: end");
-		//Robot.jack.stop();
-		Robot.jack.stay();
+		Robot.jack.stop();
+		//Robot.jack.stay();
 	}
 }
