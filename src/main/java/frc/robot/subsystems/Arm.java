@@ -307,6 +307,8 @@ public class Arm extends SubsystemBase implements IArm {
 	public synchronized void stop() {
 		arm.set(ControlMode.PercentOutput, 0);
 		
+		setNominalAndPeakOutputs(MAX_PCT_OUTPUT); // we undo what me might have changed
+		
 		isMoving = false;
 		isExtending = false;
 	}
