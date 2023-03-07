@@ -662,10 +662,6 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stop(); // in case we were still doing something
 		
 		double dist = arclength(angle);
-		double ldist, rdist;
-		
-		ldist = dist;
-		rdist = -dist;
 		
 		resetEncoders();
 		setPIDParameters();
@@ -674,13 +670,13 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		//masterLeft.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
 		//masterRight.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
 
-		rtac = -convertInchesToEncoderTicks(dist);
-		ltac = -convertInchesToEncoderTicks(dist);
+		rtac = +convertInchesToEncoderTicks(dist); // todo adjust sign as needed
+		ltac = +convertInchesToEncoderTicks(dist); // todo adjust sign as needed
 
 		System.out.println("rtac, ltac: " + rtac + ", " + ltac);
 		
-		masterRight.set(ControlMode.Position, -rtac);
-		masterLeft.set(ControlMode.Position, -ltac);
+		masterRight.set(ControlMode.Position, rtac);
+		masterLeft.set(ControlMode.Position, ltac);
 		
 		isMoving = true;
 		onTargetCountMoving = 0;
