@@ -37,7 +37,7 @@ import frc.robot.Robot;
 	@Override
 	public void end(boolean interrupted) {
 		System.out.println("JackMoveFloor: end");
-		//Robot.jack.stop();
-		Robot.jack.stay();
+		Robot.jack.stop();
+		//Robot.jack.stay();
 	}
 }
