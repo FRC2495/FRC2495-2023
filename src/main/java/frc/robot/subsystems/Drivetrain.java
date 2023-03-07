@@ -114,6 +114,9 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	public final static int ENGAGE_USING_ACCELEROMETER_STALLED_MINIMUM_COUNT = ENGAGE_USING_ACCELEROMETER_ON_TARGET_MINIMUM_COUNT * 2 + 10; // number of times/iterations we need to be stalled to really be stalled	
 
+	public final static int ENGAGE_SAFE_TRAVEL_LENGTH_FORWARD_INCHES =  12; // if we get near the center that's probably enough
+	public final static int ENGAGE_SAFE_TRAVEL_LENGTH_REVERSE_INCHES = 12; // if we get near the center that's probably enough
+
 
 	// move settings
 	static final int PRIMARY_PID_LOOP = 0;
@@ -220,6 +223,10 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		// Disables limit switches
 		masterLeft.overrideLimitSwitchesEnable(false);
 		masterRight.overrideLimitSwitchesEnable(false);
+
+		// Disables software limit switches
+		masterLeft.overrideSoftLimitsEnable(false);
+		masterRight.overrideSoftLimitsEnable(false);
 		
 		// Motor controller output direction can be set by calling the setInverted() function as seen below.
 		// Note: Regardless of invert value, the LEDs will blink green when positive output is requested (by robot code or firmware closed loop).
@@ -483,6 +490,19 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	{
 		// switches to percentage vbus
 		stop(); // resets state 
+
+		resetEncoders(); // we zero them to keep track of were were start from for troubleshooting purpose
+
+		// right is the real forward direction, so left is the opposite
+		masterRight.configForwardSoftLimitThreshold(+convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_FORWARD_INCHES),TALON_TIMEOUT_MS);
+		masterLeft.configReverseSoftLimitThreshold(-convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_FORWARD_INCHES),TALON_TIMEOUT_MS);
+
+		masterRight.configReverseSoftLimitThreshold(-convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_REVERSE_INCHES),TALON_TIMEOUT_MS);
+		masterLeft.configForwardSoftLimitThreshold(+convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_REVERSE_INCHES),TALON_TIMEOUT_MS);
+
+		// Enables software limit switches so we never go too crazy
+		masterRight.overrideSoftLimitsEnable(true);
+		masterLeft.overrideSoftLimitsEnable(true);
 		
 		engageUsingAccelerometerPidController.setSetpoint(0); // we want to end level
 		
@@ -751,6 +771,10 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		isEngagingUsingAccelerometer = false;
 		
 		setNominalAndPeakOutputs(MAX_PCT_OUTPUT); // we undo what me might have changed
+
+		// Disables software limit switches in case we enabled them during auto-engage
+		masterLeft.overrideSoftLimitsEnable(false);
+		masterRight.overrideSoftLimitsEnable(false);
 	}
 	
 	public void setPIDParameters()
