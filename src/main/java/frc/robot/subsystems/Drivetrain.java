@@ -148,6 +148,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	boolean isMovingUsingCamera;  // indicates that the drivetrain is turning using the third PID controller hereunder
 	boolean isEngagingUsingAccelerometer;  // indicates that the drivetrain is engaging using the fourth PID controller hereunder
 	boolean isReallyStalled;
+	boolean isInCoastNeutralMode;
 	
 	double ltac, rtac; // target positions 
 	
@@ -197,10 +198,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		// Mode of operation during Neutral output may be set by using the setNeutralMode() function.
 		// As of right now, there are two options when setting the neutral mode of a motor controller,
 		// brake and coast.
-		masterLeft.setNeutralMode(NeutralMode.Coast); // sets the talons on coast mode
-		followerLeft.setNeutralMode(NeutralMode.Coast);	
-		masterRight.setNeutralMode(NeutralMode.Coast);
-		followerRight.setNeutralMode(NeutralMode.Coast);
+		setCoastNeutralMode();
 		
 		// Sensors for motor controllers provide feedback about the position, velocity, and acceleration
 		// of the system using that motor controller.
@@ -1006,6 +1004,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		followerLeft.setNeutralMode(NeutralMode.Coast);	
 		masterRight.setNeutralMode(NeutralMode.Coast);
 		followerRight.setNeutralMode(NeutralMode.Coast);
+
+		isInCoastNeutralMode = true;
 	}
 
 	public void setBrakeNeutralMode() {
@@ -1016,6 +1016,12 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		followerLeft.setNeutralMode(NeutralMode.Brake);	
 		masterRight.setNeutralMode(NeutralMode.Brake);
 		followerRight.setNeutralMode(NeutralMode.Brake);
+
+		isInCoastNeutralMode = false;
+	}
+
+	public boolean isInCoastNeutralMode() {
+		return isInCoastNeutralMode;
 	}
 
 }

@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj.Joystick;
 
 public interface IDrivetrain extends Subsystem {
-	
+
 	// this method needs to be paired with checkTurnAngleUsingPidController()
 	public void turnAngleUsingPidController(double angle);
 
@@ -84,6 +84,8 @@ public interface IDrivetrain extends Subsystem {
 	public void setCoastNeutralMode();
 
 	public void setBrakeNeutralMode();
+
+	public boolean isInCoastNeutralMode();
 }
 
 

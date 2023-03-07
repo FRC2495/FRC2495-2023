@@ -162,11 +162,13 @@ public class OI {
 		//gamepadY.whileHeld(new WinchWinchStopperMagicWinchUp());
 		//gamepadY.whileHeld(new ShooterShootHigh());
 		//gamepadY.onTrue(new ArmSafeExtendWithStallDetection());
+		gamepadY.onTrue(new DrivetrainSetCoastNeutralMode()); // temp
 
 		gamepadX = gamepad.x();
 		//gamepadX.whileHeld(new WinchWinchStopperMagicWinchDown());
 		//gamepadX.whileHeld(new FeederFeed());
 		//gamepadX.whileHeld(new ShooterShootLow());
+		gamepadX.onTrue(new DrivetrainSetBrakeNeutralMode()); // temp
 
 		gamepadB = gamepad.b();
 		//gamepadB.whileHeld(new GrasperRelease());
