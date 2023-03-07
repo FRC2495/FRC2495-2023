@@ -533,6 +533,16 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		moveDistance(dist, REDUCED_PCT_OUTPUT);
 	}
 
+	public double convertInchesToEncoderTicks(double dist)
+	{
+		if (Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
+			return dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
+		}
+		else {			//Using the high gear ratio between input gear and output gear
+			return dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
+		}
+	}
+
 	public void moveDistance(double dist, double percentOutput) // True is low gear setting, false is high gear setting
 	{
 		stop(); // in case we were still doing something
@@ -546,22 +556,11 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 		setNominalAndPeakOutputs(percentOutput); //this has a global impact, so we reset in stop()
 
-		if(Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
-			rtac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
-			ltac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
-			
-			rtac = + rtac; // account for fact that front of robot is back from sensor's point of view
-			ltac = - ltac;
-		}
-		else{			//Using the high gear ratio between input gear and output gear
-			rtac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
-			ltac = dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
-			
-			rtac = + rtac; // account for fact that front of robot is back from sensor's point of view
-			ltac = - ltac;
-		}
+		rtac = +convertInchesToEncoderTicks(dist);
+		ltac = -convertInchesToEncoderTicks(dist);
 
 		System.out.println("rtac, ltac: " + rtac + ", " + ltac);
+
 		masterRight.set(ControlMode.Position, rtac);
 		masterLeft.set(ControlMode.Position, ltac);
 
@@ -675,21 +674,11 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		//masterLeft.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
 		//masterRight.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
 
-		if(Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
-			rtac = rdist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
-			ltac = ldist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
-			
-			rtac = - rtac; // account for fact that front of robot is back from sensor's point of view
-			ltac = - ltac;
-		}
-		else{			//Using the high gear ratio between input gear and output gear
-			rtac = rdist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
-			ltac = ldist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_HIGH * TICKS_PER_REVOLUTION;
-			
-			rtac = - rtac; // account for fact that front of robot is back from sensor's point of view
-			ltac = - ltac;
-		}
+		rtac = -convertInchesToEncoderTicks(dist);
+		ltac = -convertInchesToEncoderTicks(dist);
+
 		System.out.println("rtac, ltac: " + rtac + ", " + ltac);
+		
 		masterRight.set(ControlMode.Position, -rtac);
 		masterLeft.set(ControlMode.Position, -ltac);
 		
