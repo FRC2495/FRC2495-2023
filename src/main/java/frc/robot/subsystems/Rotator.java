@@ -305,6 +305,8 @@ public class Rotator extends SubsystemBase implements IRotator {
 	public synchronized void stop() {
 		rotator.set(ControlMode.PercentOutput, 0);
 		
+		setNominalAndPeakOutputs(MAX_PCT_OUTPUT); // we undo what me might have changed
+		
 		isMoving = false;
 		isFlipping = false;
 	}
