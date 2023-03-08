@@ -47,7 +47,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	// NOTE: it might make sense to decrease the PID controller period below 0.02 sec (which is the period used by the main loop)
 	public static final double TURN_USING_CAMERA_PID_CONTROLLER_PERIOD_SECONDS = .01; // 0.01 sec = 10 ms 	
 	
-	public static final double MIN_TURN_USING_CAMERA_PCT_OUTPUT = 0.15; // 0.4;
+	public static final double MIN_TURN_USING_CAMERA_PCT_OUTPUT = 0.1; // 0.4;
 	public static final double MAX_TURN_USING_CAMERA_PCT_OUTPUT = 0.4; // 0.7;
 	
 	public static final double TURN_USING_CAMERA_PROPORTIONAL_GAIN = 0.001; //0.005; // TODO tune 320 pixels -> 1.6 pct output
@@ -65,7 +65,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	// NOTE: it might make sense to decrease the PID controller period below 0.02 sec (which is the period used by the main loop)
 	static final double TURN_PID_CONTROLLER_PERIOD_SECONDS = .01; // 0.01 sec = 10 ms 	
 	
-	static final double MIN_TURN_PCT_OUTPUT = 0.2; // 0.3;
+	static final double MIN_TURN_PCT_OUTPUT = 0.1; // 0.3;
 	static final double MAX_TURN_PCT_OUTPUT = 0.4; // 0.6;
 	
 	static final double TURN_PROPORTIONAL_GAIN = 0.01; //0.02;
