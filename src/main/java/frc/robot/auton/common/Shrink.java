@@ -15,8 +15,6 @@ public class Shrink extends SequentialCommandGroup{
         addCommands(
 
             new ClawSetClosed(),
-
-            new WaitCommand(1),
             
             new ArmRetractWithStallDetection(),
 

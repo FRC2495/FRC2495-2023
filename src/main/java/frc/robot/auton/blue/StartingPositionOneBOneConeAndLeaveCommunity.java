@@ -1,7 +1,7 @@
 package frc.robot.auton.blue;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.auton.common.Backup;
+import frc.robot.auton.common.FinalBackup;
 import frc.robot.auton.common.DropConeOnTopNodeAndShrink;
 
 // GP = game piece
@@ -13,9 +13,9 @@ public class StartingPositionOneBOneConeAndLeaveCommunity extends SequentialComm
         addCommands(
 
             new DropConeOnTopNodeAndShrink(),
-            // drops cone on top node and brings arm into frame perimeter
+            // drops cone on top node
 
-            new Backup()
+            new FinalBackup()
         ); 
   
     }
