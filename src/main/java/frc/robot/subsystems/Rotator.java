@@ -16,11 +16,13 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 //import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.interfaces.*;
+import frc.robot.OI;
 //import frc.robot.Ports;
 import frc.robot.Robot;
 
@@ -397,7 +399,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			rotator.set(ControlMode.PercentOutput, -gamepad.getRightX()*0.25); // adjust sign if desired
+			rotator.set(ControlMode.PercentOutput, -MathUtil.applyDeadband(gamepad.getRightX(),OI.GAMEPAD_AXIS_THRESHOLD)*0.25); // adjust sign if desired
 		}
 	}
 

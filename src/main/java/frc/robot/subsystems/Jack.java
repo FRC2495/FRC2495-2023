@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,6 +15,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.ParamEnum;
 
 import frc.robot.interfaces.*;
+import frc.robot.OI;
 //import frc.robot.Ports;
 import frc.robot.Robot;
 
@@ -412,7 +414,7 @@ public class Jack extends SubsystemBase implements IJack {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			jack.set(ControlMode.PercentOutput, +gamepad.getLeftX()*0.1); // adjust sign if desired
+			jack.set(ControlMode.PercentOutput, +MathUtil.applyDeadband(gamepad.getLeftX(),OI.GAMEPAD_AXIS_THRESHOLD)*0.1); // adjust sign if desired
 		}
 	}
 

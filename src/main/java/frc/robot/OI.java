@@ -82,7 +82,7 @@ public class OI {
 	public Trigger dpadLeft;
 	public Trigger dpadRight;
 
-	public final double GAMEPAD_AXIS_THRESHOLD = 0.2;
+	public static final double GAMEPAD_AXIS_THRESHOLD = 0.2;
 
 
 	public OI() {

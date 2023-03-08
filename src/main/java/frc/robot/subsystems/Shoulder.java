@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,6 +15,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.ParamEnum;
 
 import frc.robot.interfaces.*;
+import frc.robot.OI;
 //import frc.robot.Ports;
 import frc.robot.Robot;
 
@@ -428,7 +430,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			shoulder.set(ControlMode.PercentOutput, +gamepad.getLeftY()*0.1); // adjust sign if desired
+			shoulder.set(ControlMode.PercentOutput, +MathUtil.applyDeadband(gamepad.getLeftY(),OI.GAMEPAD_AXIS_THRESHOLD)*0.1); // adjust sign if desired
 		}
 	}
 
