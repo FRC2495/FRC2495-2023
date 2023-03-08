@@ -30,17 +30,16 @@ public class Jack extends SubsystemBase implements IJack {
 	
 	public static final double GEAR_RATIO = 3.0; // TODO change if needed
 	
-	public static final int ANGLE_TO_FLOOR_TICKS = 60000; // todo set proper value
-	public static final int ANGLE_TO_MIDWAY_TICKS = 75000;
-	public static final int ANGLE_TO_LEVEL_2_TICKS = 120000; // todo set proper value
-	public static final int ANGLE_TO_TRAVEL_TICKS = 150000; // TODO set proper value
+	public static final int ANGLE_TO_FLOOR_TICKS = 30000; // todo set proper value
+	public static final int ANGLE_TO_MIDWAY_TICKS = 25000;
+	public static final int ANGLE_TO_TRAVEL_TICKS = 50000; // TODO set proper value
 	
 	/*
 	!!! VIRTUAL_HOME_OFFSET_TICKS is important for moving up,     !!!
 	!!! if this is changed make sure to check to see if moveUp() works !!!
 	(it's used as an error margin for moving up, since we can't reliably check when it's up)
 	*/
-	static final double VIRTUAL_HOME_OFFSET_TICKS = -1000; // position of virtual home compared to physical home
+	static final double VIRTUAL_HOME_OFFSET_TICKS = 1000; // position of virtual home compared to physical home
 	
 	static final double MAX_PCT_OUTPUT = 1.0; // ~full speed
 	
@@ -144,8 +143,8 @@ public class Jack extends SubsystemBase implements IJack {
 		jack.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor,	PRIMARY_PID_LOOP, TALON_TIMEOUT_MS);
 
 		// this will reset the encoder automatically when at or past the reverse limit sensor
-		jack.configSetParameter(ParamEnum.eClearPositionOnLimitR, 0, 0, 0, TALON_TIMEOUT_MS);
-		jack.configSetParameter(ParamEnum.eClearPositionOnLimitF, 1, 0, 0, TALON_TIMEOUT_MS);		
+		jack.configSetParameter(ParamEnum.eClearPositionOnLimitR, 1, 0, 0, TALON_TIMEOUT_MS);
+		jack.configSetParameter(ParamEnum.eClearPositionOnLimitF, 0, 0, 0, TALON_TIMEOUT_MS);		
 		
 		isMoving = false;
 		isMovingUp = false;
@@ -242,7 +241,7 @@ public class Jack extends SubsystemBase implements IJack {
 		
 		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
-		tac = -ANGLE_TO_TRAVEL_TICKS;
+		tac = +ANGLE_TO_TRAVEL_TICKS;
 		jack.set(ControlMode.Position,tac);
 		
 		isMoving = true;
@@ -261,7 +260,7 @@ public class Jack extends SubsystemBase implements IJack {
 		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT); // we may need to check if we were up in which case we may want to reduce output
 
 		//tac = ANGLE_TO_TRAVEL_TICKS / 2;
-		tac = -ANGLE_TO_MIDWAY_TICKS;
+		tac = +ANGLE_TO_MIDWAY_TICKS;
 		jack.set(ControlMode.Position,tac);
 		
 		isMoving = true;
@@ -279,7 +278,7 @@ public class Jack extends SubsystemBase implements IJack {
 		
 		setNominalAndPeakOutputs(REDUCED_PCT_OUTPUT);
 
-		tac = -ANGLE_TO_FLOOR_TICKS;
+		tac = +ANGLE_TO_FLOOR_TICKS;
 		jack.set(ControlMode.Position,tac);
 		
 		isMoving = true;
@@ -414,7 +413,7 @@ public class Jack extends SubsystemBase implements IJack {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			jack.set(ControlMode.PercentOutput, +MathUtil.applyDeadband(gamepad.getLeftX(),OI.GAMEPAD_AXIS_THRESHOLD)*0.1); // adjust sign if desired
+			jack.set(ControlMode.PercentOutput, +MathUtil.applyDeadband(gamepad.getLeftX(),OI.GAMEPAD_AXIS_THRESHOLD)*0.3); // adjust sign if desired
 		}
 	}
 

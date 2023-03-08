@@ -53,7 +53,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	static final int SLOT_0 = 0;
 	
-	static final double REDUCED_PCT_OUTPUT = 0.6;
+	static final double REDUCED_PCT_OUTPUT = 0.7;
 	static final double SUPER_REDUCED_PCT_OUTPUT = 0.3;
 	
 	static final double MOVE_PROPORTIONAL_GAIN = 0.06;
@@ -430,7 +430,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			shoulder.set(ControlMode.PercentOutput, +MathUtil.applyDeadband(gamepad.getLeftY(),OI.GAMEPAD_AXIS_THRESHOLD)*0.1); // adjust sign if desired
+			shoulder.set(ControlMode.PercentOutput, +MathUtil.applyDeadband(gamepad.getLeftY(),OI.GAMEPAD_AXIS_THRESHOLD)*0.3); // adjust sign if desired
 		}
 	}
 

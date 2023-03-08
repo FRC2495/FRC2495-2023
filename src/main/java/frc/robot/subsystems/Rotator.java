@@ -399,7 +399,7 @@ public class Rotator extends SubsystemBase implements IRotator {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			rotator.set(ControlMode.PercentOutput, -MathUtil.applyDeadband(gamepad.getRightX(),OI.GAMEPAD_AXIS_THRESHOLD)*0.25); // adjust sign if desired
+			rotator.set(ControlMode.PercentOutput, -MathUtil.applyDeadband(gamepad.getRightX(),OI.GAMEPAD_AXIS_THRESHOLD)*0.3); // adjust sign if desired
 		}
 	}
 
