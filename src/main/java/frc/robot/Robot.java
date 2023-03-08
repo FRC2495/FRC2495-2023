@@ -534,6 +534,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("isStalled?", drivetrain.isStalled());
 		SmartDashboard.putBoolean("isMovingUsingCamera?", drivetrain.isMovingUsingCamera());
 		SmartDashboard.putBoolean("isTurningUsingCamera?", drivetrain.isTurningUsingCamera());
+		SmartDashboard.putBoolean("isEngagingUsingAccelerometer?", drivetrain.isEngagingUsingAccelerometer());
 		SmartDashboard.putBoolean("isInCoastNeutralMode?", drivetrain.isInCoastNeutralMode());
 		
 		SmartDashboard.putBoolean("isCompromised?", DriverStation.isDisabled());
