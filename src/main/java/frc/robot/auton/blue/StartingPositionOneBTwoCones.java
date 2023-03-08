@@ -23,7 +23,7 @@ public class StartingPositionOneBTwoCones extends SequentialCommandGroup {
             new PickupConeFromFloor(),
 
             new ShrinkAndLeftMoveFromConePickupToConeNode(),
-            //
+            // testing
 
             new DropConeOnMiddleNodeAndShrink()
 

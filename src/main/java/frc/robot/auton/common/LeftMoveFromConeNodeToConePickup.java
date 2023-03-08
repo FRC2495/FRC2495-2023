@@ -28,6 +28,13 @@ public class LeftMoveFromConeNodeToConePickup extends SequentialCommandGroup {
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_AREA_BEFORE_CONE_PICKUP)
             // moves forward to before pickup
 
+
+            // new path (?)
+            
+            // new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN),
+            // new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-AutonConstants.ANGLE_BETWEEN_CONE_NODE_AND_AREA_AFTER_FIRST_TURN),
+            
+
         ); 
   
     }
