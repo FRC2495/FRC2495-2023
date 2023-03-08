@@ -102,9 +102,9 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	public static final double ENGAGE_USING_ACCELEROMETER_PID_CONTROLLER_PERIOD_SECONDS = .01; // 0.01 sec = 10 ms 	
 	
 	public static final double MIN_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT = 0.1;
-	public static final double MAX_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT = 0.3;
+	public static final double MAX_ENGAGE_USING_ACCELEROMETER_PCT_OUTPUT = 0.2;
 	
-	public static final double ENGAGE_USING_ACCELEROMETER_PROPORTIONAL_GAIN = 0.02; // TODO tune 15 degrees -> 0.3 pct output
+	public static final double ENGAGE_USING_ACCELEROMETER_PROPORTIONAL_GAIN = 0.01; // TODO tune 15 degrees -> 0.3 pct output
 	public static final double ENGAGE_USING_ACCELEROMETER_INTEGRAL_GAIN = 0.0;
 	public static final double ENGAGE_USING_ACCELEROMETER_DERIVATIVE_GAIN = 0.0;
 	
@@ -558,7 +558,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	public double convertInchesToEncoderTicks(double dist)
 	{
-		if (Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
+		if (Robot.gearbox == null || Robot.gearbox.getGear() == Gearbox.Gear.LOW){ //Using the low gear ratio between input gear and output gear
 			return dist / PERIMETER_WHEEL_INCHES * RATIO_BETWEEN_INPUT_AND_OUTPUT_LOW * TICKS_PER_REVOLUTION;
 		}
 		else {			//Using the high gear ratio between input gear and output gear
@@ -578,6 +578,22 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		//masterRight.selectProfileSlot(SLOT_0, PRIMARY_PID_LOOP);
 
 		setNominalAndPeakOutputs(percentOutput); //this has a global impact, so we reset in stop()
+
+
+		/*System.out.println("right safe travel length forward: " + convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_FORWARD_INCHES));
+		System.out.println("right safe travel length reverse: " + -convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_FORWARD_INCHES));
+
+		// right is the real forward direction, so left is the opposite
+		masterRight.configForwardSoftLimitThreshold(+convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_FORWARD_INCHES),TALON_TIMEOUT_MS);
+		masterLeft.configReverseSoftLimitThreshold(-convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_FORWARD_INCHES),TALON_TIMEOUT_MS);
+
+		masterRight.configReverseSoftLimitThreshold(-convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_REVERSE_INCHES),TALON_TIMEOUT_MS);
+		masterLeft.configForwardSoftLimitThreshold(+convertInchesToEncoderTicks(ENGAGE_SAFE_TRAVEL_LENGTH_REVERSE_INCHES),TALON_TIMEOUT_MS);
+
+		// Enables software limits so we never go too crazy
+		masterRight.overrideSoftLimitsEnable(true);
+		masterLeft.overrideSoftLimitsEnable(true);*/
+
 
 		rtac = +convertInchesToEncoderTicks(dist);
 		ltac = -convertInchesToEncoderTicks(dist);
