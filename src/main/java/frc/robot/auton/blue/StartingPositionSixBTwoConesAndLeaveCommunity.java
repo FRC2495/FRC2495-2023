@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.auton.common.FinalBackup;
 import frc.robot.auton.common.DropConeOnMiddleNode;
 import frc.robot.auton.common.DropConeOnMiddleNodeAndShrink;
+import frc.robot.auton.common.DropConeOnTopNode;
 import frc.robot.auton.common.DropConeOnTopNodeAndShrink;
 import frc.robot.auton.common.PickupConeFromFloor;
 import frc.robot.auton.common.RightMoveFromConeNodeToConePickup;
@@ -20,7 +21,7 @@ public class StartingPositionSixBTwoConesAndLeaveCommunity extends SequentialCom
 
         addCommands(
 
-            new DropConeOnTopNodeAndShrink(),
+            new DropConeOnTopNode(),
 
             new ShrinkAndRightMoveFromConeNodeToConePickup(), // TEST OUT (MAY BE WRONG)
 
