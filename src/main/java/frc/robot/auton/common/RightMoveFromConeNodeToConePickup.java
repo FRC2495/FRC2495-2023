@@ -24,7 +24,7 @@ public class RightMoveFromConeNodeToConePickup extends SequentialCommandGroup {
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN),
             // moves forward to before second turning point
 
-            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-AutonConstants.ANGLE_BETWEEN_AREA_BEFORE_SECOND_TURN_AND_CONE_PICKUP),
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-AutonConstants.ANGLE_BETWEEN_AREA_AFTER_FIRST_TURN_AND_CONE_PICKUP),
             // turns toward cone pickup
 
             new DrivetrainMoveDistanceWithStallDetection(+AutonConstants.DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_AREA_BEFORE_CONE_PICKUP)

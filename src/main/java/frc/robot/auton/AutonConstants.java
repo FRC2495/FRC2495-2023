@@ -30,8 +30,8 @@ public class AutonConstants {
     // Fixed auton angles
 
     // Starting Position One + Six(?) Angles
-    public static final int ANGLE_BETWEEN_CONE_NODE_AND_AREA_AFTER_FIRST_TURN = 20;
-    public static final int ANGLE_BETWEEN_AREA_BEFORE_SECOND_TURN_AND_CONE_PICKUP = 160;
+    public static final int ANGLE_BETWEEN_CONE_NODE_AND_AREA_AFTER_FIRST_TURN = 160;
+    public static final int ANGLE_BETWEEN_AREA_AFTER_FIRST_TURN_AND_CONE_PICKUP = 160;
     public static final int ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_FIRST_PART = 90;
     public static final int ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_SECOND_PART = 115; // the total of this and previous angle is supposed to be 205
     public static final int ANGLE_BETWEEN_AREA_BEFORE_FOURTH_TURN_AND_CONE_NODE = 25;
