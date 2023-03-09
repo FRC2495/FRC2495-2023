@@ -125,6 +125,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	static final int REMOTE_0 = 0;
 	
+	static final double SUPER_REDUCED_PCT_OUTPUT = 0.2;
 	static final double REDUCED_PCT_OUTPUT = 0.3;
 	static final double HIGH_PCT_OUTPUT = 0.5;
 	
@@ -139,6 +140,10 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	private final static int MOVE_ON_TARGET_MINIMUM_COUNT = 20; // number of times/iterations we need to be on target to really be on target
 
 	private final static int MOVE_STALLED_MINIMUM_COUNT = MOVE_ON_TARGET_MINIMUM_COUNT * 2 + 30; // number of times/iterations we need to be stalled to really be stalled
+
+	private final static int MOVE_FLAT_MINIMUM_COUNT = 5;
+
+	public static final int FLAT_THRESHOLD_DEGREES = 2; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
 	
 	
 	// variables
@@ -148,6 +153,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	boolean isMovingUsingCamera;  // indicates that the drivetrain is turning using the third PID controller hereunder
 	boolean isEngagingUsingAccelerometer;  // indicates that the drivetrain is engaging using the fourth PID controller hereunder
 	boolean isReallyStalled;
+	boolean isReallyFlat;
 	boolean isInCoastNeutralMode;
 	
 	double ltac, rtac; // target positions 
@@ -158,6 +164,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	private int onTargetCountMovingUsingCamera; // counter indicating how many times/iterations we were on target
 	private int onTargetCountEngagingUsingAccelerometer; // counter indicating how many times/iterations we were on target
 	private int stalledCount; // counter indicating how many times/iterations we were stalled
+	private int flatCount; // counter indicating how many times/iterations we were flat
 
 	WPI_TalonSRX masterLeft, masterRight; // motor controllers
 	BaseMotorController followerLeft, followerRight; // motor controllers
@@ -322,6 +329,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		onTargetCountTurning = 0;
 		isReallyStalled = false;
 		stalledCount = 0;
+		isReallyFlat = false;
+		flatCount = 0;
 	}
 
 	// this method needs to be paired with checkTurnAngleUsingPidController()
@@ -341,6 +350,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		onTargetCountTurning = 0;
 		isReallyStalled = false;
 		stalledCount = 0;
+		isReallyFlat = false;
+		flatCount = 0;
 	}	
 	
 	public void calculateTurnAngleUsingPidController() {	
@@ -396,6 +407,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		onTargetCountTurningUsingCamera = 0;
 		isReallyStalled = false;
 		stalledCount = 0;
+		isReallyFlat = false;
+		flatCount = 0;
 	}
 
 	public void calculateTurnUsingCameraPidController() {	
@@ -450,6 +463,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		onTargetCountMovingUsingCamera = 0;
 		isReallyStalled = false;
 		stalledCount = 0;
+		isReallyFlat = false;
+		flatCount = 0;
 	}
 
 	public void calculateMoveUsingCameraPidController() {	
@@ -513,6 +528,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		onTargetCountEngagingUsingAccelerometer = 0;
 		isReallyStalled = false;
 		stalledCount = 0;
+		isReallyFlat = false;
+		flatCount = 0;
 	}
 
 	public void calculateEngageUsingAccelerometerPidController() {	
@@ -607,12 +624,18 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		onTargetCountMoving = 0;
 		isReallyStalled = false;
 		stalledCount = 0;
-	
+		isReallyFlat = false;
+		flatCount = 0;
 	}
 
 	public void moveDistanceHighSpeed(double dist) // moves the distance in inch given
 	{
 		moveDistance(dist, HIGH_PCT_OUTPUT);
+	}
+
+	public void moveDistanceLowSpeed(double dist) // moves the distance in inch given
+	{
+		moveDistance(dist, SUPER_REDUCED_PCT_OUTPUT);
 	}
 
 	// this method needs to be paired with checkMoveDistance()
@@ -651,6 +674,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		onTargetCountMoving = 0;
 		isReallyStalled = false;
 		stalledCount = 0;
+		isReallyFlat = false;
+		flatCount = 0;		
 	}*/
 		
 	public boolean tripleCheckMoveDistance() {
@@ -721,6 +746,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		onTargetCountMoving = 0;
 		isReallyStalled = false;
 		stalledCount = 0;
+		isReallyFlat = false;
+		flatCount = 0;		
 	}
 	
 	// return if drivetrain might be stalled
@@ -773,6 +800,40 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		}
 		
 		return isReallyStalled;
+	}
+
+	// return if drivetrain might be stalled
+	public boolean tripleCheckIfFlat() {
+		if (isMoving) {
+			
+			double pitch = accelerometer.getAccurateRoll(); // roll is picth because of how Rio is mounted
+			
+			boolean isFlat = Math.abs(pitch) < FLAT_THRESHOLD_DEGREES;
+			
+			if (isFlat) { // if we are flat in this iteration 
+				flatCount++; // we increase the counter
+			} else { // if we are not flat in this iteration
+				if (flatCount > 0) { // even though we were flat at least once during a previous iteration
+					flatCount = 0; // we reset the counter as we are not flat anymore
+					System.out.println("Triple-check failed (detecting flat).");
+				} else {
+					// we are definitely not flat
+					
+					//System.out.println("pitch: " + pitch);
+				}
+			}
+			
+			if (isMoving && flatCount > MOVE_FLAT_MINIMUM_COUNT) { // if we have met the minimum
+				isReallyFlat = true;
+			}
+						
+			if (isReallyFlat) {
+				System.out.println("WARNING: Flat detected!");
+				stop(); // WE STOP IF A FLAT IS DETECTED				 
+			}
+		}
+		
+		return isReallyFlat;
 	}
 	
 	public void stop() {

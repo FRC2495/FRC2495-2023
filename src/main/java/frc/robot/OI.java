@@ -177,6 +177,7 @@ public class OI {
 
 		joyRightBtn3 = joyRight.button(ControllerBase.JoystickButtons.BTN3);
 		joyRightBtn3.onTrue(new DrivetrainEngageUsingAccelerometerPidControllerWithStallDetection());
+		//joyRightBtn3.onTrue(new DrivetrainMoveDistanceWithFlatDetection(50));
 
 		joyRightBtn2 = joyRight.button(ControllerBase.JoystickButtons.BTN2);
 		joyRightBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.BOTTOM_CAMERA));

@@ -32,6 +32,9 @@ public interface IDrivetrain extends Subsystem {
 	
 	// same as moveDistance(), but at high speed
 	public void moveDistanceHighSpeed(double dist);
+
+	// same as moveDistance(), but at low speed
+	public void moveDistanceLowSpeed(double dist);
 	
 	// checks that move is complete
 	public boolean tripleCheckMoveDistance();
@@ -41,6 +44,9 @@ public interface IDrivetrain extends Subsystem {
 	
 	// checks if drivetrain might be stalled
 	public boolean tripleCheckIfStalled();
+
+	// checks if drivetrain is on flat terrain
+	public boolean tripleCheckIfFlat();
 	
 	// stops the drivetrain (cuts power)
 	public void stop();
