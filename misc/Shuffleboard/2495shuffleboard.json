@@ -2180,6 +2180,19 @@
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
             }
+          },
+          "6,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/FilteredAccurateRoll",
+              "_title": "SmartDashboard/FilteredAccurateRoll",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
@@ -2450,7 +2463,7 @@
               "_showGlyph": false
             }
           },
-          "9,2": {
+          "9,1": {
             "size": [
               1,
               1
@@ -2463,7 +2476,7 @@
               "_showGlyph": false
             }
           },
-          "9,1": {
+          "9,0": {
             "size": [
               1,
               1
@@ -2472,6 +2485,19 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/AccuratePitch",
               "_title": "SmartDashboard/AccuratePitch",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "9,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/FilteredAccurateRoll",
+              "_title": "SmartDashboard/FilteredAccurateRoll",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -3056,7 +3082,7 @@
               "_showGlyph": false
             }
           },
-          "4,4": {
+          "3,4": {
             "size": [
               1,
               1
@@ -3084,7 +3110,7 @@
               "Colors/Color when false": "#8B0000FF"
             }
           },
-          "3,4": {
+          "2,4": {
             "size": [
               1,
               1
@@ -3097,7 +3123,7 @@
               "_showGlyph": false
             }
           },
-          "2,4": {
+          "1,4": {
             "size": [
               1,
               1
@@ -3106,6 +3132,19 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/AccurateTilt",
               "_title": "SmartDashboard/AccurateTilt",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "4,4": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/FilteredAccurateRoll",
+              "_title": "SmartDashboard/FilteredAccurateRoll",
               "_glyph": 148,
               "_showGlyph": false
             }

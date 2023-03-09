@@ -14,12 +14,14 @@ public class HMAccelerometer {
 	static final double TILT_THRESH_DEGREES = 5.0;
 	
 	private BuiltInAccelerometer accel;
-	private LinearFilter filter;
+	private LinearFilter filterZ;
+	private LinearFilter filterAR;
 	
 	public HMAccelerometer() {
 		accel = new BuiltInAccelerometer(Accelerometer.Range.k4G);
 		
-		filter = LinearFilter.movingAverage(10); // filter over n iterations
+		filterZ = LinearFilter.movingAverage(5); // filter over n iterations
+		filterAR = LinearFilter.movingAverage(5); // filter over n iterations
 	}
 	
 	
@@ -36,7 +38,7 @@ public class HMAccelerometer {
 	}
 
 	public double getFilteredAccelZ() {
-		return filter.calculate(accel.getZ());
+		return filterZ.calculate(accel.getZ());
 	}
 	
 	public double getTilt() {
@@ -79,6 +81,11 @@ public class HMAccelerometer {
             return 90; // if denominator is zero, we are dead
         }
 	}
+
+	public double getFilteredAccurateRoll() {
+		return filterAR.calculate(getAccurateRoll());
+	}
+	
 	
 	/**
 	 * Indicates if the support onto which the accelerometer is attached is flat
