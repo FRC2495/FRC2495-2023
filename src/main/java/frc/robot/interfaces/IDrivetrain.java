@@ -47,6 +47,9 @@ public interface IDrivetrain extends Subsystem {
 
 	// checks if drivetrain is on flat terrain
 	public boolean tripleCheckIfFlat();
+
+	// checks if drivetrain is on steep terrain
+	public boolean tripleCheckIfSteep();
 	
 	// stops the drivetrain (cuts power)
 	public void stop();

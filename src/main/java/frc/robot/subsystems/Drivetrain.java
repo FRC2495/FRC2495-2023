@@ -125,7 +125,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	static final int REMOTE_0 = 0;
 	
-	static final double SUPER_REDUCED_PCT_OUTPUT = 0.2;
+	static final double SUPER_REDUCED_PCT_OUTPUT = 0.10;
 	static final double REDUCED_PCT_OUTPUT = 0.3;
 	static final double HIGH_PCT_OUTPUT = 0.5;
 	
@@ -141,10 +141,13 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	private final static int MOVE_STALLED_MINIMUM_COUNT = MOVE_ON_TARGET_MINIMUM_COUNT * 2 + 30; // number of times/iterations we need to be stalled to really be stalled
 
-	private final static int MOVE_FLAT_MINIMUM_COUNT = 9;
+	private final static int MOVE_FLAT_MINIMUM_COUNT = 5;
 
-	public static final double FLAT_THRESHOLD_DEGREES = 1.0; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
+	public static final double FLAT_THRESHOLD_DEGREES = 5.0; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
 	
+	private final static int MOVE_STEEP_MINIMUM_COUNT = 20;
+
+	public static final double STEEP_THRESHOLD_DEGREES = 15.0;
 	
 	// variables
 	boolean isMoving; // indicates that the drivetrain is moving using the PID controllers embedded on the motor controllers 
@@ -814,7 +817,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 				flatCount++; // we increase the counter
 			} else { // if we are not flat in this iteration
 				if (flatCount > 0) { // even though we were flat at least once during a previous iteration
-					flatCount = 0; // we reset the counter as we are not flat anymore
+					//flatCount = 0; // we reset the counter as we are not flat anymore
 					System.out.println("Triple-check failed (detecting flat).");
 				} else {
 					// we are definitely not flat
@@ -830,6 +833,40 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 			if (isReallyFlat) {
 				System.out.println("WARNING: Flat detected!");
 				stop(); // WE STOP IF A FLAT IS DETECTED				 
+			}
+		}
+		
+		return isReallyFlat;
+	}
+
+	// return if drivetrain might be stalled
+	public boolean tripleCheckIfSteep() {
+		if (isMoving) {
+			
+			double pitch = accelerometer.getAccurateRoll(); // roll is picth because of how Rio is mounted
+			
+			boolean isFlat = Math.abs(pitch) > STEEP_THRESHOLD_DEGREES;
+			
+			if (isFlat) { // if we are flat in this iteration 
+				flatCount++; // we increase the counter
+			} else { // if we are not flat in this iteration
+				if (flatCount > 0) { // even though we were flat at least once during a previous iteration
+					//flatCount = 0; // we reset the counter as we are not flat anymore
+					System.out.println("Triple-check failed (detecting steep).");
+				} else {
+					// we are definitely not steep
+					
+					//System.out.println("pitch: " + pitch);
+				}
+			}
+			
+			if (isMoving && flatCount > MOVE_STEEP_MINIMUM_COUNT) { // if we have met the minimum
+				isReallyFlat = true;
+			}
+						
+			if (isReallyFlat) {
+				System.out.println("WARNING: Steep detected!");
+				stop(); // WE STOP IF A STEEP IS DETECTED				 
 			}
 		}
 		
