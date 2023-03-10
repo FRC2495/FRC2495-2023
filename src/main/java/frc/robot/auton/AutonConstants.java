@@ -14,7 +14,8 @@ public class AutonConstants {
     public static final double DISTANCE_FROM_AREA_AFTER_THIRD_TURN_TO_AREA_BEFORE_FOURTH_TURN = 21;
     public static final double DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE = 8;
 
-    public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 144;
+    public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 134;
+    public static final double DISTANCE_FROM_OUTSIDE_COMMUNITY_TO_SECOND_CONE_PICKUP = 20;
 
     // Starting Position Three + Four Distances
     public static final double DISTANCE_FROM_NODE_TO_DOCK = 30; // todo put proper value
@@ -35,7 +36,7 @@ public class AutonConstants {
     public static final int ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_FIRST_PART = 90;
     public static final int ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_SECOND_PART = 115; // the total of this and previous angle is supposed to be 205
     public static final int ANGLE_BETWEEN_AREA_BEFORE_FOURTH_TURN_AND_CONE_NODE = 25;
-    public static final int ANGLE_BETWEEN_CONE_NODE_AND_CONE_PICKUP = 180;
+    public static final int ANGLE_BETWEEN_CONE_NODE_AND_CONE_PICKUP = 160;
 
 
 

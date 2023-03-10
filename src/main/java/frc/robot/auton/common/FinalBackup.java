@@ -15,7 +15,7 @@ public class FinalBackup extends SequentialCommandGroup {
             new DrivetrainMoveDistanceWithStallDetection(-AutonConstants.DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY), // todo change distance if needed
             // drives backward to outside community
 
-            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(+AutonConstants.ANGLE_BETWEEN_CONE_NODE_AND_CONE_PICKUP)
+            new DrivetrainTurnAngleUsingPidControllerWithStallDetection(-AutonConstants.ANGLE_BETWEEN_CONE_NODE_AND_CONE_PICKUP)
             // turns to get ready for teleop
             
         ); 
