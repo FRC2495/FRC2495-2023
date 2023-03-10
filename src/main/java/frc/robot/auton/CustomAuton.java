@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 import frc.robot.Robot;
 import frc.robot.auton.blue.StartingPositionOneBOneConeAndLeaveCommunity;
+import frc.robot.auton.blue.StartingPositionOneBOneConeAndLeaveCommunityAndPickupCone;
 import frc.robot.auton.blue.StartingPositionOneBTwoCones;
 import frc.robot.auton.blue.StartingPositionOneBTwoConesAndLeaveCommunity;
 import frc.robot.auton.blue.StartingPositionSixBOneConeAndLeaveCommunity;
@@ -73,6 +74,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								//TODO
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -88,6 +92,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								addCommands(new StartingPositionOneBOneConeAndLeaveCommunity());
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								addCommands(new StartingPositionOneBOneConeAndLeaveCommunityAndPickupCone());
 								break;
 							default:
 								// nothing
@@ -105,6 +112,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								addCommands(new StartingPositionOneBTwoConesAndLeaveCommunity());
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -119,6 +129,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								//TODO
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
 								//TODO
 								break;
 							default:
@@ -145,6 +158,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								//TODO
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -159,6 +175,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								//TODO
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
 								//TODO
 								break;
 							default:
@@ -177,6 +196,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								//TODO
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -191,6 +213,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								//TODO
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
 								//TODO
 								break;
 							default:
@@ -217,6 +242,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								addCommands(new StartingPositionThreeOrFourBDockAndLeaveCommunity());
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -232,6 +260,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								addCommands(new PutDownOneConeAndLeaveCommunityAndThenDock());
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
 								break;
 							default:
 								// nothing
@@ -249,6 +280,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								//TODO
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -263,6 +297,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								//TODO
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
 								//TODO
 								break;
 							default:
@@ -289,6 +326,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								addCommands(new StartingPositionThreeOrFourBDockAndLeaveCommunity());
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -304,6 +344,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								addCommands(new PutDownOneConeAndLeaveCommunityAndThenDock());
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
 								break;
 							default:
 								// nothing
@@ -321,6 +364,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								//TODO
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -335,6 +381,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								//TODO
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
 								//TODO
 								break;
 							default:
@@ -361,6 +410,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								//TODO
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -375,6 +427,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								//TODO
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
 								//TODO
 								break;
 							default:
@@ -393,6 +448,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								//TODO
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -407,6 +465,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								//TODO
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
 								//TODO
 								break;
 							default:
@@ -433,6 +494,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								//TODO
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -448,6 +512,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								addCommands(new StartingPositionSixBOneConeAndLeaveCommunity());
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
 								break;
 							default:
 								// nothing
@@ -465,6 +532,9 @@ public class CustomAuton extends SequentialCommandGroup {
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
 								addCommands(new StartingPositionSixBTwoConesAndLeaveCommunity());
 								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
+								//TODO
+								break;
 							default:
 								// nothing
 								break;
@@ -479,6 +549,9 @@ public class CustomAuton extends SequentialCommandGroup {
 								//TODO
 								break;
 							case Robot.AUTON_OPTION_LEAVE_COMMUNITY:
+								//TODO
+								break;
+							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
 								//TODO
 								break;
 							default:
