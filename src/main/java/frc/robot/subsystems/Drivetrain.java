@@ -141,9 +141,9 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	private final static int MOVE_STALLED_MINIMUM_COUNT = MOVE_ON_TARGET_MINIMUM_COUNT * 2 + 30; // number of times/iterations we need to be stalled to really be stalled
 
-	private final static int MOVE_FLAT_MINIMUM_COUNT = 5;
+	private final static int MOVE_FLAT_MINIMUM_COUNT = 9;
 
-	public static final int FLAT_THRESHOLD_DEGREES = 2; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
+	public static final double FLAT_THRESHOLD_DEGREES = 1.0; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
 	
 	
 	// variables

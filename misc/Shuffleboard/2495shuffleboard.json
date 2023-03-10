@@ -1891,6 +1891,19 @@
               "_showGlyph": false
             }
           },
+          "0,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Start positions",
+              "_title": "SmartDashboard/Start positions",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
           "0,0": {
             "size": [
               1,
@@ -1913,19 +1926,6 @@
               "_type": "ComboBox Chooser",
               "_source0": "network_table:///SmartDashboard/Game piece choices",
               "_title": "SmartDashboard/Game piece choices",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Start positions",
-              "_title": "SmartDashboard/Start positions",
               "_glyph": 148,
               "_showGlyph": false
             }
