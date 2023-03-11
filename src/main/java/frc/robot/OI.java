@@ -180,8 +180,8 @@ public class OI {
 		//joyRightBtn3.onTrue(new DrivetrainMoveDistanceWithFlatDetection(60));
 		//joyRightBtn3.onTrue(new DrivetrainMoveDistanceWithSteepDetection(60));
 		//joyRightBtn3.onTrue(new DrivetrainMoveToTop());
-		//joyRightBtn3.onTrue(new DrivetrainMoveToTopInReverse());
-		joyRightBtn3.onTrue(new DrivetrainEngageInReverse());
+		joyRightBtn3.onTrue(new DrivetrainMoveToTopInReverse());
+		//joyRightBtn3.onTrue(new DrivetrainEngageInReverse());
 
 		joyRightBtn2 = joyRight.button(ControllerBase.JoystickButtons.BTN2);
 		joyRightBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.BOTTOM_CAMERA));
