@@ -145,9 +145,9 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	public static final double FLAT_THRESHOLD_DEGREES = 5.0; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
 	
-	private final static int MOVE_STEEP_MINIMUM_COUNT = 20;
+	private final static int MOVE_STEEP_MINIMUM_COUNT = 20; // 20 during testing on 10-Mar-2023; // TODO: STEEP CALIBRATION
 
-	public static final double STEEP_THRESHOLD_DEGREES = 15.0;
+	public static final double STEEP_THRESHOLD_DEGREES = 13.0; // 15.0 during testing on 10-Mr-2023; // NOTE: REAL CHARGE STATION IS AT 15 DEGREES, SO THRESHOLD SHOULD BE ABOUT 13 DEGREES
 	
 	// variables
 	boolean isMoving; // indicates that the drivetrain is moving using the PID controllers embedded on the motor controllers 
@@ -869,7 +869,10 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 				steepCount++; // we increase the counter
 			} else { // if we are not steep in this iteration
 				if (steepCount > 0) { // even though we were steep at least once during a previous iteration
-					//steepCount = 0; // we reset the counter as we are not steep anymore TODO TRY UNCOMMENTING OUT THIS LINE
+					// TODO: STEEP CALIBRATION
+					// NOTE THAT LINE BELOW WAS COMMENTED OUT DURING TESTING ON 10-MAR-2023 BUT THAT IS PROBABLY NOT A GOOD IDEA
+					// THAT SAID COMMENT BACK IF JUSTIFIED
+					steepCount = 0; // we reset the counter as we are not steep anymore
 					System.out.println("Triple-check failed (detecting steep).");
 				} else {
 					// we are definitely not steep
