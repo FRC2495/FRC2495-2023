@@ -537,6 +537,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("isMoving?", drivetrain.isMoving());
 		SmartDashboard.putBoolean("isTurning?", drivetrain.isTurning());
 		SmartDashboard.putBoolean("isStalled?", drivetrain.isStalled());
+		SmartDashboard.putBoolean("isFlatDetected?", drivetrain.isFlatDetected());
+		SmartDashboard.putBoolean("isSteepDetected?", drivetrain.isSteepDetected());
 		SmartDashboard.putBoolean("isMovingUsingCamera?", drivetrain.isMovingUsingCamera());
 		SmartDashboard.putBoolean("isTurningUsingCamera?", drivetrain.isTurningUsingCamera());
 		SmartDashboard.putBoolean("isEngagingUsingAccelerometer?", drivetrain.isEngagingUsingAccelerometer());

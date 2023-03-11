@@ -157,6 +157,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	boolean isEngagingUsingAccelerometer;  // indicates that the drivetrain is engaging using the fourth PID controller hereunder
 	boolean isReallyStalled;
 	boolean isReallyFlat;
+	boolean isReallySteep;
 	boolean isInCoastNeutralMode;
 	
 	double ltac, rtac; // target positions 
@@ -168,6 +169,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	private int onTargetCountEngagingUsingAccelerometer; // counter indicating how many times/iterations we were on target
 	private int stalledCount; // counter indicating how many times/iterations we were stalled
 	private int flatCount; // counter indicating how many times/iterations we were flat
+	private int steepCount; // counter indicating how many times/iterations we were steep
 
 	WPI_TalonSRX masterLeft, masterRight; // motor controllers
 	BaseMotorController followerLeft, followerRight; // motor controllers
@@ -334,6 +336,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		isReallySteep = false;
+		steepCount = 0;
 	}
 
 	// this method needs to be paired with checkTurnAngleUsingPidController()
@@ -355,6 +359,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		isReallySteep = false;
+		steepCount = 0;
 	}	
 	
 	public void calculateTurnAngleUsingPidController() {	
@@ -412,6 +418,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		isReallySteep = false;
+		steepCount = 0;
 	}
 
 	public void calculateTurnUsingCameraPidController() {	
@@ -468,6 +476,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		isReallySteep = false;
+		steepCount = 0;
 	}
 
 	public void calculateMoveUsingCameraPidController() {	
@@ -533,6 +543,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		isReallySteep = false;
+		steepCount = 0;
 	}
 
 	public void calculateEngageUsingAccelerometerPidController() {	
@@ -629,6 +641,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		isReallySteep = false;
+		steepCount = 0;
 	}
 
 	public void moveDistanceHighSpeed(double dist) // moves the distance in inch given
@@ -679,6 +693,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;		
+		isReallySteep = false;
+		steepCount = 0;
 	}*/
 		
 	public boolean tripleCheckMoveDistance() {
@@ -751,6 +767,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;		
+		isReallySteep = false;
+		steepCount = 0;
 	}
 	
 	// return if drivetrain might be stalled
@@ -845,13 +863,13 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 			
 			double pitch = accelerometer.getAccurateRoll(); // roll is picth because of how Rio is mounted
 			
-			boolean isFlat = Math.abs(pitch) > STEEP_THRESHOLD_DEGREES;
+			boolean isSteep = Math.abs(pitch) > STEEP_THRESHOLD_DEGREES;
 			
-			if (isFlat) { // if we are flat in this iteration 
-				flatCount++; // we increase the counter
-			} else { // if we are not flat in this iteration
-				if (flatCount > 0) { // even though we were flat at least once during a previous iteration
-					//flatCount = 0; // we reset the counter as we are not flat anymore
+			if (isSteep) { // if we are steep in this iteration 
+				steepCount++; // we increase the counter
+			} else { // if we are not steep in this iteration
+				if (steepCount > 0) { // even though we were steep at least once during a previous iteration
+					//steepCount = 0; // we reset the counter as we are not steep anymore TODO TRY UNCOMMENTING OUT THIS LINE
 					System.out.println("Triple-check failed (detecting steep).");
 				} else {
 					// we are definitely not steep
@@ -860,17 +878,17 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 				}
 			}
 			
-			if (isMoving && flatCount > MOVE_STEEP_MINIMUM_COUNT) { // if we have met the minimum
-				isReallyFlat = true;
+			if (isMoving && steepCount > MOVE_STEEP_MINIMUM_COUNT) { // if we have met the minimum
+				isReallySteep = true;
 			}
 						
-			if (isReallyFlat) {
+			if (isReallySteep) {
 				System.out.println("WARNING: Steep detected!");
 				stop(); // WE STOP IF A STEEP IS DETECTED				 
 			}
 		}
 		
-		return isReallyFlat;
+		return isReallySteep;
 	}
 	
 	public void stop() {
@@ -1028,6 +1046,16 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	// return if stalled
 	public boolean isStalled() {
 		return isReallyStalled;
+	}
+
+	// return if flat detected
+	public boolean isFlatDetected() {
+		return isFlatDetected();
+	}
+
+	// return if steep detected
+	public boolean isSteepDetected() {
+		return isSteepDetected();
 	}
 
 	//@Override

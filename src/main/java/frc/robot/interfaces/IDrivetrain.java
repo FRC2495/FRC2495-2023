@@ -85,6 +85,12 @@ public interface IDrivetrain extends Subsystem {
 	
 	// return if stalled
 	public boolean isStalled();
+
+	// return if flat detected
+	public boolean isFlatDetected();
+
+	// return if steep detected
+	public boolean isSteepDetected();
 		
 	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
 	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 
