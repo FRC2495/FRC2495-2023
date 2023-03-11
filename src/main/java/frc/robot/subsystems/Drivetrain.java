@@ -141,11 +141,11 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	private final static int MOVE_STALLED_MINIMUM_COUNT = MOVE_ON_TARGET_MINIMUM_COUNT * 2 + 30; // number of times/iterations we need to be stalled to really be stalled
 
-	private final static int MOVE_FLAT_MINIMUM_COUNT = 5;
+	private final static int MOVE_FLAT_MINIMUM_COUNT = 10;
 
-	public static final double FLAT_THRESHOLD_DEGREES = 5.0; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
+	public static final double FLAT_THRESHOLD_DEGREES = 6.0; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
 	
-	private final static int MOVE_STEEP_MINIMUM_COUNT = 20; // 20 during testing on 10-Mar-2023; // TODO: STEEP CALIBRATION
+	private final static int MOVE_STEEP_MINIMUM_COUNT = 10; // 20 during testing on 10-Mar-2023; // TODO: STEEP CALIBRATION
 
 	public static final double STEEP_THRESHOLD_DEGREES = 13.0; // 15.0 during testing on 10-Mr-2023; // NOTE: REAL CHARGE STATION IS AT 15 DEGREES, SO THRESHOLD SHOULD BE ABOUT 13 DEGREES
 	
@@ -835,7 +835,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 				flatCount++; // we increase the counter
 			} else { // if we are not flat in this iteration
 				if (flatCount > 0) { // even though we were flat at least once during a previous iteration
-					//flatCount = 0; // we reset the counter as we are not flat anymore
+					// TODO: FLAT CALIBRATION
+					flatCount = 0; // we reset the counter as we are not flat anymore
 					System.out.println("Triple-check failed (detecting flat).");
 				} else {
 					// we are definitely not flat
