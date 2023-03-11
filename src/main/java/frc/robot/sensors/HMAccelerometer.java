@@ -11,7 +11,7 @@ import edu.wpi.first.math.filter.LinearFilter;
  */
 public class HMAccelerometer {
 	
-	static final double TILT_THRESH_DEGREES = 5.0;
+	static final double TILT_THRESH_DEGREES = 6.0;
 	
 	private BuiltInAccelerometer accel;
 	private LinearFilter filterZ;
