@@ -853,7 +853,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 			} else { // if we are not flat in this iteration
 				if (flatCount > 0) { // even though we were flat at least once during a previous iteration
 					// TODO: FLAT CALIBRATION
-					flatCount = 0; // we reset the counter as we are not flat anymore
+					//flatCount = 0; // we reset the counter as we are not flat anymore
+					flatCount-=1;
 					superFlatCount = 0; // we reset the counter as we are not flat anymore
 					System.out.println("Triple-check failed (detecting flat).");
 				} else {
