@@ -1072,12 +1072,12 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	// return if flat detected
 	public boolean isFlatDetected() {
-		return isFlatDetected();
+		return isReallyFlat;
 	}
 
 	// return if steep detected
 	public boolean isSteepDetected() {
-		return isSteepDetected();
+		return isReallySteep;
 	}
 
 	public int getFlatCount() {
