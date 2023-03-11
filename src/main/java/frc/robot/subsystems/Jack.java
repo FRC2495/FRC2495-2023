@@ -32,14 +32,14 @@ public class Jack extends SubsystemBase implements IJack {
 	
 	public static final int ANGLE_TO_FLOOR_TICKS = 30000; // todo set proper value
 	public static final int ANGLE_TO_MIDWAY_TICKS = 25000;
-	public static final int ANGLE_TO_TRAVEL_TICKS = 50000; // TODO set proper value
+	public static final int ANGLE_TO_TRAVEL_TICKS = 60000; // TODO set proper value
 	
 	/*
 	!!! VIRTUAL_HOME_OFFSET_TICKS is important for moving up,     !!!
 	!!! if this is changed make sure to check to see if moveUp() works !!!
 	(it's used as an error margin for moving up, since we can't reliably check when it's up)
 	*/
-	static final double VIRTUAL_HOME_OFFSET_TICKS = 1000; // position of virtual home compared to physical home
+	static final double VIRTUAL_HOME_OFFSET_TICKS = 2000; // position of virtual home compared to physical home
 	
 	static final double MAX_PCT_OUTPUT = 1.0; // ~full speed
 	
@@ -52,7 +52,7 @@ public class Jack extends SubsystemBase implements IJack {
 	
 	static final int SLOT_0 = 0;
 	
-	static final double REDUCED_PCT_OUTPUT = 0.6;
+	static final double REDUCED_PCT_OUTPUT = 0.4;
 	static final double SUPER_REDUCED_PCT_OUTPUT = 0.3;
 	
 	static final double MOVE_PROPORTIONAL_GAIN = 0.06;

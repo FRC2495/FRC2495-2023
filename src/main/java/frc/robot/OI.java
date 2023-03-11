@@ -119,10 +119,10 @@ public class OI {
 		gamepadLXn.onTrue(new JackGamepadControl());
 		
 		gamepadRStick = gamepad.rightStick();
-		//free
+		gamepadRStick.onTrue(new JackMoveUpWithStallDetection());
 
 		gamepadLStick = gamepad.leftStick();
-		//free
+		gamepadLStick.onTrue(new JackMoveDownWithStallDetection());
 
 		gamePadStart = gamepad.start();
 		gamePadStart.onTrue(new AlmostEverythingStop());
@@ -179,7 +179,8 @@ public class OI {
 		//joyRightBtn3.onTrue(new DrivetrainEngageUsingAccelerometerPidControllerWithStallDetection());
 		//joyRightBtn3.onTrue(new DrivetrainMoveDistanceWithFlatDetection(60));
 		//joyRightBtn3.onTrue(new DrivetrainMoveDistanceWithSteepDetection(60));
-		joyRightBtn3.onTrue(new DrivetrainMoveToTop());
+		//joyRightBtn3.onTrue(new DrivetrainMoveToTop());
+		joyRightBtn3.onTrue(new DrivetrainMoveToTopInReverse());
 
 		joyRightBtn2 = joyRight.button(ControllerBase.JoystickButtons.BTN2);
 		joyRightBtn2.onTrue(new SwitchedCameraSetUsbCamera(Ports.UsbCamera.BOTTOM_CAMERA));
