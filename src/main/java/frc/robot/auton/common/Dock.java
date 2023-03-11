@@ -3,6 +3,7 @@ package frc.robot.auton.common;
 
 import frc.robot.commands.brake.BrakeSetEngaged;
 import frc.robot.commands.drivetrain.*;
+import frc.robot.commands.groups.DrivetrainEngageInReverse;
 import frc.robot.commands.groups.Park;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
@@ -17,7 +18,9 @@ public class Dock extends SequentialCommandGroup {
 
         addCommands(
 
-            new DockOnChargeStation(),
+            //new DockOnChargeStation(),
+
+            new DrivetrainEngageInReverse(),
 
             new Park()
             // makes sure we stay on charge station

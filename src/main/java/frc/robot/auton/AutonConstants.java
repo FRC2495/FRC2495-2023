@@ -19,7 +19,7 @@ public class AutonConstants {
 
     // Starting Position Three + Four Distances
     public static final double DISTANCE_FROM_NODE_TO_DOCK = 30; // todo put proper value
-    public static final double DISTANCE_FROM_START_OF_CHARGING_STATION_TO_DOCKED_AT_CHARGING_STATION = 12; // todo put proper value
+    public static final double DISTANCE_FROM_START_OF_CHARGING_STATION_TO_DOCKED_AT_CHARGING_STATION = 10; // todo put proper value
     public static final double DISTANCE_FROM_DOCK_TO_OUTSIDE_COMMUNITY = 100; // todo put proper value
     public static final double DISTANCE_FROM_OUTSIDE_COMMUNITY_TO_BEFORE_DOCK = 90; // todo put proper value
     public static final double DISTANCE_FROM_DOCK_NEAR_NODE_TO_AREA_BEFORE_CONE_PICKUP = 70; // todo put proper value
