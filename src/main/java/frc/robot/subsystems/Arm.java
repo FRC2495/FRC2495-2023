@@ -49,7 +49,7 @@ public class Arm extends SubsystemBase implements IArm {
 	
 	static final int SLOT_0 = 0;
 	
-	static final double REDUCED_PCT_OUTPUT = 0.9;
+	static final double REDUCED_PCT_OUTPUT = 0.8; // 0.9;
 	
 	static final double MOVE_PROPORTIONAL_GAIN = 0.6; // 1.2 for SRX // TODO switch to 0.6 if required if switching to Talon FX (as encoder resolution is halved)
 	static final double MOVE_INTEGRAL_GAIN = 0.0;
@@ -405,7 +405,7 @@ public class Arm extends SubsystemBase implements IArm {
 	{
 		if (!isMoving) // if we are already doing a move we don't take over
 		{
-			arm.set(ControlMode.PercentOutput, +MathUtil.applyDeadband(gamepad.getRightY(),OI.GAMEPAD_AXIS_THRESHOLD)*0.7); // adjust sign if desired
+			arm.set(ControlMode.PercentOutput, +MathUtil.applyDeadband(gamepad.getRightY(),OI.GAMEPAD_AXIS_THRESHOLD)*0.6/*0.7*/); // adjust sign if desired
 		}
 	}
 
