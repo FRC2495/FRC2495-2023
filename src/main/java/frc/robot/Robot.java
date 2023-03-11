@@ -456,7 +456,10 @@ public class Robot extends TimedRobot {
 		SwitchedCamera.setUsbCamera(Ports.UsbCamera.TOP_CAMERA);
 
 		//gamepadRumbleUsingCameraCommand.start();
+		
+		brake.setPosition(Brake.Position.RELEASED);
 
+		drivetrain.setCoastNeutralMode();
 		
 		gearbox.setGear(Gearbox.Gear.LOW);
 	}

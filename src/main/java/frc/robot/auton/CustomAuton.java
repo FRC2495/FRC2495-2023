@@ -10,22 +10,11 @@ package frc.robot.auton;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 import frc.robot.Robot;
-import frc.robot.auton.blue.StartingPositionOneBOneConeAndLeaveCommunity;
-import frc.robot.auton.blue.StartingPositionOneBOneConeAndLeaveCommunityAndPickupCone;
-import frc.robot.auton.blue.StartingPositionOneBTwoCones;
-import frc.robot.auton.blue.StartingPositionOneBTwoConesAndLeaveCommunity;
-import frc.robot.auton.blue.StartingPositionSixBOneConeAndLeaveCommunity;
-import frc.robot.auton.blue.StartingPositionSixBTwoCones;
-import frc.robot.auton.blue.StartingPositionSixBTwoConesAndLeaveCommunity;
-import frc.robot.auton.blue.StartingPositionThreeOrFourBDock;
-import frc.robot.auton.blue.StartingPositionThreeOrFourBDockAndLeaveCommunity;
-import frc.robot.auton.common.DropConeOnTopNodeAndShrink;
-import frc.robot.auton.blue.PutDownOneConeAndDock;
-import frc.robot.auton.blue.PutDownOneConeAndLeaveCommunityAndThenDock;
-import frc.robot.auton.blue.PutDownTwoConesAndDock;
-import frc.robot.commands.brake.BrakeSetReleased;
-//import frc.robot.commands.*;
+import frc.robot.auton.blue.*;
+import frc.robot.auton.common.*;
+import frc.robot.commands.brake.*;
 import frc.robot.commands.gearbox.*;
+import frc.robot.commands.drivetrain.*;
 
 public class CustomAuton extends SequentialCommandGroup {
 
@@ -57,6 +46,8 @@ public class CustomAuton extends SequentialCommandGroup {
 		autonOption = autonOption_in;
 
 		addCommands(new BrakeSetReleased()); // just in case
+
+		addCommands(new DrivetrainSetCoastNeutralMode()); // just in case
 
 		addCommands(new GearboxSetGearLow()); // forces low gear just in case
 
