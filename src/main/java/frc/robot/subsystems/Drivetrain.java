@@ -891,7 +891,8 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 					// TODO: STEEP CALIBRATION
 					// NOTE THAT LINE BELOW WAS COMMENTED OUT DURING TESTING ON 10-MAR-2023 BUT THAT IS PROBABLY NOT A GOOD IDEA
 					// THAT SAID COMMENT BACK IF JUSTIFIED
-					steepCount = 0; // we reset the counter as we are not steep anymore
+					//steepCount = 0; // we reset the counter as we are not steep anymore
+					steepCount-=1;
 					System.out.println("Triple-check failed (detecting steep).");
 				} else {
 					// we are definitely not steep

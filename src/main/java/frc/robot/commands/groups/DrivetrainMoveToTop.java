@@ -16,7 +16,7 @@ public class DrivetrainMoveToTop extends SequentialCommandGroup {
 			new DrivetrainSetBrakeNeutralMode(),
 			new DrivetrainMoveDistanceWithSteepDetection(60),
 			new WaitCommand(1), // temp
-			new DrivetrainMoveDistanceLowSpeed(17.5)
+			new DrivetrainMoveDistanceLowSpeed(12)
 			//new Park()
 			);
 	} 
