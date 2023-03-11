@@ -91,6 +91,12 @@ public interface IDrivetrain extends Subsystem {
 
 	// return if steep detected
 	public boolean isSteepDetected();
+
+	public int getFlatCount();
+
+	public int getSuperFlatCount();
+	
+	public int getSteepCount();
 		
 	// MAKE SURE THAT YOU ARE NOT IN A CLOSED LOOP CONTROL MODE BEFORE CALLING THIS METHOD.
 	// OTHERWISE THIS IS EQUIVALENT TO MOVING TO THE DISTANCE TO THE CURRENT ZERO IN REVERSE! 

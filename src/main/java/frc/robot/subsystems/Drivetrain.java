@@ -144,6 +144,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	private final static int MOVE_FLAT_MINIMUM_COUNT = 10;
 
 	public static final double FLAT_THRESHOLD_DEGREES = 6.0; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
+	public static final double SUPER_FLAT_THRESHOLD_DEGREES = 3.0; // LEVEL = A CHARGE STATION within approximately 2.5 degrees of parallel to FIELD carpet
 	
 	private final static int MOVE_STEEP_MINIMUM_COUNT = 10; // 20 during testing on 10-Mar-2023; // TODO: STEEP CALIBRATION
 
@@ -169,6 +170,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	private int onTargetCountEngagingUsingAccelerometer; // counter indicating how many times/iterations we were on target
 	private int stalledCount; // counter indicating how many times/iterations we were stalled
 	private int flatCount; // counter indicating how many times/iterations we were flat
+	private int superFlatCount; // counter indicating how many times/iterations we were flat
 	private int steepCount; // counter indicating how many times/iterations we were steep
 
 	WPI_TalonSRX masterLeft, masterRight; // motor controllers
@@ -336,6 +338,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		superFlatCount = 0;
 		isReallySteep = false;
 		steepCount = 0;
 	}
@@ -359,6 +362,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		superFlatCount = 0;
 		isReallySteep = false;
 		steepCount = 0;
 	}	
@@ -418,6 +422,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		superFlatCount = 0;
 		isReallySteep = false;
 		steepCount = 0;
 	}
@@ -476,6 +481,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		superFlatCount = 0;
 		isReallySteep = false;
 		steepCount = 0;
 	}
@@ -543,6 +549,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		superFlatCount = 0;
 		isReallySteep = false;
 		steepCount = 0;
 	}
@@ -641,6 +648,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;
+		superFlatCount = 0;
 		isReallySteep = false;
 		steepCount = 0;
 	}
@@ -693,6 +701,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;		
+		superFlatCount = 0;
 		isReallySteep = false;
 		steepCount = 0;
 	}*/
@@ -767,6 +776,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 		stalledCount = 0;
 		isReallyFlat = false;
 		flatCount = 0;		
+		superFlatCount = 0;
 		isReallySteep = false;
 		steepCount = 0;
 	}
@@ -830,13 +840,21 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 			double pitch = accelerometer.getAccurateRoll(); // roll is picth because of how Rio is mounted
 			
 			boolean isFlat = Math.abs(pitch) < FLAT_THRESHOLD_DEGREES;
+
+			boolean isSuperFlat = Math.abs(pitch) < SUPER_FLAT_THRESHOLD_DEGREES;
 			
 			if (isFlat) { // if we are flat in this iteration 
 				flatCount++; // we increase the counter
+
+				if (isSuperFlat) {
+					superFlatCount++;
+				}
+
 			} else { // if we are not flat in this iteration
 				if (flatCount > 0) { // even though we were flat at least once during a previous iteration
 					// TODO: FLAT CALIBRATION
 					flatCount = 0; // we reset the counter as we are not flat anymore
+					superFlatCount = 0; // we reset the counter as we are not flat anymore
 					System.out.println("Triple-check failed (detecting flat).");
 				} else {
 					// we are definitely not flat
@@ -1060,6 +1078,18 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 	// return if steep detected
 	public boolean isSteepDetected() {
 		return isSteepDetected();
+	}
+
+	public int getFlatCount() {
+		return flatCount;
+	}
+
+	public int getSuperFlatCount() {
+		return superFlatCount;
+	}
+
+	public int getSteepCount() {
+		return steepCount;
 	}
 
 	//@Override
