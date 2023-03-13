@@ -392,7 +392,7 @@ public class Jack extends SubsystemBase implements IJack {
 	}
 
 	public boolean isDangerous() {
-		return isDown();
+		return isUp();
 	}
 
 	// return if stalled
