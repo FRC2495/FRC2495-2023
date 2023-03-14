@@ -8,7 +8,7 @@ public class AutonConstants {
     public static final double DISTANCE_FROM_CONE_NODE_TO_AREA_BEFORE_FIRST_TURN = 37;
     public static final double DISTANCE_FROM_AREA_AFTER_FIRST_TURN_TO_AREA_BEFORE_SECOND_TURN = 29;
     public static final double DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_AREA_BEFORE_CONE_PICKUP = 120;
-    public static final double DISTANCE_FROM_AREA_BEFORE_CONE_PICKUP_TO_CONE_PICKUP = 24.5;
+    public static final double DISTANCE_FROM_AREA_BEFORE_CONE_PICKUP_TO_CONE_PICKUP = 30;
     public static final double DISTANCE_FROM_AREA_AFTER_SECOND_TURN_TO_CONE_PICKUP = 144.5; // the total of previous two constants
     public static final double DISTANCE_FROM_CONE_PICKUP_TO_AREA_BEFORE_THIRD_TURN = 134.5;
     public static final double DISTANCE_FROM_AREA_AFTER_THIRD_TURN_TO_AREA_BEFORE_FOURTH_TURN = 21;
@@ -31,12 +31,13 @@ public class AutonConstants {
     // Fixed auton angles
 
     // Starting Position One + Six(?) Angles
-    public static final int ANGLE_BETWEEN_CONE_NODE_AND_AREA_AFTER_FIRST_TURN = 160;
-    public static final int ANGLE_BETWEEN_AREA_AFTER_FIRST_TURN_AND_CONE_PICKUP = 160;
+    public static final int ANGLE_BETWEEN_CONE_NODE_AND_AREA_AFTER_FIRST_TURN = 180;
+    public static final int ANGLE_BETWEEN_AREA_AFTER_FIRST_TURN_AND_CONE_PICKUP = 15;
     public static final int ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_FIRST_PART = 90;
     public static final int ANGLE_BETWEEN_AREA_BEFORE_THIRD_TURN_AND_TOWARDS_CONE_NODE_SECOND_PART = 115; // the total of this and previous angle is supposed to be 205
     public static final int ANGLE_BETWEEN_AREA_BEFORE_FOURTH_TURN_AND_CONE_NODE = 25;
     public static final int ANGLE_BETWEEN_CONE_NODE_AND_CONE_PICKUP = 160;
+    public static final int ANGLE_BETWEEN_RIGHT_CONE_NODE_AND_CONE_PICKUP = 153;
 
 
 

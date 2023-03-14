@@ -505,7 +505,7 @@ public class CustomAuton extends SequentialCommandGroup {
 								addCommands(new StartingPositionSixBOneConeAndLeaveCommunity());
 								break;
 							case Robot.AUTON_OPTION_ALSO_PICKUP_CONE:
-								//TODO
+								addCommands(new StartingPositionSixBOneConeAndLeaveCommunityAndPickupCone());
 								break;
 							default:
 								// nothing
