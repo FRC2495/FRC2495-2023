@@ -34,7 +34,7 @@ public class Arm extends SubsystemBase implements IArm {
 
 	
 	// general settings
-	public static final int LENGTH_OF_TRAVEL_TICKS = 610000; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_TRAVEL_TICKS = 590000; // 610000; // TODO adjust as needed (halve for Talon FX)
 	public static final int LENGTH_OF_PICKUP_TICKS = 550000; // TODO adjust as needed (halve for Talon FX)
 	public static final int LENGTH_OF_LEVEL_TWO_TICKS = 510000; // TODO adjust as needed (halve for Talon FX)
 
@@ -55,8 +55,8 @@ public class Arm extends SubsystemBase implements IArm {
 	static final double MOVE_INTEGRAL_GAIN = 0.0;
 	static final double MOVE_DERIVATIVE_GAIN = 0.0;
 	
-	static final int TALON_TICK_THRESH = 128; //256
-	static final double TICK_THRESH = 512;
+	static final int TALON_TICK_THRESH = 512; // 128; //256
+	static final double TICK_THRESH = 2048; // 512;
 	public static final double TICK_PER_100MS_THRESH = 64; // about a tenth of a rotation per second 
 	
 	private final static int MOVE_ON_TARGET_MINIMUM_COUNT= 20; // number of times/iterations we need to be on target to really be on target
