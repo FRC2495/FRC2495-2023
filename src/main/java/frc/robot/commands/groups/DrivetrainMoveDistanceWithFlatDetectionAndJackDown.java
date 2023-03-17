@@ -15,9 +15,9 @@ public class DrivetrainMoveDistanceWithFlatDetectionAndJackDown extends Parallel
 
 		addCommands(
 
-            new DrivetrainMoveDistanceWithFlatDetection(distance),
+            new DrivetrainMoveDistanceWithFlatDetection(distance)
 
-            new JackMoveDownWithStallDetection()
+            //new JackMoveDownWithStallDetection()
 
         );
         

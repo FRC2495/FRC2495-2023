@@ -15,11 +15,11 @@ public class DrivetrainEngageInReverse extends SequentialCommandGroup {
 
 		addCommands(
 
-			new JackMoveUpWithStallDetection(),
+			//new JackMoveUpWithStallDetection(),
 
-            new DrivetrainMoveToTopInReverse(),
+            new DrivetrainMoveToTopInReverse()
 
-            new JackMoveDownWithStallDetection()
+            //new JackMoveDownWithStallDetection()
 
         );
         
