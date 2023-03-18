@@ -15,10 +15,10 @@ public class DrivetrainMoveToTopInReverse extends SequentialCommandGroup {
 		addCommands(
 			new DrivetrainSetBrakeNeutralMode(),
 			new DrivetrainMoveDistanceWithSteepDetection(-60),
-			new WaitCommand(1), // temp
+			//new WaitCommand(1), // temp
 			//new DrivetrainMoveDistanceLowSpeed(-25.65)
 			//new DrivetrainMoveDistanceWithFlatDetection(-24)
-			new DrivetrainMoveDistanceWithFlatDetectionAndJackDown(-43)
+			new DrivetrainMoveDistanceWithFlatDetectionAndJackDown(-37)
 			//new Park()
 			);
 	} 
