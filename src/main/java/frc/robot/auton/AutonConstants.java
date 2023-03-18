@@ -14,7 +14,7 @@ public class AutonConstants {
     public static final double DISTANCE_FROM_AREA_AFTER_THIRD_TURN_TO_AREA_BEFORE_FOURTH_TURN = 21;
     public static final double DISTANCE_FROM_AREA_AFTER_FOURTH_TURN_TO_CONE_NODE = 8;
 
-    public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 134;
+    public static final double DISTANCE_FROM_NODE_TO_OUTSIDE_COMMUNITY = 134+24;
     public static final double DISTANCE_FROM_OUTSIDE_COMMUNITY_TO_SECOND_CONE_PICKUP = 20;
 
     // Starting Position Three + Four Distances
