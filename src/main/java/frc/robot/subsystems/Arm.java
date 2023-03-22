@@ -34,9 +34,9 @@ public class Arm extends SubsystemBase implements IArm {
 
 	
 	// general settings
-	public static final int LENGTH_OF_TRAVEL_TICKS = 590000; // 610000; // TODO adjust as needed (halve for Talon FX)
-	public static final int LENGTH_OF_PICKUP_TICKS = 550000; // TODO adjust as needed (halve for Talon FX)
-	public static final int LENGTH_OF_LEVEL_TWO_TICKS = 510000; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_TRAVEL_TICKS = 590000*3/4; // 610000; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_PICKUP_TICKS = 550000*3/4; // TODO adjust as needed (halve for Talon FX)
+	public static final int LENGTH_OF_LEVEL_TWO_TICKS = 510000*3/4; // TODO adjust as needed (halve for Talon FX)
 
 	static final double MAX_PCT_OUTPUT = 1.0;
 	static final int WAIT_MS = 1000;
