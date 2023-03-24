@@ -102,7 +102,7 @@ public class Indicator extends SubsystemBase {
 
 	public void setYellow()
 	{
-		setHue(45);
+		setHue(20/*45*/);
 	}
 
 	public void setGreen()
