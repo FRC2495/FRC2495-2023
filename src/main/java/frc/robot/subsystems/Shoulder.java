@@ -30,7 +30,7 @@ public class Shoulder extends SubsystemBase implements IShoulder {
 	
 	public static final double GEAR_RATIO = 3.0; // TODO change if needed
 	
-	public static final int ANGLE_TO_FLOOR_TICKS = 60000; // todo set proper value
+	public static final int ANGLE_TO_FLOOR_TICKS = 65000; // todo set proper value
 	public static final int ANGLE_TO_MIDWAY_TICKS = 75000;
 	public static final int ANGLE_TO_LEVEL_2_TICKS = 120000; // todo set proper value
 	public static final int ANGLE_TO_TRAVEL_TICKS = 150000; // TODO set proper value
