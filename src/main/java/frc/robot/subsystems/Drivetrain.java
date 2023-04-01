@@ -125,7 +125,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 
 	static final int REMOTE_0 = 0;
 	
-	static final double SUPER_REDUCED_PCT_OUTPUT = 0.25; //0.25;
+	static final double SUPER_REDUCED_PCT_OUTPUT = 0.20; //0.25;
 	static final double REDUCED_PCT_OUTPUT = 0.3;
 	static final double HIGH_PCT_OUTPUT = 0.5;
 	
