@@ -1012,7 +1012,7 @@ public class Drivetrain extends SubsystemBase implements /*PIDOutput, PIDOutput2
 				
 				//differentialDrive.tankDrive(joyLeft.getY(), -joyRight.getY()); // right needs to be reversed
 				
-				differentialDrive.arcadeDrive(-joyRight.getX() * 0.75, -joyLeft.getY()); // right needs to be reversed
+				differentialDrive.arcadeDrive(-joyRight.getX() * 0.85, -joyLeft.getY()); // right needs to be reversed
 			//}
 		}
 	}	
