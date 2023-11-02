@@ -107,16 +107,16 @@ public class OI {
 		gamepadLTrigger.onTrue(new ArmRetractWithStallDetection());
 
 		gamepadLYp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LY,GAMEPAD_AXIS_THRESHOLD);
-		gamepadLYp.onTrue(new ShoulderGamepadControl());
+		gamepadLYp.whileTrue(new ShoulderGamepadControl());
 
 		gamepadLYn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LY,-GAMEPAD_AXIS_THRESHOLD);
-		gamepadLYn.onTrue(new ShoulderGamepadControl());
+		gamepadLYn.whileTrue(new ShoulderGamepadControl());
 
 		gamepadLXp = gamepad.axisGreaterThan(ControllerBase.GamepadAxes.LX,GAMEPAD_AXIS_THRESHOLD);
-		gamepadLXp.onTrue(new JackGamepadControl());
+		gamepadLXp.whileTrue(new JackGamepadControl());
 
 		gamepadLXn = gamepad.axisLessThan(ControllerBase.GamepadAxes.LX,-GAMEPAD_AXIS_THRESHOLD);
-		gamepadLXn.onTrue(new JackGamepadControl());
+		gamepadLXn.whileTrue(new JackGamepadControl());
 		
 		gamepadRStick = gamepad.rightStick();
 		gamepadRStick.onTrue(new JackMoveUpWithStallDetection());
